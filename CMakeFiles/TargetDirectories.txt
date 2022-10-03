@@ -1,0 +1,4 @@
+/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles/rebuild_cache.dir
+/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles/edit_cache.dir
+/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles/server_lib.dir
+/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles/hotel.dir
