@@ -21,7 +21,7 @@ add_executable(myhotel main.cpp)
 #target_link_libraries(myhotel  server_lib protocal_lib service_lib hotel_lib)
 
 
-target_link_libraries(myhotel PRIVATE Threads::Threads server_lib)
+target_link_libraries(server_lib myhotel )
 
 
 
