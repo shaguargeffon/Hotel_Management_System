@@ -5,10 +5,10 @@ project(HOTEL)
 add_compile_options(-std=c++14)
 
 
-include_directories(${PROJECT_SOURCE_DIR}/hotel)
-include_directories(${PROJECT_SOURCE_DIR}/protocal)
-include_directories(${PROJECT_SOURCE_DIR}/server)
-include_directories(${PROJECT_SOURCE_DIR}/service)
+include_directories(${PROJECT_SOURCE_DIR}/../hotel)
+include_directories(${PROJECT_SOURCE_DIR}/../protocal)
+include_directories(${PROJECT_SOURCE_DIR}/../server)
+include_directories(${PROJECT_SOURCE_DIR}/../service)
 
 
 #add_library(protocal_lib protocal/protocal.cpp)
@@ -21,7 +21,7 @@ add_executable(myhotel main.cpp)
 #target_link_libraries(myhotel  server_lib protocal_lib service_lib hotel_lib)
 
 
-target_link_libraries(${PROJECT_SOURCE_DIR}/server/server_lib myhotel )
+target_link_libraries(server_lib myhotel)
 
 
 
