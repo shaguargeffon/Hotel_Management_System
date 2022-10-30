@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
-#include_directories(hotel)
-#include_directories(protocal)
-#include_directories(server)
-#include_directories(service)
+include_directories(hotel)
+include_directories(protocal)
+include_directories(server)
+include_directories(service)
 
 
 add_subdirectory(protocal)
