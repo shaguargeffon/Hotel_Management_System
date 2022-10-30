@@ -15,10 +15,10 @@ include_directories(${PROJECT_SOURCE_DIR}/service)
 
 add_executable(myhotel main.cpp)
 
-target_link_libraries(myhotel  server_lib protocal_lib service_lib hotel_lib)
+#target_link_libraries(myhotel  server_lib protocal_lib service_lib hotel_lib)
 
 
-
+target_link_libraries(myhotel server_lib)
 
 
 
