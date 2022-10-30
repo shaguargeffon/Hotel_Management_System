@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 #include "hotel.hpp"
 #include "protocal.hpp"
 
@@ -193,7 +193,7 @@ public:
 };
 
 
-
+*/
 
 
 

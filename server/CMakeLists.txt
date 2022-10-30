@@ -1,14 +1,7 @@
-cmake_minimum_required(VERSION 3.0)
 
-#project(server_lib)
+add_library(server server.cpp)
 
-
-#add_library(server_lib server.cpp)
-
-
-add_executable(${PROJECT_NAME} server.cpp)
-
-#target_link_libraries(${PROJECT_NAME} PRIVATE server_lib)
+set_target_properties(server PROPERTIES OUTPUT_NAME "server")
 
 
 
