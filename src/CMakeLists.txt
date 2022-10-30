@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
+add_compile_options(-std=c++14)
+
+
 include_directories(${PROJECT_SOURCE_DIR}/hotel)
 include_directories(${PROJECT_SOURCE_DIR}/protocal)
 include_directories(${PROJECT_SOURCE_DIR}/server)
@@ -18,7 +21,7 @@ add_executable(myhotel main.cpp)
 #target_link_libraries(myhotel  server_lib protocal_lib service_lib hotel_lib)
 
 
-target_link_libraries(myhotel server_lib)
+target_link_libraries(myhotel PRIVATE Threads::Threads server_lib)
 
 
 
