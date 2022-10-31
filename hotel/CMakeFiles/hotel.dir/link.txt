@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhotel.a  CMakeFiles/hotel.dir/hotel.cpp.o
+/usr/bin/ranlib libhotel.a

@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/protocal/CMakeFiles/progress.marks
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,110 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named myhotel
+# Convenience name for target.
+protocal/CMakeFiles/protocal.dir/rule:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/CMakeFiles/protocal.dir/rule
+.PHONY : protocal/CMakeFiles/protocal.dir/rule
 
-# Build rule for target.
-myhotel: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 myhotel
-.PHONY : myhotel
+# Convenience name for target.
+protocal: protocal/CMakeFiles/protocal.dir/rule
 
-# fast build rule for target.
-myhotel/fast:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/build
-.PHONY : myhotel/fast
-
-#=============================================================================
-# Target rules for targets named protocal
-
-# Build rule for target.
-protocal: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 protocal
 .PHONY : protocal
 
 # fast build rule for target.
 protocal/fast:
-	$(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/build
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/build
 .PHONY : protocal/fast
 
-#=============================================================================
-# Target rules for targets named server_lib
+protocal.o: protocal.cpp.o
 
-# Build rule for target.
-server_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 server_lib
-.PHONY : server_lib
-
-# fast build rule for target.
-server_lib/fast:
-	$(MAKE) -f server/CMakeFiles/server_lib.dir/build.make server/CMakeFiles/server_lib.dir/build
-.PHONY : server_lib/fast
-
-#=============================================================================
-# Target rules for targets named service
-
-# Build rule for target.
-service: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service
-.PHONY : service
-
-# fast build rule for target.
-service/fast:
-	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/build
-.PHONY : service/fast
-
-#=============================================================================
-# Target rules for targets named hotel
-
-# Build rule for target.
-hotel: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hotel
-.PHONY : hotel
-
-# fast build rule for target.
-hotel/fast:
-	$(MAKE) -f hotel/CMakeFiles/hotel.dir/build.make hotel/CMakeFiles/hotel.dir/build
-.PHONY : hotel/fast
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : protocal.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.o
-.PHONY : main.cpp.o
+protocal.cpp.o:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/protocal.cpp.o
+.PHONY : protocal.cpp.o
 
-main.i: main.cpp.i
+protocal.i: protocal.cpp.i
 
-.PHONY : main.i
+.PHONY : protocal.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.i
-.PHONY : main.cpp.i
+protocal.cpp.i:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/protocal.cpp.i
+.PHONY : protocal.cpp.i
 
-main.s: main.cpp.s
+protocal.s: protocal.cpp.s
 
-.PHONY : main.s
+.PHONY : protocal.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.s
-.PHONY : main.cpp.s
+protocal.cpp.s:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/protocal.cpp.s
+.PHONY : protocal.cpp.s
 
 # Help Target
 help:
@@ -209,15 +159,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... myhotel"
-	@echo "... edit_cache"
 	@echo "... protocal"
-	@echo "... server_lib"
-	@echo "... service"
-	@echo "... hotel"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... edit_cache"
+	@echo "... protocal.o"
+	@echo "... protocal.i"
+	@echo "... protocal.s"
 .PHONY : help
 
 
@@ -229,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

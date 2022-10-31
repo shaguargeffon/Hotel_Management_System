@@ -60,76 +60,259 @@ CMAKE_SOURCE_DIR = /home/shaguar/project/hotel/Hotel_Management_System
 CMAKE_BINARY_DIR = /home/shaguar/project/hotel/Hotel_Management_System
 
 #=============================================================================
-# Target rules for target CMakeFiles/server_lib.dir
+# Target rules for target CMakeFiles/myhotel.dir
 
 # All Build rule for target.
-CMakeFiles/server_lib.dir/all:
-	$(MAKE) -f CMakeFiles/server_lib.dir/build.make CMakeFiles/server_lib.dir/depend
-	$(MAKE) -f CMakeFiles/server_lib.dir/build.make CMakeFiles/server_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=3,4 "Built target server_lib"
-.PHONY : CMakeFiles/server_lib.dir/all
+CMakeFiles/myhotel.dir/all: server/CMakeFiles/server_lib.dir/all
+	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/depend
+	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=3,4 "Built target myhotel"
+.PHONY : CMakeFiles/myhotel.dir/all
 
 # Include target in all.
-all: CMakeFiles/server_lib.dir/all
+all: CMakeFiles/myhotel.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/server_lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/server_lib.dir/all
+CMakeFiles/myhotel.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myhotel.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
-.PHONY : CMakeFiles/server_lib.dir/rule
+.PHONY : CMakeFiles/myhotel.dir/rule
 
 # Convenience name for target.
-server_lib: CMakeFiles/server_lib.dir/rule
+myhotel: CMakeFiles/myhotel.dir/rule
 
-.PHONY : server_lib
-
-# clean rule for target.
-CMakeFiles/server_lib.dir/clean:
-	$(MAKE) -f CMakeFiles/server_lib.dir/build.make CMakeFiles/server_lib.dir/clean
-.PHONY : CMakeFiles/server_lib.dir/clean
+.PHONY : myhotel
 
 # clean rule for target.
-clean: CMakeFiles/server_lib.dir/clean
+CMakeFiles/myhotel.dir/clean:
+	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/clean
+.PHONY : CMakeFiles/myhotel.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/myhotel.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/hotel.dir
+# Directory level rules for directory protocal
+
+# Convenience name for "all" pass in the directory.
+protocal/all: protocal/CMakeFiles/protocal.dir/all
+
+.PHONY : protocal/all
+
+# Convenience name for "clean" pass in the directory.
+protocal/clean: protocal/CMakeFiles/protocal.dir/clean
+
+.PHONY : protocal/clean
+
+# Convenience name for "preinstall" pass in the directory.
+protocal/preinstall:
+
+.PHONY : protocal/preinstall
+
+#=============================================================================
+# Target rules for target protocal/CMakeFiles/protocal.dir
 
 # All Build rule for target.
-CMakeFiles/hotel.dir/all: CMakeFiles/server_lib.dir/all
-	$(MAKE) -f CMakeFiles/hotel.dir/build.make CMakeFiles/hotel.dir/depend
-	$(MAKE) -f CMakeFiles/hotel.dir/build.make CMakeFiles/hotel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=1,2 "Built target hotel"
-.PHONY : CMakeFiles/hotel.dir/all
+protocal/CMakeFiles/protocal.dir/all:
+	$(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/depend
+	$(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=5,6 "Built target protocal"
+.PHONY : protocal/CMakeFiles/protocal.dir/all
 
 # Include target in all.
-all: CMakeFiles/hotel.dir/all
+all: protocal/CMakeFiles/protocal.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/hotel.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hotel.dir/all
+protocal/CMakeFiles/protocal.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 protocal/CMakeFiles/protocal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
-.PHONY : CMakeFiles/hotel.dir/rule
+.PHONY : protocal/CMakeFiles/protocal.dir/rule
 
 # Convenience name for target.
-hotel: CMakeFiles/hotel.dir/rule
+protocal: protocal/CMakeFiles/protocal.dir/rule
+
+.PHONY : protocal
+
+# clean rule for target.
+protocal/CMakeFiles/protocal.dir/clean:
+	$(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/clean
+.PHONY : protocal/CMakeFiles/protocal.dir/clean
+
+# clean rule for target.
+clean: protocal/CMakeFiles/protocal.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory server
+
+# Convenience name for "all" pass in the directory.
+server/all: server/CMakeFiles/server_lib.dir/all
+
+.PHONY : server/all
+
+# Convenience name for "clean" pass in the directory.
+server/clean: server/CMakeFiles/server_lib.dir/clean
+
+.PHONY : server/clean
+
+# Convenience name for "preinstall" pass in the directory.
+server/preinstall:
+
+.PHONY : server/preinstall
+
+#=============================================================================
+# Target rules for target server/CMakeFiles/server_lib.dir
+
+# All Build rule for target.
+server/CMakeFiles/server_lib.dir/all:
+	$(MAKE) -f server/CMakeFiles/server_lib.dir/build.make server/CMakeFiles/server_lib.dir/depend
+	$(MAKE) -f server/CMakeFiles/server_lib.dir/build.make server/CMakeFiles/server_lib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=7,8 "Built target server_lib"
+.PHONY : server/CMakeFiles/server_lib.dir/all
+
+# Include target in all.
+all: server/CMakeFiles/server_lib.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+server/CMakeFiles/server_lib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 server/CMakeFiles/server_lib.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
+.PHONY : server/CMakeFiles/server_lib.dir/rule
+
+# Convenience name for target.
+server_lib: server/CMakeFiles/server_lib.dir/rule
+
+.PHONY : server_lib
+
+# clean rule for target.
+server/CMakeFiles/server_lib.dir/clean:
+	$(MAKE) -f server/CMakeFiles/server_lib.dir/build.make server/CMakeFiles/server_lib.dir/clean
+.PHONY : server/CMakeFiles/server_lib.dir/clean
+
+# clean rule for target.
+clean: server/CMakeFiles/server_lib.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory service
+
+# Convenience name for "all" pass in the directory.
+service/all: service/CMakeFiles/service.dir/all
+
+.PHONY : service/all
+
+# Convenience name for "clean" pass in the directory.
+service/clean: service/CMakeFiles/service.dir/clean
+
+.PHONY : service/clean
+
+# Convenience name for "preinstall" pass in the directory.
+service/preinstall:
+
+.PHONY : service/preinstall
+
+#=============================================================================
+# Target rules for target service/CMakeFiles/service.dir
+
+# All Build rule for target.
+service/CMakeFiles/service.dir/all:
+	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/depend
+	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=9,10 "Built target service"
+.PHONY : service/CMakeFiles/service.dir/all
+
+# Include target in all.
+all: service/CMakeFiles/service.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+service/CMakeFiles/service.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 service/CMakeFiles/service.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
+.PHONY : service/CMakeFiles/service.dir/rule
+
+# Convenience name for target.
+service: service/CMakeFiles/service.dir/rule
+
+.PHONY : service
+
+# clean rule for target.
+service/CMakeFiles/service.dir/clean:
+	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/clean
+.PHONY : service/CMakeFiles/service.dir/clean
+
+# clean rule for target.
+clean: service/CMakeFiles/service.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory hotel
+
+# Convenience name for "all" pass in the directory.
+hotel/all: hotel/CMakeFiles/hotel.dir/all
+
+.PHONY : hotel/all
+
+# Convenience name for "clean" pass in the directory.
+hotel/clean: hotel/CMakeFiles/hotel.dir/clean
+
+.PHONY : hotel/clean
+
+# Convenience name for "preinstall" pass in the directory.
+hotel/preinstall:
+
+.PHONY : hotel/preinstall
+
+#=============================================================================
+# Target rules for target hotel/CMakeFiles/hotel.dir
+
+# All Build rule for target.
+hotel/CMakeFiles/hotel.dir/all:
+	$(MAKE) -f hotel/CMakeFiles/hotel.dir/build.make hotel/CMakeFiles/hotel.dir/depend
+	$(MAKE) -f hotel/CMakeFiles/hotel.dir/build.make hotel/CMakeFiles/hotel.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles --progress-num=1,2 "Built target hotel"
+.PHONY : hotel/CMakeFiles/hotel.dir/all
+
+# Include target in all.
+all: hotel/CMakeFiles/hotel.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+hotel/CMakeFiles/hotel.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 hotel/CMakeFiles/hotel.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
+.PHONY : hotel/CMakeFiles/hotel.dir/rule
+
+# Convenience name for target.
+hotel: hotel/CMakeFiles/hotel.dir/rule
 
 .PHONY : hotel
 
 # clean rule for target.
-CMakeFiles/hotel.dir/clean:
-	$(MAKE) -f CMakeFiles/hotel.dir/build.make CMakeFiles/hotel.dir/clean
-.PHONY : CMakeFiles/hotel.dir/clean
+hotel/CMakeFiles/hotel.dir/clean:
+	$(MAKE) -f hotel/CMakeFiles/hotel.dir/build.make hotel/CMakeFiles/hotel.dir/clean
+.PHONY : hotel/CMakeFiles/hotel.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/hotel.dir/clean
+clean: hotel/CMakeFiles/hotel.dir/clean
 
 .PHONY : clean
 

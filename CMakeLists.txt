@@ -4,8 +4,10 @@ project(HOTEL)
 
 #include_directories(${PROJECT_SOURCE_DIR}/hotel)
 #include_directories(${PROJECT_SOURCE_DIR}/protocal)
-#include_directories(${PROJECT_SOURCE_DIR}/server)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/server)
 #include_directories(${PROJECT_SOURCE_DIR}/service)
+
+
 
 
 add_subdirectory(protocal)

@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel server/libserver_lib.a 

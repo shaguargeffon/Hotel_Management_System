@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shaguar/project/hotel/Hotel_Management_System/server/server.cpp
+server.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
+
+/home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
+stdio.h
+-
+ctype.h
+-
+unistd.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+sys/socket.h
+-
+stdlib.h
+-
+
