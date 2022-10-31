@@ -2,17 +2,17 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
-include_directories(hotel)
-include_directories(protocal)
-include_directories(server)
-include_directories(service)
+include_directories(${PROJECT_SOURCE_DIR}/hotel)
+include_directories(${PROJECT_SOURCE_DIR}/protocal)
+include_directories(${PROJECT_SOURCE_DIR}/server)
+include_directories(${PROJECT_SOURCE_DIR}/service)
 
 
-add_subdirectory(protocal)
-add_subdirectory(server)
-add_subdirectory(service)
-add_subdirectory(hotel)
-add_subdirectory(src)
+add_subdirectory(${PROJECT_SOURCE_DIR}/protocal)
+add_subdirectory(${PROJECT_SOURCE_DIR}/server)
+add_subdirectory(${PROJECT_SOURCE_DIR}/service)
+add_subdirectory(${PROJECT_SOURCE_DIR}/hotel)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
 
 
@@ -21,11 +21,11 @@ add_subdirectory(src)
 #add_library(service_lib service/service.cpp)
 #add_library(hotel_lib hotel/hotel.cpp)
 
-#add_executable(${PROJECT_NAME} main.cpp)
+add_executable(myhotel main.cpp)
 
 #target_link_libraries(${PROJECT_NAME} PRIVATE server_lib protocal_lib service_lib hotel_lib)
 
-
+target_link_libraries(myhotel PRIVATE server_lib)
 
 
 

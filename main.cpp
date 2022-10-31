@@ -6,7 +6,10 @@
 //#include <arpa/inet.h>
 //#include <sys/socket.h>
 //#include <stdlib.h>
-#include "server/server.hpp"
+#include "server.hpp"
+#include "protocal.hpp"
+#include "hotel.hpp"
+#include "service.hpp"
 
 
 //compiling command: gcc -pthread -g -o main main.c
