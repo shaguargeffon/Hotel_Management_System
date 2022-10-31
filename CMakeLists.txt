@@ -2,18 +2,16 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
-include_directories(${PROJECT_SOURCE_DIR}/hotel)
-include_directories(${PROJECT_SOURCE_DIR}/protocal)
-include_directories(${PROJECT_SOURCE_DIR}/server)
-include_directories(${PROJECT_SOURCE_DIR}/service)
+#include_directories(${PROJECT_SOURCE_DIR}/hotel)
+#include_directories(${PROJECT_SOURCE_DIR}/protocal)
+#include_directories(${PROJECT_SOURCE_DIR}/server)
+#include_directories(${PROJECT_SOURCE_DIR}/service)
 
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/protocal)
-add_subdirectory(${PROJECT_SOURCE_DIR}/server)
-add_subdirectory(${PROJECT_SOURCE_DIR}/service)
-add_subdirectory(${PROJECT_SOURCE_DIR}/hotel)
-add_subdirectory(${PROJECT_SOURCE_DIR}/src)
-
+add_subdirectory(protocal)
+add_subdirectory(server)
+add_subdirectory(service)
+add_subdirectory(hotel)
 
 
 #add_library(protocal_lib protocal/protocal.cpp)
