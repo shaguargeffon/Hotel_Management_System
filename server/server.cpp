@@ -82,11 +82,11 @@ void TcpServer::send_message(unsigned int send_size)
 
 char* TcpServer::get_receive_buff_pointer()
 {
-    return &rec_buf;
+    return rec_buf;
 }
 
 
 char* TcpServer::get_send_buff_pointer()
 {
-    return &send_buf;
+    return send_buf;
 }
