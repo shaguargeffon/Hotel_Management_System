@@ -2,16 +2,16 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
-string(REGEX REPLACE "(.*)/(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+#string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-message("The directory is: " ${PROJECT_PATH})
+message("The directory is: " ${CMAKE_CURRENT_SOURCE_DIR})
 
 #include_directories(${PROJECT_PATH}/server)
 
 
 #include_directories(${PROJECT_SOURCE_DIR}/hotel)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
-include_directories(${PROJECT_PATH}/server)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/server)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/protocal)
 
 
