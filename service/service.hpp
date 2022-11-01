@@ -2,10 +2,19 @@
 
 #include "server.hpp"
 #include "protocal.hpp"
+#include <memory>
+
 
 class Service
 {
 public:
+
+    Service(TcpServer* tcp_server) 
+    {
+        tcp_server_p = tcp_server;
+        //my_protocal =  std::make_shared<ProtocalRegister>(tcp_server_p->get_receive_buff_pointer());
+    }
+
 
     virtual void init_communication()
     {
@@ -32,12 +41,16 @@ public:
         tcp_server_p->close_client();
     }
 
-    virtual void supply_service() = 0;
+    virtual void supply_service()
+    {
+        
+    }
 
 
 protected:
     TcpServer* tcp_server_p;
-    Protocal* my_protocal;
+    std::shared_ptr<Protocal> my_protocal;
+    
 };
 
 
@@ -45,10 +58,10 @@ class ServiceRegister: public Service
 {
 public:
 
-    ServiceRegister(TcpServer* tcp_server) 
+    ServiceRegister(TcpServer* tcp_server):  Service(tcp_server)
     {
-        tcp_server_p = tcp_server;
-        my_protocal =  new ProtocalRegister(tcp_server_p->get_receive_buff_pointer());
+        //tcp_server_p = tcp_server;
+        my_protocal =  std::make_shared<ProtocalRegister>(tcp_server_p->get_receive_buff_pointer());
     }
 
 
