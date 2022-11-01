@@ -1,7 +1,7 @@
 
-add_library(protocal protocal.cpp)
+add_library(protocal_lib protocal.cpp)
 
-set_target_properties(protocal PROPERTIES OUTPUT_NAME "protocal")
+set_target_properties(protocal_lib PROPERTIES OUTPUT_NAME "protocal")
 
 
 

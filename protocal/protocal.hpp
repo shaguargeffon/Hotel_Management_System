@@ -1,5 +1,5 @@
 #pragma once
-/*
+
 
 class Protocal
 {
@@ -22,7 +22,7 @@ public:
 };
 
 
-
+/*
 class ProtocalCancelBookingRegistered: public Protocal
 {
 public:
