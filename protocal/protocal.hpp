@@ -54,7 +54,7 @@ public:
         return false;
     }
 
-    virtual unsigned int build_response_frame(char* resonse_buff)
+    unsigned int build_response_frame(char* resonse_buff) final
     {
         if(is_user_name_registered(user_name))
         {
@@ -77,7 +77,7 @@ public:
         return 10;        
     }
 
-    virtual void modify_database()
+    void modify_database() final
     {
         
     }
