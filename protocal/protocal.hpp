@@ -9,7 +9,7 @@ class Protocal
 public:
     virtual bool parse_request_frame()=0;
 
-    virtual bool build_response_frame()=0;
+    virtual unsigned int build_response_frame()=0;
 
     virtual void modify_database()=0;
 
@@ -54,12 +54,12 @@ public:
         return false;
     }
 
-    virtual bool build_response_frame()
+    virtual unsigned int build_response_frame(char* resonse_buff)
     {
         if(is_user_name_registered(user_name))
         {
             std::cout<<"the user is already registered"<<std::endl;
-            return false;
+            return 0;
         }
 
         memory_copy(frame_id_response, 0, frame_id_request, 0, 2);
@@ -74,7 +74,7 @@ public:
 
         resonse_buff[9] = '\0';
 
-        return true;        
+        return 10;        
     }
 
     virtual void modify_database()
@@ -90,7 +90,7 @@ private:
     char password[7];
     char frame_id_response[3];
     char client_id[5];
-    char resonse_buff[10];
+    //char resonse_buff[10];
 };
 
 

@@ -1,207 +1,46 @@
 #pragma once
-/*
-#include "hotel.hpp"
-#include "protocal.hpp"
 
+#include "server/server.hpp"
+#include "protocal/protocal.hpp"
 
 class Service
 {
+
 public:
-    virtual void supply_service()=0;
-    virtual void build_response_frame()=0;
+    virtual void supply_service() = 0;
 
 
 protected:
-    Hotel *hotel;
-    char* request_buf_p;
-    char response_buf[128]; 
-};
+    TcpServer* tcp_server_p;
+    Protocal* protocal;
+}:
 
 
-//Request frame: Frame_ID + Client_ID + Booking_ID
-//Response frame: Frame_ID + Client_ID + Cancel_Booking_Status
-class ServiceCancelBookingRegistered: public Service
+class ServiceRegister
 {
 public:
-    virtual void supply_service()
+    ServiceRegister(TcpServer* tcp_server): tcp_server_p(tcp_server)
     {
-
     }
 
-    virtual void build_response_frame()
+    void supply_service() final
     {
+        unsigned int rec_size = tcp_server_p->receive_message();
 
-    }
-};
+        ProtocalRegister my_protocal(tcp_server_p->get_receive_buff_pointer());
 
-
-class ServiceCancelBookingUnregistered: public Service
-{
-public:
-    virtual void supply_service()
-    {
+        my_protocal.parse_request_frame();
         
+        unsigned int send_buff_size = my_protocal.build_response_frame(tcp_server_p->get_send_buff_pointer());
+
+        tcp_server_p->send_message(send_buff_size);
+
     }
 
-    virtual void build_response_frame()
-    {
-        
-    }
+private:
+    int a;
 
-
-};
-
-
-class ServiceBookingRegistered: public Service
-{
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-class ServiceBookingUnregistered: public Service
-{
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-
-class ServiceRegister: public Service
-{
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-
-class ServiceModificationPassword: public Service
-{
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-class ServiceDeleteAccount: public Service
-{
-
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-class ServiceUpdate: public Service
-{
-
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-class ServiceLogin: public Service
-{
-
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-class ServiceLogout: public Service
-{
-
-public:
-    virtual void supply_service()
-    {
-        
-    }
-
-
-    virtual void build_response_frame()
-    {
-        
-    }
-
-};
-
-
-*/
-
-
-
-
-
-
-
-
+}
 
 
 

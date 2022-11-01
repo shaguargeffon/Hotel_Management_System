@@ -67,3 +67,26 @@ void TcpServer::start_server()
     }
 }
 
+
+unsigned int TcpServer::receive_message()
+{
+    return read(cfd, rec_buf, sizeof(rec_buf));
+}
+
+
+void TcpServer::send_message(unsigned int send_size)
+{
+    write(cfd, send_buf, send_size);
+}
+
+
+char* TcpServer::get_receive_buff_pointer()
+{
+    return &rec_buf;
+}
+
+
+char* TcpServer::get_send_buff_pointer()
+{
+    return &send_buf;
+}

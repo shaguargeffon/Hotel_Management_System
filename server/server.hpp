@@ -35,6 +35,14 @@ public:
 
     void start_server();
 
+    unsigned int receive_message();
+
+    void send_message(unsigned int send_size);
+
+    char* get_receive_buff_pointer();
+    
+    char* get_send_buff_pointer();
+
 private:
     int sfd{0};   //server socket file descriptor
     int cfd{0};   //client socket file descriptor
@@ -44,6 +52,8 @@ private:
     socklen_t clie_len{0}; //size of client struct
     char buf[BUFSIZ]; //buffer to save message from client
     unsigned int max_clients; // maximal clients connected at the same time
+    char rec_buf[BUFSIZ];
+    char send_buf[BUFSIZ];
 };
 
 
