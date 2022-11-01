@@ -17,7 +17,7 @@ public:
     {
         for(unsigned int i=0; i<size; i++)
         {
-            dest[offset_dest] = source[offset_source + i]; 
+            dest[i] = source[offset_source + i]; 
         }
         return true;
     }
