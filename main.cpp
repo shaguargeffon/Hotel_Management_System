@@ -65,8 +65,14 @@ int main()
 
     ServiceRegister reg_service(&tcp_server);
 
-    
+    reg_service.init_communication();
 
+    while(1) //the while loop is only for test
+    {
+        reg_service.supply_service();
+    }
+
+    reg_service.close_communication();
 
 
     return 0;

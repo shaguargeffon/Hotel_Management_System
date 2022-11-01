@@ -25,7 +25,7 @@ public:
 };
 
 
-//Request frame: Frame_ID (2bytes) + Name (10bytes) + Password(7bytes)
+//Request frame: Frame_ID (10, 2bytes) + Name (10bytes) + Password(7bytes)
 //Response frame: Frame_ID (3bytes) + Client_ID (5bytes)
 class ProtocalRegister: public Protocal
 {

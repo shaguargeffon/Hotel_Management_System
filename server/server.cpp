@@ -1,5 +1,7 @@
 #include "server.hpp"
+#include <iostream>
 
+using namespace std;
 
 TcpServer::TcpServer(int port, unsigned int amount_clients): server_port(port), max_clients(amount_clients)
 {
@@ -70,12 +72,27 @@ void TcpServer::start_server()
 
 unsigned int TcpServer::receive_message()
 {
-    return read(cfd, rec_buf, sizeof(rec_buf));
+    unsigned int rec_size = read(cfd, rec_buf, sizeof(rec_buf));
+
+    std::cout<<"Receive Buffer is :"<<std::endl;
+    
+    for(unsigned int i=0; i<rec_size;i++)
+    {
+        std::cout<<rec_buf[i]<<std::endl;
+    }
+
+    return rec_size;
 }
 
 
 void TcpServer::send_message(unsigned int send_size)
 {
+    std::cout<<"Send Buffer is :"<<std::endl;
+    for(unsigned int i=0; i<send_size;i++)
+    {
+        std::cout<<send_buf[i]<<std::endl;
+    }
+
     write(cfd, send_buf, send_size);
 }
 
