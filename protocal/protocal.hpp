@@ -9,7 +9,7 @@ class Protocal
 public:
     virtual bool parse_request_frame()=0;
 
-    virtual unsigned int build_response_frame()=0;
+    virtual unsigned int build_response_frame(char* resonse_buff)=0;
 
     virtual void modify_database()=0;
 
@@ -37,7 +37,7 @@ public:
     }
 
 
-    virtual bool parse_request_frame()
+    bool parse_request_frame() final
     {
         memory_copy(frame_id_request, 0, request_frame_p, 0, 2);
 
