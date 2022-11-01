@@ -1,5 +1,5 @@
 
-string(REGEX REPLACE "(.*)" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
 message("The directory is: " ${PROJECT_PATH})
 
