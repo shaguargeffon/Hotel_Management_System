@@ -1,7 +1,7 @@
 #pragma once
 
 #include "server.hpp"
-#include "protocal/protocal.hpp"
+#include "protocal.hpp"
 
 class Service
 {

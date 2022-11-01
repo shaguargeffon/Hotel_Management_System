@@ -5,7 +5,7 @@ message("The directory is: " ${PROJECT_PATH})
 
 include_directories(${PROJECT_PATH}/server)
 
-
+include_directories(${PROJECT_PATH}/protocal)
 
 
 add_library(service_lib service.cpp)
