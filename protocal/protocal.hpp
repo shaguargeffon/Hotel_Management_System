@@ -13,7 +13,7 @@ public:
 
     virtual void modify_database()=0;
 
-    bool memory_copy(char* dest, unsigned int offset_dest, char* source, unsigned int offset_source, unsigned int size)
+    bool memory_copy(char* dest, unsigned int offset_dest, const char* source, unsigned int offset_source, unsigned int size)
     {
         for(unsigned int i=0; i<size; i++)
         {

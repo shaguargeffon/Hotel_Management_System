@@ -13,7 +13,7 @@ public:
 protected:
     TcpServer* tcp_server_p;
     Protocal* protocal;
-}:
+};
 
 
 class ServiceRegister
@@ -40,7 +40,7 @@ public:
 private:
     int a;
 
-}
+};
 
 
 
