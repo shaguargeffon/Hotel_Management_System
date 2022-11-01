@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+
+using namespace std;
 
 class Protocal
 {
@@ -10,9 +13,9 @@ public:
 
     virtual void modify_database()=0;
 
-    bool memory_copy(char* dest, int offset_dest, char* source, int offset_source, int size)
+    bool memory_copy(char* dest, unsigned int offset_dest, char* source, unsigned int offset_source, unsigned int size)
     {
-        for(int i=0; i<size; i++)
+        for(unsigned int i=0; i<size; i++)
         {
             dest[offset_dest] = source[offset_source + i]; 
         }
@@ -23,10 +26,17 @@ public:
 
 
 //Request frame: Frame_ID (2bytes) + Name (10bytes) + Password(7bytes)
-//Response frame: Frame_ID (3bytes) + Client_ID (5bytes) + Register_Status (1byte)
+//Response frame: Frame_ID (3bytes) + Client_ID (5bytes)
 class ProtocalRegister: public Protocal
 {
 public:
+
+    ProtocalRegister(char* request_frame): request_frame_p(request_frame)
+    {
+
+    }
+
+
     virtual bool parse_request_frame()
     {
         memory_copy(frame_id_request, 0, request_frame_p, 0, 2);
@@ -41,30 +51,26 @@ public:
     //TBD: implemente checking user name from data base.
     bool is_user_name_registered(char* name)
     {
-        return true;
+        return false;
     }
 
     virtual bool build_response_frame()
     {
         if(is_user_name_registered(user_name))
         {
+            std::cout<<"the user is already registered"<<std::endl;
             return false;
         }
 
-        frame_id_response[0] = '1';
-
-        memory_copy(frame_id_response, 1, frame_id_request, 0, 2);
+        memory_copy(frame_id_response, 0, frame_id_request, 0, 2);
+        memory_copy(frame_id_response, 2, "1", 0, 1); // '1': OK, '0': not OK
 
         memory_copy(client_id, 0, "abcde", 0, 5); // TBD: generate a random client ID
-
-
-        memory_copy(register_status, 0, "1", 0, 1);
-
 
         //copy the frames into response buffer
         memory_copy(resonse_buff, 0, frame_id_response, 0, 3);
         memory_copy(resonse_buff, 3, client_id, 0, 5);
-        memory_copy(resonse_buff, 8, register_status, 0, 1);
+
 
         resonse_buff[9] = '\0';
 
@@ -84,7 +90,6 @@ private:
     char password[7];
     char frame_id_response[3];
     char client_id[5];
-    char register_status[1];
     char resonse_buff[10];
 };
 
