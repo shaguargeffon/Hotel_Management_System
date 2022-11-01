@@ -71,6 +71,11 @@ public:
         memory_copy(resonse_buff, 0, frame_id_response, 0, 3);
         memory_copy(resonse_buff, 3, client_id, 0, 5);
 
+        std::cout<<"after copy"<<std::endl;
+        for(int i=0;i<9;i++)
+        {
+            std::cout<<resonse_buff[i]<<std::endl;
+        }
 
         resonse_buff[9] = '\0';
 
