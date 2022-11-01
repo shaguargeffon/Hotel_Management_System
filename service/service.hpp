@@ -16,7 +16,7 @@ protected:
 };
 
 
-class ServiceRegister
+class ServiceRegister: public Service
 {
 public:
     ServiceRegister(TcpServer* tcp_server): tcp_server_p(tcp_server)
