@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.0)
 project(HOTEL)
 
 #include_directories(${PROJECT_SOURCE_DIR}/hotel)
-include_directories(${PROJECT_SOURCE_DIR}/protocal)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/server)
-include_directories(${PROJECT_SOURCE_DIR}/service)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/protocal)
 
 
 
