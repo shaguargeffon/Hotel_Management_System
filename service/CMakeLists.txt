@@ -1,7 +1,7 @@
 
 string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-message("The directory is: " ${PROJECT_PATH})
+#message("The directory is: " ${PROJECT_PATH})
 
 include_directories(${PROJECT_PATH}/server)
 
