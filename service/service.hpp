@@ -19,8 +19,9 @@ protected:
 class ServiceRegister: public Service
 {
 public:
-    ServiceRegister(TcpServer* tcp_server): tcp_server_p(tcp_server)
+    ServiceRegister(TcpServer* tcp_server) 
     {
+        tcp_server_p = tcp_server;
     }
 
     void supply_service() final
