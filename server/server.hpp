@@ -8,6 +8,7 @@
 #include <sys/socket.h>
 #include <stdlib.h>
 
+#include "handler.hpp"
 
 class TcpServer
 {
@@ -39,9 +40,7 @@ public:
 
     void send_message(unsigned int send_size);
 
-    char* get_receive_buff_pointer();
-    
-    char* get_send_buff_pointer();
+    Handler* handler_factory();
 
 private:
     int sfd{0};   //server socket file descriptor
@@ -50,10 +49,13 @@ private:
     struct sockaddr_in serv_addr;  //struct of server address
     struct sockaddr_in clie_addr;  //struct of client address
     socklen_t clie_len{0}; //size of client struct
-    char buf[BUFSIZ]; //buffer to save message from client
     unsigned int max_clients; // maximal clients connected at the same time
     char rec_buf[BUFSIZ];
     char send_buf[BUFSIZ];
+    char frame_id[2];
+
+    //Handler* handler;
+
 };
 
 

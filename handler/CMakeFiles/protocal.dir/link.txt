@@ -1,0 +1,2 @@
+/usr/bin/ar qc libprotocal.a  CMakeFiles/protocal.dir/protocal.cpp.o
+/usr/bin/ranlib libprotocal.a

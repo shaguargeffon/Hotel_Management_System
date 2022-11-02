@@ -7,9 +7,8 @@
 //#include <sys/socket.h>
 //#include <stdlib.h>
 #include "server.hpp"
-#include "protocal.hpp"
 //#include "hotel.hpp"
-#include "service.hpp"
+#include "handler.hpp"
 
 
 //compiling command: gcc -pthread -g -o main main.c
@@ -37,7 +36,7 @@ void* thread_2(void *arg)
 
 int main()
 {
-    /*
+    
     TcpServer tcp_server(9527, 32);
 
     tcp_server.create_socket();
@@ -54,25 +53,19 @@ int main()
 
     tcp_server.accpet_clients();
 
+    
+
     tcp_server.start_server();
+
+
+
 
     tcp_server.close_server();
 
     tcp_server.close_client();
-    */
+    
 
-    TcpServer tcp_server(9527, 32);
 
-    ServiceRegister reg_service(&tcp_server);
-
-    reg_service.init_communication();
-
-    while(1) //the while loop is only for test
-    {
-        reg_service.supply_service();
-    }
-
-    reg_service.close_communication();
 
 
     return 0;

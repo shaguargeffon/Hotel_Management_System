@@ -1,6 +1,8 @@
 #include "server.hpp"
 #include <iostream>
 
+
+
 using namespace std;
 
 TcpServer::TcpServer(int port, unsigned int amount_clients): server_port(port), max_clients(amount_clients)
@@ -56,17 +58,34 @@ void TcpServer::close_client()
 
 void TcpServer::start_server()
 {
+    /*
+    int n = read(cfd, buf, sizeof(buf));
+        
+    for(int i = 0; i < n; i++)
+    {   
+        buf[i] = toupper(buf[i]); //read data from client
+    }
+
+    write(cfd, buf, n);
+    */
+
     while(1)
     {
-        int n = read(cfd, buf, sizeof(buf));
-        
-        for(int i = 0; i < n; i++)
-        {   
-            buf[i] = toupper(buf[i]); //read data from client
-        }
+        unsigned int receive_size = read(cfd, rec_buf, sizeof(rec_buf));
 
-	    write(cfd, buf, n);
+        HandlerFactory handler_factory(rec_buf);
+
+        Handler* handler = handler_factory.create_handler();
+
+        handler->parse_request_frame(rec_buf, receive_size);
+
+        unsigned int send_buf_size = handler->build_response_frame(send_buf);
+
+        write(cfd, send_buf, send_buf_size);
+
     }
+
+
 }
 
 
@@ -97,13 +116,4 @@ void TcpServer::send_message(unsigned int send_size)
 }
 
 
-char* TcpServer::get_receive_buff_pointer()
-{
-    return rec_buf;
-}
 
-
-char* TcpServer::get_send_buff_pointer()
-{
-    return send_buf;
-}
