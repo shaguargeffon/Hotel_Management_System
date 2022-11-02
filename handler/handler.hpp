@@ -25,27 +25,7 @@ public:
 };
 
 
-class HandlerFactory
-{
-public:
-    HandlerFactory(char* buff): buff(buff)
-    {
 
-    }
-
-    //Create handler instance due to Frame_ID
-    Handler* create_handler()
-    {
-        if(buff[0] == '1' && buff[1] == '0') // register handler
-        {
-            return new HandlerRegister();
-        }
-    }
-
-private:
-    char* buff;
-
-};
 
 
 
@@ -344,3 +324,38 @@ private:
 
 
 */
+
+
+
+
+
+
+
+
+class HandlerFactory
+{
+public:
+    HandlerFactory(char* buff): buff(buff)
+    {
+
+    }
+
+    //Create handler instance due to Frame_ID
+    Handler* create_handler()
+    {
+        if(buff[0] == '1' && buff[1] == '0') // register handler
+        {
+            auto p = new HandlerRegister()
+            return p;
+        }
+    }
+
+private:
+    char* buff;
+
+};
+
+
+
+
+
