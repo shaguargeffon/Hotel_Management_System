@@ -7,7 +7,7 @@ using namespace std;
 class Handler
 {
 public:
-    virtual bool parse_request_frame(const char* request_frame_p)=0;
+    virtual bool parse_request_frame(const char* request_frame_p, unsigned int size)=0;
 
     virtual unsigned int build_response_frame(char* resonse_buff)=0;
 
