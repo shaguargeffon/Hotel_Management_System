@@ -1,3 +1,3 @@
-add_library(sql_lib sqlite3.c)
+add_library(sql_lib sqlite3.cpp)
 
 set_target_properties(sql_lib PROPERTIES OUTPUT_NAME "sql_lib")
