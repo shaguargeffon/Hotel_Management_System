@@ -1,6 +1,6 @@
 
 #include "handler.hpp"
-
+/*
 void func_test()
 {
     sqlite3 *db = nullptr;
@@ -16,3 +16,6 @@ void func_test()
     }
 
 }
+
+*/
+
