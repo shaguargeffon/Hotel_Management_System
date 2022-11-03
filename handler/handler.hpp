@@ -345,7 +345,7 @@ public:
     {
         if(buff[0] == '1' && buff[1] == '0') // register handler
         {
-            auto p = new HandlerRegister()
+            auto p = new HandlerRegister();
             return p;
         }
     }
