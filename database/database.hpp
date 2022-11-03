@@ -32,7 +32,7 @@ public:
     int open_database() final
     {
         int rc = sqlite3_open(database_name, &db);
-        std::cout<<database_name<<std::endl;
+        std::cout<<"it runs."<<std::endl;
         memset(table, '\0', 256);
         return rc;
     }
