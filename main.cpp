@@ -46,6 +46,10 @@ int main()
     {
         std::cout<<"Open SQL file is wrong."<<std::endl;
     }
+    else
+    {
+        std::cout<<"Open SQL file is right."<<std::endl;
+    }
 
     TcpServer tcp_server(9527, 32);
 
