@@ -10,7 +10,7 @@
 //#include "hotel.hpp"
 #include "handler.hpp"
 //#include "sqlite3ext.h"
-#include <sqlite3.h>
+
 
 
 
@@ -39,18 +39,6 @@ void* thread_2(void *arg)
 
 int main()
 {
-    sqlite3 *db = nullptr;
-    int rc = sqlite3_open("hello.db", &db);
-
-    if(rc)
-    {
-        std::cout<<"Open SQL file is wrong."<<std::endl;
-    }
-    else
-    {
-        std::cout<<"Open SQL file is right."<<std::endl;
-    }
-
     TcpServer tcp_server(9527, 32);
 
     tcp_server.create_socket();
