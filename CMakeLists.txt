@@ -13,13 +13,14 @@ project(HOTEL)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/server)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/handler)
-
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/db)
 
 
 
 add_subdirectory(handler)
 add_subdirectory(server)
 add_subdirectory(hotel)
+add_subdirectory(db)
 
 
 #add_library(protocal_lib protocal/protocal.cpp)
