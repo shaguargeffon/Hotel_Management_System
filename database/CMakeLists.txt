@@ -5,4 +5,6 @@ include_directories(${PROJECT_PATH}/sqlite)
 
 add_library(database_lib database.cpp)
 
+target_link_libraries(database_lib sqlite3)
+
 set_target_properties(database_lib PROPERTIES OUTPUT_NAME "database")

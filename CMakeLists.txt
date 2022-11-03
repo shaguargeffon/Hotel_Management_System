@@ -32,7 +32,7 @@ add_executable(myhotel main.cpp)
 
 #target_link_libraries(${PROJECT_NAME} PRIVATE server_lib protocal_lib service_lib hotel_lib)
 
-target_link_libraries(database_lib sqlite3)
+
 target_link_libraries(myhotel PRIVATE sqlite3 database_lib server_lib handler_lib)
 
 
