@@ -12,15 +12,19 @@ server.hpp
 handler.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/handler.hpp
 
-db/sqlite3.h
-stdarg.h
+database/database.hpp
+iostream
+-
+sqlite3.h
+-
+string.h
 -
 
 handler/handler.hpp
 iostream
 -
-sqlite3.h
--
+database.hpp
+handler/database.hpp
 
 server/server.hpp
 stdio.h
@@ -36,5 +40,9 @@ arpa/inet.h
 sys/socket.h
 -
 stdlib.h
+-
+
+sqlite/sqlite3.h
+stdarg.h
 -
 

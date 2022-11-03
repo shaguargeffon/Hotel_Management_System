@@ -3,4 +3,6 @@
 
 server/CMakeFiles/server_lib.dir/server.cpp.o: server/server.cpp
 server/CMakeFiles/server_lib.dir/server.cpp.o: server/server.hpp
+server/CMakeFiles/server_lib.dir/server.cpp.o: database/database.hpp
+server/CMakeFiles/server_lib.dir/server.cpp.o: sqlite/sqlite3.h
 

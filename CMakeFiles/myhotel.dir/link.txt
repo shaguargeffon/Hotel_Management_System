@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel -lsqlite3 server/libserver_lib.a handler/libhandler.a 
+/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel -lsqlite3 database/libdatabase.a server/libserver_lib.a handler/libhandler.a -lsqlite3 

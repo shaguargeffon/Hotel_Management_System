@@ -4,4 +4,5 @@
 handler/CMakeFiles/handler_lib.dir/handler.cpp.o
  /home/shaguar/project/hotel/Hotel_Management_System/handler/handler.cpp
  /home/shaguar/project/hotel/Hotel_Management_System/handler/handler.hpp
- db/sqlite3.h
+ database/database.hpp
+ sqlite/sqlite3.h

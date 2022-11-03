@@ -90,6 +90,7 @@ myhotel_EXTERNAL_OBJECTS =
 
 myhotel: CMakeFiles/myhotel.dir/main.cpp.o
 myhotel: CMakeFiles/myhotel.dir/build.make
+myhotel: database/libdatabase.a
 myhotel: server/libserver_lib.a
 myhotel: handler/libhandler.a
 myhotel: CMakeFiles/myhotel.dir/link.txt

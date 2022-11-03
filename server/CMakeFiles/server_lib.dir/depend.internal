@@ -4,3 +4,5 @@
 server/CMakeFiles/server_lib.dir/server.cpp.o
  /home/shaguar/project/hotel/Hotel_Management_System/server/server.cpp
  /home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
+ database/database.hpp
+ sqlite/sqlite3.h

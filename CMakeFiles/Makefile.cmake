@@ -11,10 +11,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.10.2/CMakeSystem.cmake"
   "CMakeLists.txt"
-  "db/CMakeLists.txt"
+  "database/CMakeLists.txt"
   "handler/CMakeLists.txt"
   "hotel/CMakeLists.txt"
   "server/CMakeLists.txt"
+  "sqlite/CMakeLists.txt"
   "/usr/share/cmake-3.10/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCommonLanguageInclude.cmake"
@@ -42,15 +43,17 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "database/CMakeFiles/CMakeDirectoryInformation.cmake"
   "handler/CMakeFiles/CMakeDirectoryInformation.cmake"
   "server/CMakeFiles/CMakeDirectoryInformation.cmake"
   "hotel/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "db/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "sqlite/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/myhotel.dir/DependInfo.cmake"
+  "database/CMakeFiles/database_lib.dir/DependInfo.cmake"
   "handler/CMakeFiles/handler_lib.dir/DependInfo.cmake"
   "server/CMakeFiles/server_lib.dir/DependInfo.cmake"
   "hotel/CMakeFiles/hotel.dir/DependInfo.cmake"

@@ -3,5 +3,6 @@
 
 handler/CMakeFiles/handler_lib.dir/handler.cpp.o: handler/handler.cpp
 handler/CMakeFiles/handler_lib.dir/handler.cpp.o: handler/handler.hpp
-handler/CMakeFiles/handler_lib.dir/handler.cpp.o: db/sqlite3.h
+handler/CMakeFiles/handler_lib.dir/handler.cpp.o: database/database.hpp
+handler/CMakeFiles/handler_lib.dir/handler.cpp.o: sqlite/sqlite3.h
 

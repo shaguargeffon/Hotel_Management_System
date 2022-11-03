@@ -39,10 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/home/shaguar/project/hotel/Hotel_Management_System/database/cmake_install.cmake")
   include("/home/shaguar/project/hotel/Hotel_Management_System/handler/cmake_install.cmake")
   include("/home/shaguar/project/hotel/Hotel_Management_System/server/cmake_install.cmake")
   include("/home/shaguar/project/hotel/Hotel_Management_System/hotel/cmake_install.cmake")
-  include("/home/shaguar/project/hotel/Hotel_Management_System/db/cmake_install.cmake")
+  include("/home/shaguar/project/hotel/Hotel_Management_System/sqlite/cmake_install.cmake")
 
 endif()
 

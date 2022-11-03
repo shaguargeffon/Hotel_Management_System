@@ -12,7 +12,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "server"
   "handler"
-  "db"
+  "sqlite"
+  "database"
   )
 
 # Targets to which this target links.

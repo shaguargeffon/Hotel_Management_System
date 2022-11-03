@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/sqlite/CMakeFiles/progress.marks
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 sqlite/all
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/database/CMakeFiles/progress.marks
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 database/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 sqlite/clean
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 database/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,18 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 sqlite/preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 database/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 sqlite/preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 database/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+database/CMakeFiles/database_lib.dir/rule:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 database/CMakeFiles/database_lib.dir/rule
+.PHONY : database/CMakeFiles/database_lib.dir/rule
+
+# Convenience name for target.
+database_lib: database/CMakeFiles/database_lib.dir/rule
+
+.PHONY : database_lib
+
+# fast build rule for target.
+database_lib/fast:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/build
+.PHONY : database_lib/fast
+
+database.o: database.cpp.o
+
+.PHONY : database.o
+
+# target to build an object file
+database.cpp.o:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/database.cpp.o
+.PHONY : database.cpp.o
+
+database.i: database.cpp.i
+
+.PHONY : database.i
+
+# target to preprocess a source file
+database.cpp.i:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/database.cpp.i
+.PHONY : database.cpp.i
+
+database.s: database.cpp.s
+
+.PHONY : database.s
+
+# target to generate assembly for a file
+database.cpp.s:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/database.cpp.s
+.PHONY : database.cpp.s
 
 # Help Target
 help:
@@ -117,7 +159,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... database_lib"
 	@echo "... edit_cache"
+	@echo "... database.o"
+	@echo "... database.i"
+	@echo "... database.s"
 .PHONY : help
 
 

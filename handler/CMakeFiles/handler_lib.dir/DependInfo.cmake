@@ -12,8 +12,9 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "server"
   "handler"
-  "db"
-  "/home/shaguar/project/hotel/Hotel_Management_Systemhandler/db"
+  "sqlite"
+  "database"
+  "/home/shaguar/project/hotel/Hotel_Management_Systemhandler/database"
   )
 
 # Targets to which this target links.

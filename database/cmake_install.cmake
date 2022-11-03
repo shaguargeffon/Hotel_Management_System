@@ -1,4 +1,4 @@
-# Install script for directory: /home/shaguar/project/hotel/Hotel_Management_System/sqlite
+# Install script for directory: /home/shaguar/project/hotel/Hotel_Management_System/database
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

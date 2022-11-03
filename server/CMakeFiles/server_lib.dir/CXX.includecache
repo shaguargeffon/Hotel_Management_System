@@ -11,6 +11,8 @@ server.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
 iostream
 -
+database.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/server/database.hpp
 
 /home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
 stdio.h
@@ -26,5 +28,17 @@ arpa/inet.h
 sys/socket.h
 -
 stdlib.h
+-
+
+database/database.hpp
+iostream
+-
+sqlite3.h
+-
+string.h
+-
+
+sqlite/sqlite3.h
+stdarg.h
 -
 

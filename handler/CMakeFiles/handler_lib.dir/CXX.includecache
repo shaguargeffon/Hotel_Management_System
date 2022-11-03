@@ -13,10 +13,18 @@ handler.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/handler/handler.hpp
 iostream
 -
+database.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/handler/database.hpp
+
+database/database.hpp
+iostream
+-
 sqlite3.h
 -
+string.h
+-
 
-db/sqlite3.h
+sqlite/sqlite3.h
 stdarg.h
 -
 

@@ -124,6 +124,19 @@ myhotel/fast:
 .PHONY : myhotel/fast
 
 #=============================================================================
+# Target rules for targets named database_lib
+
+# Build rule for target.
+database_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 database_lib
+.PHONY : database_lib
+
+# fast build rule for target.
+database_lib/fast:
+	$(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/build
+.PHONY : database_lib/fast
+
+#=============================================================================
 # Target rules for targets named handler_lib
 
 # Build rule for target.
@@ -198,6 +211,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... myhotel"
 	@echo "... edit_cache"
+	@echo "... database_lib"
 	@echo "... handler_lib"
 	@echo "... server_lib"
 	@echo "... hotel"
