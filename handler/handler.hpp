@@ -80,7 +80,7 @@ public:
         memory_copy(resonse_buff, 3, client_id, 0, 5);
 
         resonse_buff[9] = '\0';
-        std::cout<<"it runs."<<std::endl;
+        //std::cout<<"it runs."<<std::endl;
         this->modify_database();
 
         return 10;        
