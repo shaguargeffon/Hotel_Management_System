@@ -13,11 +13,9 @@ class DataBase
 
 public:
     virtual int open_database()=0;
-
+    virtual void close_database()=0;
 
 };
-
-
 
 
 
@@ -36,6 +34,13 @@ public:
         int rc = sqlite3_open(database_name, &db);
         return rc;
     }
+
+
+    void close_database() final
+    {
+        sqlite3_close(db);
+    }
+
 
 
 private:
