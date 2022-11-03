@@ -14,9 +14,9 @@ project(HOTEL)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/server)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/handler)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/sqlite)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
 
-
-
+add_subdirectory(database)
 add_subdirectory(handler)
 add_subdirectory(server)
 add_subdirectory(hotel)
@@ -32,7 +32,7 @@ add_executable(myhotel main.cpp)
 
 #target_link_libraries(${PROJECT_NAME} PRIVATE server_lib protocal_lib service_lib hotel_lib)
 
-target_link_libraries(myhotel PRIVATE sqlite3 server_lib handler_lib)
+target_link_libraries(myhotel PRIVATE sqlite3 database_lib server_lib handler_lib)
 
 
 
