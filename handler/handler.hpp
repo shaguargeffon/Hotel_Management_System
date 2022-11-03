@@ -78,12 +78,17 @@ public:
 
         resonse_buff[9] = '\0';
 
+        modify_database();
+
         return 10;        
     }
 
     void modify_database() final
     {
-        
+        //CustomerDataBase my_database("database.db");
+        my_database.open_database();
+        my_database.create_table();
+        my_database.close_database();
     }
 
 private:
@@ -94,6 +99,7 @@ private:
     char password[7];
     char frame_id_response[3];
     char client_id[5];
+    CustomerDataBase my_database("database.db");
 
 };
 
