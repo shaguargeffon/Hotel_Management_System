@@ -81,6 +81,11 @@ void TcpServer::start_server()
 
         unsigned int send_buf_size = handler->build_response_frame(send_buf);
 
+        for(unsigned int i=0; i<send_buf_size;i++)
+        {
+            std::cout<<send_buf[i]<<std::endl;
+        }
+
         write(cfd, send_buf, send_buf_size);
 
     }
