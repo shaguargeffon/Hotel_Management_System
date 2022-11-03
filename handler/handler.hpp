@@ -8,6 +8,9 @@
 
 using namespace std;
 
+sqlite3* pDB = nullptr;
+
+
 class Handler
 {
 public:
