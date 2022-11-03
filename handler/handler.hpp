@@ -1,14 +1,13 @@
 #pragma once
 
 #include <iostream>
-#include "sqlite3ext.h"
-#include "sqlite3.h"
+//#include "sqlite3ext.h"
+//#include "sqlite3.h"
 
 
 
 using namespace std;
 
-sqlite3* pDB = nullptr;
 
 
 class Handler

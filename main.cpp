@@ -9,6 +9,9 @@
 #include "server.hpp"
 //#include "hotel.hpp"
 #include "handler.hpp"
+#include "sqlite3ext.h"
+#include "sqlite3.h"
+
 
 
 //compiling command: gcc -pthread -g -o main main.c
@@ -36,7 +39,14 @@ void* thread_2(void *arg)
 
 int main()
 {
-    
+    sqlite3 *db = nullptr;
+    int rc = sqlite3_open("hello.db", &db);
+
+    if(rc)
+    {
+        std::cout<<"Open SQL file is wrong."<<std::endl;
+    }
+
     TcpServer tcp_server(9527, 32);
 
     tcp_server.create_socket();
