@@ -35,7 +35,10 @@ class HandlerRegister: public Handler
 {
 public:
 
-    HandlerRegister() = default;
+    HandlerRegister()
+    {
+        db = new CustomerDataBase("database.db");
+    }
 
     bool parse_request_frame(const char* request_frame_p, unsigned int size) final
     {
@@ -86,9 +89,9 @@ public:
     void modify_database() final
     {
         //CustomerDataBase my_database("database.db");
-        my_database.open_database();
-        my_database.create_table();
-        my_database.close_database();
+        db->open_database();
+        db->create_table();
+        db->close_database();
     }
 
 private:
@@ -99,7 +102,7 @@ private:
     char password[7];
     char frame_id_response[3];
     char client_id[5];
-    CustomerDataBase my_database("database.db");
+    CustomerDataBase *db;
 
 };
 
