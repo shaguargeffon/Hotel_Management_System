@@ -83,6 +83,7 @@ void TcpServer::start_server()
 
         for(unsigned int i=0; i<send_buf_size;i++)
         {
+            std::cout<<"test:"<<std::endl;
             std::cout<<send_buf[i]<<std::endl;
         }
 
