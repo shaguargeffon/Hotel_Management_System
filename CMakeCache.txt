@@ -187,6 +187,9 @@ HOTEL_BINARY_DIR:STATIC=/home/shaguar/project/hotel/Hotel_Management_System
 //Value Computed by CMake
 HOTEL_SOURCE_DIR:STATIC=/home/shaguar/project/hotel/Hotel_Management_System
 
+//Dependencies for target
+handler_lib_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 hotel_BINARY_DIR:STATIC=/home/shaguar/project/hotel/Hotel_Management_System
 
@@ -204,6 +207,12 @@ server_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
 service_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+sql_lib_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+sqlite3_LIB_DEPENDS:STATIC=
 
 
 ########################

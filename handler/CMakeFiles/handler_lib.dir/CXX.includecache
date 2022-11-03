@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shaguar/project/hotel/Hotel_Management_System/handler/handler.cpp
+handler.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/handler/handler.hpp
+
+/home/shaguar/project/hotel/Hotel_Management_System/handler/handler.hpp
+iostream
+-
+sqlite3.h
+-
+
+db/sqlite3.h
+stdarg.h
+-
+

@@ -124,17 +124,17 @@ myhotel/fast:
 .PHONY : myhotel/fast
 
 #=============================================================================
-# Target rules for targets named protocal
+# Target rules for targets named handler_lib
 
 # Build rule for target.
-protocal: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 protocal
-.PHONY : protocal
+handler_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 handler_lib
+.PHONY : handler_lib
 
 # fast build rule for target.
-protocal/fast:
-	$(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/build
-.PHONY : protocal/fast
+handler_lib/fast:
+	$(MAKE) -f handler/CMakeFiles/handler_lib.dir/build.make handler/CMakeFiles/handler_lib.dir/build
+.PHONY : handler_lib/fast
 
 #=============================================================================
 # Target rules for targets named server_lib
@@ -148,19 +148,6 @@ server_lib: cmake_check_build_system
 server_lib/fast:
 	$(MAKE) -f server/CMakeFiles/server_lib.dir/build.make server/CMakeFiles/server_lib.dir/build
 .PHONY : server_lib/fast
-
-#=============================================================================
-# Target rules for targets named service
-
-# Build rule for target.
-service: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service
-.PHONY : service
-
-# fast build rule for target.
-service/fast:
-	$(MAKE) -f service/CMakeFiles/service.dir/build.make service/CMakeFiles/service.dir/build
-.PHONY : service/fast
 
 #=============================================================================
 # Target rules for targets named hotel
@@ -211,9 +198,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... myhotel"
 	@echo "... edit_cache"
-	@echo "... protocal"
+	@echo "... handler_lib"
 	@echo "... server_lib"
-	@echo "... service"
 	@echo "... hotel"
 	@echo "... main.o"
 	@echo "... main.i"

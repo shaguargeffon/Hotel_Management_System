@@ -11,11 +11,14 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "server"
+  "handler"
+  "db"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/shaguar/project/hotel/Hotel_Management_System/server/CMakeFiles/server_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/handler/CMakeFiles/handler_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

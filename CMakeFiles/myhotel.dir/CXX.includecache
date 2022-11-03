@@ -9,6 +9,18 @@
 /home/shaguar/project/hotel/Hotel_Management_System/main.cpp
 server.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/server.hpp
+handler.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/handler.hpp
+
+db/sqlite3.h
+stdarg.h
+-
+
+handler/handler.hpp
+iostream
+-
+sqlite3.h
+-
 
 server/server.hpp
 stdio.h

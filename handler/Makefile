@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/protocal/CMakeFiles/progress.marks
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/all
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/handler/CMakeFiles/progress.marks
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 handler/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/clean
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 handler/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,12 +97,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 handler/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 handler/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -111,46 +111,46 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-protocal/CMakeFiles/protocal.dir/rule:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 protocal/CMakeFiles/protocal.dir/rule
-.PHONY : protocal/CMakeFiles/protocal.dir/rule
+handler/CMakeFiles/handler_lib.dir/rule:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f CMakeFiles/Makefile2 handler/CMakeFiles/handler_lib.dir/rule
+.PHONY : handler/CMakeFiles/handler_lib.dir/rule
 
 # Convenience name for target.
-protocal: protocal/CMakeFiles/protocal.dir/rule
+handler_lib: handler/CMakeFiles/handler_lib.dir/rule
 
-.PHONY : protocal
+.PHONY : handler_lib
 
 # fast build rule for target.
-protocal/fast:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/build
-.PHONY : protocal/fast
+handler_lib/fast:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f handler/CMakeFiles/handler_lib.dir/build.make handler/CMakeFiles/handler_lib.dir/build
+.PHONY : handler_lib/fast
 
-protocal.o: protocal.cpp.o
+handler.o: handler.cpp.o
 
-.PHONY : protocal.o
+.PHONY : handler.o
 
 # target to build an object file
-protocal.cpp.o:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/protocal.cpp.o
-.PHONY : protocal.cpp.o
+handler.cpp.o:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f handler/CMakeFiles/handler_lib.dir/build.make handler/CMakeFiles/handler_lib.dir/handler.cpp.o
+.PHONY : handler.cpp.o
 
-protocal.i: protocal.cpp.i
+handler.i: handler.cpp.i
 
-.PHONY : protocal.i
+.PHONY : handler.i
 
 # target to preprocess a source file
-protocal.cpp.i:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/protocal.cpp.i
-.PHONY : protocal.cpp.i
+handler.cpp.i:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f handler/CMakeFiles/handler_lib.dir/build.make handler/CMakeFiles/handler_lib.dir/handler.cpp.i
+.PHONY : handler.cpp.i
 
-protocal.s: protocal.cpp.s
+handler.s: handler.cpp.s
 
-.PHONY : protocal.s
+.PHONY : handler.s
 
 # target to generate assembly for a file
-protocal.cpp.s:
-	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f protocal/CMakeFiles/protocal.dir/build.make protocal/CMakeFiles/protocal.dir/protocal.cpp.s
-.PHONY : protocal.cpp.s
+handler.cpp.s:
+	cd /home/shaguar/project/hotel/Hotel_Management_System && $(MAKE) -f handler/CMakeFiles/handler_lib.dir/build.make handler/CMakeFiles/handler_lib.dir/handler.cpp.s
+.PHONY : handler.cpp.s
 
 # Help Target
 help:
@@ -159,11 +159,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... protocal"
+	@echo "... handler_lib"
 	@echo "... edit_cache"
-	@echo "... protocal.o"
-	@echo "... protocal.i"
-	@echo "... protocal.s"
+	@echo "... handler.o"
+	@echo "... handler.i"
+	@echo "... handler.s"
 .PHONY : help
 
 

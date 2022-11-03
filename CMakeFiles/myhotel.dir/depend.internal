@@ -3,4 +3,6 @@
 
 CMakeFiles/myhotel.dir/main.cpp.o
  /home/shaguar/project/hotel/Hotel_Management_System/main.cpp
+ db/sqlite3.h
+ handler/handler.hpp
  server/server.hpp
