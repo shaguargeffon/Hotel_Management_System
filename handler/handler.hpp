@@ -1,6 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include "sqlite3ext.h"
+#include "sqlite3.h"
+
+
 
 using namespace std;
 
@@ -26,11 +30,7 @@ public:
 
 
 
-
-
-
-
-//Request frame: Frame_ID (10, 2bytes) + Name (10bytes) + Password(7bytes)
+//Request frame: Frame_ID (10, 2bytes) + User_Name (10bytes) + Password(7bytes)
 //Response frame: Frame_ID (3bytes) + Client_ID (5bytes)
 class HandlerRegister: public Handler
 {
@@ -76,13 +76,7 @@ public:
         //copy the frames into response buffer
         memory_copy(resonse_buff, 0, frame_id_response, 0, 3);
         memory_copy(resonse_buff, 3, client_id, 0, 5);
-        /*
-        std::cout<<"after copy"<<std::endl;
-        for(int i=0;i<9;i++)
-        {
-            std::cout<<resonse_buff[i]<<std::endl;
-        }
-        */
+
         resonse_buff[9] = '\0';
 
         return 10;        
