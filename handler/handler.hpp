@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "database.hpp"
-
+#include <unistd.h>
 using namespace std;
 
 
@@ -88,11 +88,46 @@ public:
 
     void modify_database() final
     {
-        //CustomerDataBase my_database("database.db");
+        CustomerDataBase my_database("database.db");
+
+        if(!access("database.db", F_OK)) //file not exists
+        {
+            int result = my_database.open_database();
+
+            if(result != SQLITE_OK)
+            {
+                cout<<"File creation is failed."<<endl;
+            }
+            else
+            {
+                const char* table = "create table hunter(ClientID integer primary key autoincrement, name string, age integer, sex string)";
+                result = my_database.create_table(table);
+
+                if(result != SQLITE_OK)
+                {
+                    cout<<"SQL table is created unsuccessfully."<<endl;
+                }
+                else
+                {
+                    cout<<"SQL table is created successfully."<<endl;
+                }
+
+            }
+
+        }
+        else
+        {
+            cout<<"SQL file already exists."<<endl;
+        }
+
         //db->open_database();
         //db->create_table();
-        //db->close_database();
+        db->close_database();
     }
+
+
+
+
 
 private:
     
