@@ -91,11 +91,11 @@ public:
     {
         CustomerDataBase my_database("database.db");
 
-        ifstream bfile;
+        ifstream bfile("database.db".c_str());
 
-        bfile.open("database.db");
+        //bfile.open("database.db");
 
-        if(bfile) //file exists
+        if(bfile.good()) //file exists
         {
             cout<<"SQL file already exists."<<endl;
         }
