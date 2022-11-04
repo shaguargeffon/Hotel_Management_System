@@ -3,6 +3,7 @@
 #include <iostream>
 #include "database.hpp"
 #include <unistd.h>
+#include <fstream>
 using namespace std;
 
 
@@ -90,7 +91,15 @@ public:
     {
         CustomerDataBase my_database("database.db");
 
-        if(access("database.db", F_OK)) //file not exists
+        ifstream bfile;
+
+        bfile.open("database.db");
+
+        if(bfile) //file exists
+        {
+            cout<<"SQL file already exists."<<endl;
+        }
+        else
         {
             int result = my_database.open_database();
 
@@ -113,11 +122,6 @@ public:
                 }
 
             }
-
-        }
-        else
-        {
-            cout<<"SQL file already exists."<<endl;
         }
 
         //db->open_database();
