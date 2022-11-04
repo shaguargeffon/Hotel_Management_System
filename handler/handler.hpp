@@ -103,6 +103,7 @@ public:
         }
         else
         {
+            cout<<"fuckfuckfuckfuck"<<endl;
             fuck = 1;
             int result = my_database.open_database();
 
