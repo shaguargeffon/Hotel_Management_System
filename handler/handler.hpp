@@ -90,7 +90,7 @@ public:
     {
         CustomerDataBase my_database("database.db");
 
-        if(!access("database.db", F_OK)) //file not exists
+        if(access("database.db", F_OK)) //file not exists
         {
             int result = my_database.open_database();
 
