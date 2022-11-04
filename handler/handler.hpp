@@ -89,19 +89,21 @@ public:
 
     void modify_database() final
     {
-        string database_path("database.db");
+        static int fuck{0};
+        //string database_path("database.db");
         CustomerDataBase my_database(database_path);
 
-        ifstream bfile(database_path.c_str());
+        //ifstream bfile(database_path.c_str());
 
         //bfile.open("database.db");
 
-        if(bfile.good()) //file exists
+        if(fuck == 1) //file exists
         {
             cout<<"SQL file already exists."<<endl;
         }
         else
         {
+            fuck = 1;
             int result = my_database.open_database();
 
             if(result != SQLITE_OK)
