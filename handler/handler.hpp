@@ -89,9 +89,9 @@ public:
     void modify_database() final
     {
         //CustomerDataBase my_database("database.db");
-        db->open_database();
-        db->create_table();
-        db->close_database();
+        //db->open_database();
+        //db->create_table();
+        //db->close_database();
     }
 
 private:
