@@ -89,7 +89,7 @@ public:
 
     void modify_database() final
     {
-        static int fuck{0};
+        
         string database_path("database.db");
         CustomerDataBase my_database(database_path);
 
@@ -97,14 +97,14 @@ public:
 
         //bfile.open("database.db");
 
-        if(fuck == 1) //file exists
+        if(false) //file exists
         {
             cout<<"SQL file already exists."<<endl;
         }
         else
         {
             cout<<"fuckfuckfuckfuck"<<endl;
-            fuck = 1;
+
             int result = my_database.open_database();
 
             if(result != SQLITE_OK)
@@ -146,7 +146,6 @@ private:
     char frame_id_response[3];
     char client_id[5];
     CustomerDataBase *db;
-
 };
 
 
