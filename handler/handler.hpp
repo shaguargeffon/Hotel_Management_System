@@ -90,7 +90,7 @@ public:
     void modify_database() final
     {
         static int fuck{0};
-        //string database_path("database.db");
+        string database_path("database.db");
         CustomerDataBase my_database(database_path);
 
         //ifstream bfile(database_path.c_str());
