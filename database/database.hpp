@@ -30,7 +30,7 @@ class CustomerDataBase: public DataBase
 {
 public:
 
-    CustomerDataBase(const char *db_name): db(NULL), database_name(db_name)
+    CustomerDataBase(const string data_base_path_parameter): db(NULL), data_base_path(data_base_path_parameter)
     {
     }
 
