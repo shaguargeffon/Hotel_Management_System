@@ -19,12 +19,18 @@ sqlite3.h
 -
 string.h
 -
+vector
+-
 
 handler/handler.hpp
 iostream
 -
 database.hpp
 handler/database.hpp
+unistd.h
+-
+fstream
+-
 
 server/server.hpp
 stdio.h

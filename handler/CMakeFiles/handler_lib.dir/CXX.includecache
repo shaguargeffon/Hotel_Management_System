@@ -15,6 +15,10 @@ iostream
 -
 database.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/handler/database.hpp
+unistd.h
+-
+fstream
+-
 
 database/database.hpp
 iostream
@@ -22,6 +26,8 @@ iostream
 sqlite3.h
 -
 string.h
+-
+vector
 -
 
 sqlite/sqlite3.h

@@ -37,6 +37,8 @@ sqlite3.h
 -
 string.h
 -
+vector
+-
 
 sqlite/sqlite3.h
 stdarg.h
