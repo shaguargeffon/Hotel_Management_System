@@ -14,7 +14,7 @@ class DataBase
 public:
     virtual int open_database()=0;
     virtual void close_database()=0;
-    virtual void create_table(const string& table)=0;
+    virtual int create_table(const string& table)=0;
     virtual int insert_item(const string& table)=0;
     virtual int delete_item(const string& table)=0;
     virtual int update(const string& table)=0;
@@ -41,10 +41,10 @@ public:
     }
 
 
-    void create_table(const string& table) final
+    int create_table(const string& table) final
     {
         char *szMsg = NULL;
-        sqlite3_exec(db, table.c_str(), NULL,  NULL, &szMsg); 
+        return sqlite3_exec(db, table.c_str(), NULL,  NULL, &szMsg); 
     }
 
 
