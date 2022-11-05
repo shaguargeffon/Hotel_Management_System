@@ -27,7 +27,7 @@ public:
         return true;
     }
 
-    virtual ~Hanlder()
+    virtual ~Handler()
     {
 
     }
