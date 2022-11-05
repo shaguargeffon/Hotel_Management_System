@@ -70,13 +70,13 @@ void TcpServer::start_server()
     write(cfd, buf, n);
     */
 
+    HandlerFactory handler_factory(rec_buf);
+
     while(1)
     {
         unsigned int receive_size = read(cfd, rec_buf, sizeof(rec_buf));
 
-        HandlerFactory handler_factory(rec_buf);
-
-        Handler* handler = handler_factory.create_handler();
+        auto handler = handler_factory.create_handler();
 
         handler->parse_request_frame(rec_buf, receive_size);
 
@@ -89,7 +89,6 @@ void TcpServer::start_server()
         }
 
         write(cfd, send_buf, send_buf_size);
-
     }
 
 

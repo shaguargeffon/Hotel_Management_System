@@ -4,6 +4,7 @@
 #include "database.hpp"
 #include <unistd.h>
 #include <fstream>
+#include <memory>
 using namespace std;
 
 
@@ -26,6 +27,10 @@ public:
         return true;
     }
 
+    virtual ~Hanlder()
+    {
+
+    }
 };
 
 
@@ -38,7 +43,7 @@ public:
 
     HandlerRegister()
     {
-        db = new CustomerDataBase("database.db");
+        customer_db_p = std::make_shared<CustomerDataBase>("database.db");
     }
 
     bool parse_request_frame(const char* request_frame_p, unsigned int size) final
@@ -90,8 +95,8 @@ public:
     void modify_database() final
     {
         
-        string database_path("database.db");
-        CustomerDataBase my_database(database_path);
+        //string database_path("database.db");
+        //CustomerDataBase my_database(database_path);
 
         ifstream bfile(database_path.c_str());
 
@@ -103,9 +108,9 @@ public:
         }
         else
         {
-            cout<<"fuckfuckfuckfuck"<<endl;
+            cout<<"SQL file doesn't exist."<<endl;
 
-            int result = my_database.open_database();
+            int result = customer_db_p->open_database();
 
             if(result != SQLITE_OK)
             {
@@ -114,7 +119,7 @@ public:
             else
             {
                 const char* table = "create table hunter(ClientID integer primary key autoincrement, name string, age integer, sex string)";
-                result = my_database.create_table(table);
+                result = customer_db_p->create_table(table);
 
                 if(result != SQLITE_OK)
                 {
@@ -134,9 +139,6 @@ public:
     }
 
 
-
-
-
 private:
     
     //Database* data_base;
@@ -145,7 +147,8 @@ private:
     char password[7];
     char frame_id_response[3];
     char client_id[5];
-    CustomerDataBase *db;
+    string database_path{"database.db"};
+    std::shared_ptr<CustomerDataBase> customer_db_p;
 };
 
 
@@ -371,11 +374,6 @@ private:
 
 
 
-
-
-
-
-
 class HandlerFactory
 {
 public:
@@ -385,17 +383,29 @@ public:
     }
 
     //Create handler instance due to Frame_ID
-    Handler* create_handler()
+    std::shared_ptr<Handler> create_handler()
     {
         if(buff[0] == '1' && buff[1] == '0') // register handler
         {
-            auto p = new HandlerRegister();
-            return p;
+            if(register_handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
+            {
+                register_handler_p = std::make_shared<HandlerRegister>(); ;
+            }
+
+            return register_handler_p;
         }
+    }
+
+
+    ~HandlerFactory()
+    {
+        //delete register_handler_p;
     }
 
 private:
     char* buff;
+    std::shared_ptr<Handler> register_handler_p{nullptr};
+
 
 };
 
