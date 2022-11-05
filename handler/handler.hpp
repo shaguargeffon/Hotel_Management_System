@@ -135,7 +135,7 @@ public:
 
         //db->open_database();
         //db->create_table();
-        db->close_database();
+        customer_db_p->close_database();
     }
 
 
