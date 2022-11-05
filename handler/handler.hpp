@@ -93,11 +93,11 @@ public:
         string database_path("database.db");
         CustomerDataBase my_database(database_path);
 
-        //ifstream bfile(database_path.c_str());
+        ifstream bfile(database_path.c_str());
 
-        //bfile.open("database.db");
+        bfile.open("database.db");
 
-        if(false) //file exists
+        if(bfile) //file exists
         {
             cout<<"SQL file already exists."<<endl;
         }
