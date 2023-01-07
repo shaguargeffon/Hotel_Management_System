@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel -rdynamic database/libdatabase.a server/libserver_lib.a handler/libhandler.a 

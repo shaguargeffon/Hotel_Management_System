@@ -70,17 +70,29 @@ void TcpServer::start_server()
     write(cfd, buf, n);
     */
 
+    DataBase<ITEM> data_base;
+
+    //AbsDataBase<ITEM>* data_base_p = new DataBase<ITEM> 
+
     HandlerFactory handler_factory(rec_buf);
 
     while(1)
     {
         unsigned int receive_size = read(cfd, rec_buf, sizeof(rec_buf));
 
-        auto handler = handler_factory.create_handler();
+        if(receive_size == 0) // nothing read from client
+        {
+            std::cout<<"nothing read from client!"<<std::endl;
+            continue;
+        }
 
-        handler->parse_request_frame(rec_buf, receive_size);
+        auto handler = handler_factory.create_handler(&data_base);
 
-        unsigned int send_buf_size = handler->build_response_frame(send_buf);
+        handler->segment_request_frame(rec_buf, receive_size);
+
+        bool is_request_frame_positive = handler->parse_request_frame();
+
+        unsigned int send_buf_size = handler->build_response_frame(send_buf, is_request_frame_positive);
 
         for(unsigned int i=0; i<send_buf_size;i++)
         {
@@ -90,11 +102,9 @@ void TcpServer::start_server()
 
         write(cfd, send_buf, send_buf_size);
     }
-
-
 }
 
-
+/*
 unsigned int TcpServer::receive_message()
 {
     unsigned int rec_size = read(cfd, rec_buf, sizeof(rec_buf));
@@ -120,6 +130,6 @@ void TcpServer::send_message(unsigned int send_size)
 
     write(cfd, send_buf, send_size);
 }
-
+*/
 
 

@@ -7,11 +7,7 @@
 //#include <sys/socket.h>
 //#include <stdlib.h>
 #include "server.hpp"
-//#include "hotel.hpp"
 #include "handler.hpp"
-//#include "sqlite3ext.h"
-
-
 
 
 //compiling command: gcc -pthread -g -o main main.c
@@ -39,35 +35,24 @@ void* thread_2(void *arg)
 
 int main()
 {
+    
     TcpServer tcp_server(9527, 32);
 
-    tcp_server.create_socket();
 
-    tcp_server.set_ip_format();
+    tcp_server.initialize_server();
 
-    tcp_server.set_server_port();
 
-    tcp_server.configure_valid_ip_address();
+    tcp_server.start();
 
-    tcp_server.bind_server();
 
-    tcp_server.listen_clients();
+    tcp_server.stop_server();
 
-    tcp_server.accpet_clients();
 
-    
-
-    tcp_server.start_server();
+    tcp_server.stop_client();
 
 
 
-
-    tcp_server.close_server();
-
-    tcp_server.close_client();
-    
-
-
+   cout<<"Software is running!"<<endl;
 
 
     return 0;

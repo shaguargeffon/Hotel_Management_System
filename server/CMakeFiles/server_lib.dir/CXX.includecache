@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -29,18 +29,58 @@ sys/socket.h
 -
 stdlib.h
 -
+handler.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/server/handler.hpp
 
 database/database.hpp
 iostream
 -
-sqlite3.h
+string.h
+-
+set
+-
+algorithm
+-
+types.hpp
+database/types.hpp
+item.hpp
+database/item.hpp
+
+database/item.hpp
+iostream
 -
 string.h
 -
 vector
 -
+map
+-
+set
+-
+algorithm
+-
+types.hpp
+database/types.hpp
 
-sqlite/sqlite3.h
-stdarg.h
+handler/handler.hpp
+iostream
+-
+database.hpp
+handler/database.hpp
+unistd.h
+-
+fstream
+-
+memory
+-
+types.hpp
+handler/types.hpp
+database.hpp
+handler/database.hpp
+
+types/types.hpp
+iostream
+-
+string.h
 -
 

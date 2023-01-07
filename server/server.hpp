@@ -10,12 +10,23 @@
 
 #include "handler.hpp"
 
-class TcpServer
+
+class Server
 {
 public:
+    virtual void initialize_server()=0;
+    virtual void start()=0;
+    virtual void stop_server()=0;
+    virtual void stop_client()=0;
+};
 
+
+class TcpServer: public Server
+{
+public:
     TcpServer(int port=1111, unsigned int amount_clients=10);
 
+private:
     void create_socket(); 
 
     void set_ip_format();
@@ -41,6 +52,35 @@ public:
     void send_message(unsigned int send_size);
 
     Handler* handler_factory();
+
+public:
+    void initialize_server() final
+    {
+        create_socket();
+        set_ip_format();
+        set_server_port();
+        configure_valid_ip_address();
+        bind_server();
+        listen_clients();
+        accpet_clients(); 
+    }
+
+
+    void start() final
+    {
+        start_server();
+    }
+
+    void stop_server() final
+    {
+        close_server();
+    }
+
+    void stop_client() final
+    {
+        close_client();
+    }
+
 
 private:
     int sfd{0};   //server socket file descriptor
