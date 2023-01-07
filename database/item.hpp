@@ -13,8 +13,11 @@ class ITEM
 {
 public:
 
-    //deleted default constructor
-    ITEM() = delete;
+    //Reason to enable the default constructor: In template class it is needed.
+    ITEM()
+    {
+
+    }
 
     explicit ITEM(Client client_p): client(client_p)
     {
@@ -123,6 +126,11 @@ public:
         info.erase(room);
 
         return true; 
+    }
+
+    Client get_client() const
+    {
+        return client;
     }
 
 

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string.h>
 #include <set>
+#include <utility>
 #include <algorithm>
 #include "types.hpp"
 #include "item.hpp"
@@ -17,7 +18,8 @@ public:
     virtual bool insert_item(T& item)=0;
     virtual bool delete_item(T& item)=0;
     virtual bool update_database(T& item)=0;
-    virtual bool find_item(T& item)=0;
+    virtual std::pair<T, bool> find_item(T& item)=0;
+    //virtual std::pair<T, bool> get_item(T& item)=0;
     virtual ~AbsDataBase()=default;
 
 
@@ -86,6 +88,7 @@ public:
         return true;
     }
 
+    /*
     bool find_item(T& item) final
     {
         auto iter = find(items.begin(), items.end(), item);
@@ -97,7 +100,26 @@ public:
 
         return true;
     }
+    */
 
+    std::pair<T, bool> find_item(T& item) final
+    {
+        bool res;
+        
+        auto iter = find(items.begin(), items.end(), item);
+
+        if(iter == items.end())
+        {
+            T temp;
+            auto res = std::make_pair(temp, false);
+            return res;            
+        }
+        else
+        {
+            auto res = std::make_pair(*iter, true);  
+            return res;   
+        }
+    }
 
 
 private:

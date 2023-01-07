@@ -47,11 +47,11 @@ private:
 
     void start_server();
 
-    unsigned int receive_message();
+    //unsigned int receive_message();
 
-    void send_message(unsigned int send_size);
+    //void send_message(unsigned int send_size);
 
-    Handler* handler_factory();
+    //Handler* handler_factory();
 
 public:
     void initialize_server() final

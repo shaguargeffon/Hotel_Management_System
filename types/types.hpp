@@ -6,7 +6,9 @@
 
     struct Client
     {
-        Client() = delete;
+        //Client() = delete;
+
+        Client(){}
 
         explicit Client(char* client_id_p): priority(0) 
         {
@@ -15,6 +17,17 @@
                 id[i] = client_id_p[i];
             }
         }
+
+        Client(char* client_id_p, char* pw): priority(0) 
+        {
+            for(int i=0; i<5; i++)
+            {
+                id[i] = client_id_p[i];
+            }
+
+            memcpy(password, pw, 8);
+        }
+
 
         ~Client() = default;
 
@@ -38,6 +51,12 @@
             }
             
             return true;
+        }
+
+
+        bool compare_password(char* pw) const
+        {
+            return memcmp(password, pw, 8)==0;
         }
 
         char id[5];

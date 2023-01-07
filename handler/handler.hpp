@@ -47,7 +47,7 @@ using namespace std;
 
     //Request frame: Frame_ID (10, 2bytes) + Client_ID (5bytes) + Password(8bytes)
     //Positive Response frame: Frame_ID (50, 2bytes) + Client_ID (5bytes)
-    //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (2bytes)
+    //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
     class HandlerRegister: public Handler
     {
         public:
@@ -94,24 +94,24 @@ using namespace std;
                     char negative_frame_id_response[2] = {'F', 'F'};
                     memory_copy(resonse_buff, 0, negative_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
-                    memory_copy(resonse_buff, 7, error_code, 0, 2);
-                    resonse_buff[9] = '\0';
-                    return 10;
+                    memory_copy(resonse_buff, 7, error_code, 0, 3);
+                    resonse_buff[10] = '\0';
+                    return 11;
                 }
             }
 
 
             bool parse_request_frame() final
             {
-                Client client(client_id);
+                Client client(client_id, password);
                 
                 ITEM item(client);
                 
-                bool is_item_found = database_p->find_item(item);
+                auto res = database_p->find_item(item);
 
-                if(!is_item_found)
+                if(!res.second) // item is not found
                 {
-                    memory_copy(error_code, 0, "NF", 0, 2); // set error code to NF -> not found
+                    memory_copy(error_code, 0, "CNF", 0, 3); // set error code to NF -> not found
                     database_p->insert_item(item);
                     return true;
                 }
@@ -121,38 +121,108 @@ using namespace std;
 
         private:
             char frame_id_request[2];
-            char error_code[2];
+            char error_code[3];
             char client_id[5];
             char password[8];            
             
     };
 
 
+    //Request frame: Frame_ID (11, 2bytes) + Client_ID (5bytes) + Password(8bytes)
+    //Positive Response frame: Frame_ID (51, 2bytes) + Client_ID (5bytes)
+    //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
+    //Error code : Client not found -> CNF, Password is wrong -> PAW
+    class HandlerUnregister: public Handler
+    {
+        public:
+            explicit HandlerUnregister(AbsDataBase<ITEM>* database): Handler(database)
+            {
+                // initialize buffers
+                memset(frame_id_request, '\0', sizeof(frame_id_request));
+                memset(password, '\0', sizeof(password));
+                memset(client_id, '\0', sizeof(client_id));
+                memset(error_code, '\0', sizeof(error_code));
+                
+            }
+
+            bool segment_request_frame(const char* request_frame_p, uint16_t size) final
+            {
+                if(size!=15)
+                {
+                    std::cout<<"Size is wrong."<<std::endl;
+                    return false;
+                }
+
+                memory_copy(frame_id_request, 0, request_frame_p, 0, 2);
+
+                memory_copy(client_id, 0, request_frame_p, 2, 5);
+
+                memory_copy(password, 0, request_frame_p, 7, 8);
+
+                return true;
+            }
+
+
+            uint16_t build_response_frame(char* resonse_buff, bool is_response_positive) final
+            {
+                if(is_response_positive)
+                {
+                    char positive_frame_id_response[2] = {'5', '1'};
+                    memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 2, client_id, 0, 5);
+                    resonse_buff[7] = '\0';
+                    return 8;
+                }
+                else
+                {
+                    char negative_frame_id_response[2] = {'F', 'F'};
+                    memory_copy(resonse_buff, 0, negative_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 2, client_id, 0, 5);
+                    memory_copy(resonse_buff, 7, error_code, 0, 3);
+                    resonse_buff[10] = '\0';
+                    return 11;
+                }
+            }
+
+
+            bool parse_request_frame() final
+            {
+                Client client(client_id, password);
+                
+                ITEM item(client);
+                
+                auto res = database_p->find_item(item);
+
+                if(!res.second) // item is not found
+                {
+                    memory_copy(error_code, 0, "CNF", 0, 3); // set error code to CNF -> client not found
+                    return false;
+                }
+                else
+                {
+                    bool is_password_identical = res.first.get_client().compare_password(password);
+                    if(is_password_identical)
+                    {
+                        database_p->delete_item(res.first);
+                        return true;
+                    }
+                    else
+                    {
+                        memory_copy(error_code, 0, "PNI", 0, 3); // set error code to PNI -> password is not identical
+                        return false;
+                    }
+                }
+            }
+
+        private:
+            char frame_id_request[2];
+            char error_code[3];
+            char client_id[5];
+            char password[8];            
+            
+    };
+
 /*
-class ProtocalCancelBookingRegistered: public Protocal
-{
-public:
-    virtual bool parse_request_frame()
-    {
-
-    }
-
-    virtual bool build_response_frame()
-    {
-
-    }
-
-    virtual void modify_database()
-    {
-
-    }
-
-
-private:
-    char* request_frame_p;
-};
-
-
 class ProtocalCancelBookingUnregistered: public Protocal
 {
 public:
@@ -364,11 +434,26 @@ private:
                 //Handle kinds of command from client
                 if(buff[0] == '1' && buff[1] == '0') // register handler
                 {
+                    std::cout<<"Register Request!"<<std::endl;
+                    /*
                     if(handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
                     {
                         handler_p = std::make_shared<HandlerRegister>(database);
                     }
-
+                    */
+                    handler_p = std::make_shared<HandlerRegister>(database);
+                    return handler_p;
+                }
+                else if(buff[0] == '1' && buff[1] == '1') // unregister handler
+                {
+                    std::cout<<"Unregister Request!"<<std::endl;
+                    /*
+                    if(handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
+                    {
+                        handler_p = std::make_shared<HandlerUnregister>(database);
+                    } 
+                    */
+                    handler_p = std::make_shared<HandlerUnregister>(database);
                     return handler_p;
                 }
             }
