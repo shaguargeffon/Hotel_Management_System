@@ -5,151 +5,127 @@
 #include <unistd.h>
 #include <fstream>
 #include <memory>
+#include "types.hpp"
+#include "database.hpp"
 using namespace std;
 
 
-
-class Handler
-{
-public:
-    virtual bool parse_request_frame(const char* request_frame_p, unsigned int size)=0;
-
-    virtual unsigned int build_response_frame(char* resonse_buff)=0;
-
-    virtual void modify_database()=0;
-
-    bool memory_copy(char* dest, unsigned int offset_dest, const char* source, unsigned int offset_source, unsigned int size)
+    class Handler
     {
-        for(unsigned int i=0; i<size; i++)
-        {
-            dest[i + offset_dest] = source[offset_source + i]; 
-        }
-        return true;
-    }
+        public:
 
-    virtual ~Handler()
-    {
-
-    }
-};
-
-
-
-//Request frame: Frame_ID (10, 2bytes) + User_Name (10bytes) + Password(7bytes)
-//Response frame: Frame_ID (3bytes) + Client_ID (5bytes)
-class HandlerRegister: public Handler
-{
-public:
-
-    HandlerRegister()
-    {
-        customer_db_p = std::make_shared<CustomerDataBase>("database.db");
-    }
-
-    bool parse_request_frame(const char* request_frame_p, unsigned int size) final
-    {
-        if(size!=19)
-        {
-            return false;
-        }
-
-        memory_copy(frame_id_request, 0, request_frame_p, 0, 2);
-
-        memory_copy(user_name, 0, request_frame_p, 2, 10);
-
-        memory_copy(password, 0, request_frame_p, 12, 7);
-
-        return true;
-    }
-
-    //TBD: implemente checking user name from data base.
-    bool is_user_name_registered(char* name)
-    {
-        return false;
-    }
-
-    unsigned int build_response_frame(char* resonse_buff) final
-    {
-        if(is_user_name_registered(user_name))
-        {
-            std::cout<<"the user is already registered"<<std::endl;
-            return 0;
-        }
-
-        memory_copy(frame_id_response, 0, frame_id_request, 0, 2);
-        memory_copy(frame_id_response, 2, "1", 0, 1); // '1': OK, '0': not OK
-
-        memory_copy(client_id, 0, "abcde", 0, 5); // TBD: generate a random client ID
-
-        //copy the frames into response buffer
-        memory_copy(resonse_buff, 0, frame_id_response, 0, 3);
-        memory_copy(resonse_buff, 3, client_id, 0, 5);
-
-        resonse_buff[9] = '\0';
-        //std::cout<<"it runs."<<std::endl;
-        //this->modify_database();
-
-        return 10;        
-    }
-
-    void modify_database() final
-    {
-        
-        //string database_path("database.db");
-        //CustomerDataBase my_database(database_path);
-
-        ifstream bfile(database_path.c_str());
-
-        bfile.open("database.db");
-
-        if(bfile) //file exists
-        {
-            cout<<"SQL file already exists."<<endl;
-        }
-        else
-        {
-            cout<<"SQL file doesn't exist."<<endl;
-
-            int result = customer_db_p->open_database();
-
-            if(result != SQLITE_OK)
+            explicit Handler(AbsDataBase<ITEM>* database): database_p(database)
             {
-                cout<<"File creation is failed."<<endl;
+
             }
-            else
-            {
-                const char* table = "create table hunter(ClientID integer primary key autoincrement, name string, age integer, sex string)";
-                result = customer_db_p->create_table(table);
 
-                if(result != SQLITE_OK)
+            virtual bool segment_request_frame(const char* request_frame_p, uint16_t size)=0;
+
+            virtual uint16_t build_response_frame(char* resonse_buff, bool is_response_positive)=0;
+
+            virtual bool parse_request_frame()=0;
+
+            bool memory_copy(char* dest, size_t offset_dest, const char* source, size_t offset_source, uint16_t size)
+            {
+                for(uint16_t i=0; i<size; i++)
                 {
-                    cout<<"SQL table is created unsuccessfully."<<endl;
+                    dest[i + offset_dest] = source[offset_source + i]; 
+                }
+                return true;
+            }
+
+            virtual ~Handler()
+            {
+
+            }
+
+        protected:
+            AbsDataBase<ITEM>* database_p;  //stack pointer
+    };
+
+
+
+    //Request frame: Frame_ID (10, 2bytes) + Client_ID (5bytes) + Password(8bytes)
+    //Positive Response frame: Frame_ID (50, 2bytes) + Client_ID (5bytes)
+    //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (2bytes)
+    class HandlerRegister: public Handler
+    {
+        public:
+            explicit HandlerRegister(AbsDataBase<ITEM>* database): Handler(database)
+            {
+                // initialize buffers
+                memset(frame_id_request, '\0', sizeof(frame_id_request));
+                memset(password, '\0', sizeof(password));
+                memset(client_id, '\0', sizeof(client_id));
+                memset(error_code, '\0', sizeof(error_code));
+                
+            }
+
+            bool segment_request_frame(const char* request_frame_p, uint16_t size) final
+            {
+                if(size!=15)
+                {
+                    std::cout<<"Size is wrong."<<std::endl;
+                    return false;
+                }
+
+                memory_copy(frame_id_request, 0, request_frame_p, 0, 2);
+
+                memory_copy(client_id, 0, request_frame_p, 2, 5);
+
+                memory_copy(password, 0, request_frame_p, 7, 8);
+
+                return true;
+            }
+
+            uint16_t build_response_frame(char* resonse_buff, bool is_response_positive) final
+            {
+                if(is_response_positive)
+                {
+                    char positive_frame_id_response[2] = {'5', '0'};
+                    //memory_copy(frame_id_response, 0, positive_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 2, client_id, 0, 5);
+                    resonse_buff[7] = '\0';
+                    return 8;
                 }
                 else
                 {
-                    cout<<"SQL table is created successfully."<<endl;
+                    char negative_frame_id_response[2] = {'F', 'F'};
+                    memory_copy(resonse_buff, 0, negative_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 2, client_id, 0, 5);
+                    memory_copy(resonse_buff, 7, error_code, 0, 2);
+                    resonse_buff[9] = '\0';
+                    return 10;
+                }
+            }
+
+
+            bool parse_request_frame() final
+            {
+                Client client(client_id);
+                
+                ITEM item(client);
+                
+                bool is_item_found = database_p->find_item(item);
+
+                if(!is_item_found)
+                {
+                    memory_copy(error_code, 0, "NF", 0, 2); // set error code to NF -> not found
+                    database_p->insert_item(item);
+                    return true;
                 }
 
+                return false;
             }
-        }
 
-        //db->open_database();
-        //db->create_table();
-        customer_db_p->close_database();
-    }
-
-
-private:
-    
-    //Database* data_base;
-    char frame_id_request[2];
-    char user_name[10];
-    char password[7];
-    char frame_id_response[3];
-    char client_id[5];
-    string database_path{"database.db"};
-    std::shared_ptr<CustomerDataBase> customer_db_p;
-};
+        private:
+            char frame_id_request[2];
+            char error_code[2];
+            char client_id[5];
+            char password[8];            
+            
+    };
 
 
 /*
@@ -374,41 +350,39 @@ private:
 
 
 
-class HandlerFactory
-{
-public:
-    HandlerFactory(char* buff): buff(buff)
+    class HandlerFactory
     {
-
-    }
-
-    //Create handler instance due to Frame_ID
-    std::shared_ptr<Handler> create_handler()
-    {
-        if(buff[0] == '1' && buff[1] == '0') // register handler
-        {
-            if(register_handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
+        public:
+            explicit HandlerFactory(char* buff): buff(buff)
             {
-                register_handler_p = std::make_shared<HandlerRegister>(); ;
+
             }
 
-            return register_handler_p;
-        }
-    }
+            //Create handler instance due to Frame_ID
+            std::shared_ptr<Handler> create_handler(AbsDataBase<ITEM>* database)
+            {
+                //Handle kinds of command from client
+                if(buff[0] == '1' && buff[1] == '0') // register handler
+                {
+                    if(handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
+                    {
+                        handler_p = std::make_shared<HandlerRegister>(database);
+                    }
 
+                    return handler_p;
+                }
+            }
 
-    ~HandlerFactory()
-    {
-        //delete register_handler_p;
-    }
+            ~HandlerFactory()
+            {
+                //delete register_handler_p;
+            }
 
-private:
-    char* buff;
-    std::shared_ptr<Handler> register_handler_p{nullptr};
+        private:
+            char* buff;
+            std::shared_ptr<Handler> handler_p{nullptr};
 
-
-};
-
+    };
 
 
 

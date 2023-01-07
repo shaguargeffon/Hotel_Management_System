@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/shaguar/project/hotel/Hotel_Management_System/server -I/home/shaguar/project/hotel/Hotel_Management_System/handler -I/home/shaguar/project/hotel/Hotel_Management_System/sqlite -I/home/shaguar/project/hotel/Hotel_Management_System/database -I/home/shaguar/project/hotel/Hotel_Management_Systemhandler/database 
+CXX_INCLUDES = -I/home/shaguar/project/hotel/Hotel_Management_System/types -I/home/shaguar/project/hotel/Hotel_Management_System/server -I/home/shaguar/project/hotel/Hotel_Management_System/handler -I/home/shaguar/project/hotel/Hotel_Management_System/database -I/home/shaguar/project/hotel/Hotel_Management_Systemhandler/types -I/home/shaguar/project/hotel/Hotel_Management_Systemhandler/database 
 
