@@ -127,6 +127,48 @@ class TestRegisterUnregister(Test):
             print("Test case 2: unregister response message: ", unregister_response_message)
  
 
+    @classmethod
+    def test_case_3(cls):
+        
+        Test.socket.send(Test.register_request_message.encode('utf-8'))
+
+        register_response_message = Test.socket.recv(1024)
+        register_response_message = register_response_message.rstrip('\x00')
+
+        if register_response_message == Test.register_response_positive_message:
+            print("Integration Test Case 3 : one time Register : OK")
+        else:
+            print("Integration Test case 3 Error: register response message: Fail: ", register_response_message)
+
+        time.sleep(2)
+
+        Test.socket.send(Test.login_request_message.encode('utf-8')) # send a login request
+
+        login_response_message = Test.socket.recv(1024)
+        login_response_message = login_response_message.rstrip('\x00')
+
+        if login_response_message == Test.login_response_positive_message:
+            print("Integration Test Case 3 : Positive login response : OK")
+        else:
+            print("Integration Test case 3: Positive login response: Fail: ", login_response_message)
+
+        time.sleep(2)
+
+        # To recover the status for next test case
+        Test.socket.send(Test.logout_request_message.encode('utf-8'))
+
+        logout_response_message = Test.socket.recv(1024)
+        logout_response_message = logout_response_message.rstrip('\x00')
+
+        if logout_response_message == Test.logout_response_positive_message:
+            print("Integration Test Case 3 : Positive logout response : OK")
+        else:
+            print("Test case 3: Positive logout response: Fail: ", logout_response_message)
+
+
+
+ 
+
 if __name__ == '__main__':
 
     Test.configure()
@@ -134,4 +176,7 @@ if __name__ == '__main__':
     TestRegisterUnregister.test_case_1()
 
     TestRegisterUnregister.test_case_2()
+
+    TestRegisterUnregister.test_case_3()
+
 

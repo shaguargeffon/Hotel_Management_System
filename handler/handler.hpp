@@ -363,7 +363,7 @@ using namespace std;
             {
                 if(is_response_positive)
                 {
-                    char positive_frame_id_response[2] = {'6', '0'};
+                    char positive_frame_id_response[2] = {'6', '1'};
                     //memory_copy(frame_id_response, 0, positive_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
@@ -465,26 +465,30 @@ using namespace std;
                 if(buff[0] == '1' && buff[1] == '0') // register handler
                 {
                     std::cout<<"Register Request!"<<std::endl;
-                    /*
-                    if(handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
-                    {
-                        handler_p = std::make_shared<HandlerRegister>(database);
-                    }
-                    */
                     handler_p = std::make_shared<HandlerRegister>(database);
                     return handler_p;
                 }
                 else if(buff[0] == '1' && buff[1] == '1') // unregister handler
                 {
                     std::cout<<"Unregister Request!"<<std::endl;
-                    /*
-                    if(handler_p == nullptr) // to ensure that only one HanlderRegister is allocated.
-                    {
-                        handler_p = std::make_shared<HandlerUnregister>(database);
-                    } 
-                    */
                     handler_p = std::make_shared<HandlerUnregister>(database);
                     return handler_p;
+                }
+                else if(buff[0] == '2' && buff[1] == '0') // login handler
+                {
+                    std::cout<<"Login Request!"<<std::endl;
+                    handler_p = std::make_shared<HandlerLogin>(database);
+                    return handler_p;
+                }
+                else if(buff[0] == '2' && buff[1] == '1') // logout handler
+                {
+                    std::cout<<"Logout Request!"<<std::endl;
+                    handler_p = std::make_shared<HandlerLogout>(database);
+                    return handler_p;
+                }
+                else
+                {
+                    return nullptr;
                 }
             }
 

@@ -59,20 +59,7 @@ void TcpServer::close_client()
 
 void TcpServer::start_server()
 {
-    /*
-    int n = read(cfd, buf, sizeof(buf));
-        
-    for(int i = 0; i < n; i++)
-    {   
-        buf[i] = toupper(buf[i]); //read data from client
-    }
-
-    write(cfd, buf, n);
-    */
-
     DataBase<ITEM> data_base;
-
-    //AbsDataBase<ITEM>* data_base_p = new DataBase<ITEM> 
 
     HandlerFactory handler_factory(rec_buf);
 
@@ -94,42 +81,6 @@ void TcpServer::start_server()
 
         unsigned int send_buf_size = handler->build_response_frame(send_buf, is_request_frame_positive);
 
-        for(unsigned int i=0; i<send_buf_size;i++)
-        {
-            //std::cout<<"send buffer:"<<std::endl;
-            //std::cout<<send_buf[i]<<std::endl;
-        }
-
         write(cfd, send_buf, send_buf_size);
     }
 }
-
-/*
-unsigned int TcpServer::receive_message()
-{
-    unsigned int rec_size = read(cfd, rec_buf, sizeof(rec_buf));
-
-    std::cout<<"Receive Buffer is :"<<std::endl;
-    
-    for(unsigned int i=0; i<rec_size;i++)
-    {
-        std::cout<<rec_buf[i]<<std::endl;
-    }
-
-    return rec_size;
-}
-
-
-void TcpServer::send_message(unsigned int send_size)
-{
-    std::cout<<"Send Buffer is :"<<std::endl;
-    for(unsigned int i=0; i<send_size;i++)
-    {
-        std::cout<<send_buf[i]<<std::endl;
-    }
-
-    write(cfd, send_buf, send_size);
-}
-*/
-
-
