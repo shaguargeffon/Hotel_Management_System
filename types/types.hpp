@@ -8,9 +8,9 @@
     {
         //Client() = delete;
 
-        Client(){}
+        Client(){} // only for creating a temporary instance
 
-        explicit Client(char* client_id_p): priority(0) 
+        explicit Client(char* client_id_p)
         {
             for(int i=0; i<5; i++)
             {
@@ -18,7 +18,7 @@
             }
         }
 
-        Client(char* client_id_p, char* pw): priority(0) 
+        Client(char* client_id_p, char* pw)
         {
             for(int i=0; i<5; i++)
             {
@@ -59,11 +59,21 @@
             return memcmp(password, pw, 8)==0;
         }
 
+        void set_login_status(bool login_status)
+        {
+            is_login = login_status;
+        }
+
+        bool get_login_status() const
+        {
+            return is_login;
+        }
+
         char id[5];
         char password[8];
         //CLIENTNAME_T name;
-        char priority;
-
+        char priority{0};
+        bool is_login{false};
     };
 
 

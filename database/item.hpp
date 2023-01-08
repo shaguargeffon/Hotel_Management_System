@@ -134,6 +134,12 @@ public:
     }
 
 
+    void modify_login_status(bool login)
+    {
+        client.set_login_status(login);
+    }
+
+
 private:
     Client client;
     std::map<Room, std::set<Date>> info;

@@ -1,0 +1,137 @@
+import socket
+import time
+
+class Test:
+
+    @classmethod
+    def configure(cls):
+        cls.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        cls.socket.connect(("127.0.0.1", 9527))
+
+        # Client Info
+        cls.client_id = "12345"
+        cls.client_password = "32362266"
+       
+        # Error Code
+        cls.negative_response_id = "FF"
+
+        cls.error_client_register_failed = "CRF"
+        cls.error_client_not_found = "CNF"
+        cls.error_password_not_identical = "PNI"
+        cls.error_login_repeat = "LIR"
+        cls.error_logout_repeat = "LOR"
+
+        # Register and Unregister message
+        cls.register_request_id = "10"
+        cls.unregister_request_id = "11"
+        cls.register_response_id = "50"
+        cls.unregister_response_id = "51"
+
+        
+        cls.register_request_message = cls.register_request_id + cls.client_id + cls.client_password
+        cls.unregister_request_message = cls.unregister_request_id + cls.client_id + cls.client_password
+        
+        cls.register_response_positive_message = cls.register_response_id + cls.client_id
+        cls.unregister_response_positive_message = cls.unregister_response_id + cls.client_id
+
+        cls.register_response_negative_message = cls.negative_response_id + cls.client_id + cls.error_client_register_failed
+        cls.unregister_response_client_not_found = cls.negative_response_id + cls.client_id + cls.error_client_not_found
+        cls.unregister_response_password_not_identical = cls.negative_response_id + cls.client_id + cls.error_password_not_identical
+
+
+        # Login and Logout message
+        cls.login_request_id = "20"
+        cls.logout_request_id = "21"
+
+        cls.login_response_id = "60"
+        cls.logout_response_id = "61"
+
+        cls.login_request_message = cls.login_request_id + cls.client_id + cls.client_password
+        cls.logout_request_message = cls.logout_request_id + cls.client_id + cls.client_password
+
+        cls.login_response_positive_message = cls.login_response_id + cls.client_id
+        cls.logout_response_positive_message = cls.logout_response_id + cls.client_id
+
+        cls.login_response_client_not_found = cls.negative_response_id + cls.client_id + cls.error_client_not_found
+        cls.login_response_password_not_identical = cls.negative_response_id + cls.client_id + cls.error_password_not_identical
+        cls.login_response_login_repeat = cls.negative_response_id + cls.client_id + cls.error_login_repeat
+        cls.logout_response_client_not_found = cls.negative_response_id + cls.client_id + cls.error_client_not_found
+        cls.logout_response_password_not_identical = cls.negative_response_id + cls.client_id + cls.error_password_not_identical
+        cls.logout_response_logout_repeat = cls.negative_response_id + cls.client_id + cls.error_logout_repeat
+
+
+
+class TestRegisterUnregister(Test):
+
+
+    @classmethod
+    def test_case_1(cls):
+        
+        Test.socket.send(Test.register_request_message.encode('utf-8'))
+
+        register_response_message = Test.socket.recv(1024)
+        register_response_message = register_response_message.rstrip('\x00')
+
+        if register_response_message == Test.register_response_positive_message:
+            print("Integration Test Case 1 : one time Register : OK")
+        else:
+            print("Test case 1: register response message: ", register_response_message)
+
+        time.sleep(2)
+
+        Test.socket.send(Test.unregister_request_message.encode('utf-8'))
+
+        unregister_response_message = Test.socket.recv(1024)
+        unregister_response_message = unregister_response_message.rstrip('\x00')
+
+        if unregister_response_message == Test.unregister_response_positive_message:
+            print("Integration Test Case 1 : Unregister after register : OK")
+        else:
+            print("Test case 1: unregister response message: ", unregister_response_message)
+
+
+    @classmethod
+    def test_case_2(cls):
+        
+        Test.socket.send(Test.register_request_message.encode('utf-8'))
+
+        register_response_message = Test.socket.recv(1024)
+        register_response_message = register_response_message.rstrip('\x00')
+
+        if register_response_message == Test.register_response_positive_message:
+            print("Integration Test Case 2 : one time Register : OK")
+        else:
+            print("Test case 2: first register response message: ", register_response_message)
+
+        time.sleep(2)
+
+        Test.socket.send(Test.register_request_message.encode('utf-8')) # send a register request again
+
+        register_response_message = Test.socket.recv(1024)
+        register_response_message = register_response_message.rstrip('\x00')
+
+        if register_response_message == Test.register_response_negative_message:
+            print("Integration Test Case 2 : Repeate Register request : OK")
+        else:
+            print("Test case 2: second register response message: ", register_response_message)
+
+        # To recover the status for next test case
+        Test.socket.send(Test.unregister_request_message.encode('utf-8'))
+
+        unregister_response_message = Test.socket.recv(1024)
+        unregister_response_message = unregister_response_message.rstrip('\x00')
+
+        if unregister_response_message == Test.unregister_response_positive_message:
+            print("Integration Test Case 2 : Unregister after register : OK")
+        else:
+            print("Test case 2: unregister response message: ", unregister_response_message)
+ 
+
+if __name__ == '__main__':
+
+    Test.configure()
+
+    TestRegisterUnregister.test_case_1()
+
+    TestRegisterUnregister.test_case_2()
+
