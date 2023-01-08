@@ -89,6 +89,8 @@ class TestRegisterUnregister(Test):
         else:
             print("Test case 1: unregister response message: ", unregister_response_message)
 
+        time.sleep(2)
+
 
     @classmethod
     def test_case_2(cls):
@@ -115,6 +117,9 @@ class TestRegisterUnregister(Test):
         else:
             print("Test case 2: second register response message: ", register_response_message)
 
+
+        time.sleep(2)
+
         # To recover the status for next test case
         Test.socket.send(Test.unregister_request_message.encode('utf-8'))
 
@@ -126,6 +131,8 @@ class TestRegisterUnregister(Test):
         else:
             print("Test case 2: unregister response message: ", unregister_response_message)
  
+        time.sleep(2)
+
 
     @classmethod
     def test_case_3(cls):
@@ -154,8 +161,21 @@ class TestRegisterUnregister(Test):
 
         time.sleep(2)
 
+        Test.socket.send(Test.login_request_message.encode('utf-8')) # send a login request again
+
+        login_response_message = Test.socket.recv(1024)
+        login_response_message = login_response_message.rstrip('\x00')
+
+        if login_response_message == Test.login_response_login_repeat:
+            print("Integration Test Case 3 : Login repeated : OK")
+        else:
+            print("Integration Test case 3: Login repeated: Fail: ", login_response_message)
+
+
+        time.sleep(2)
+
         # To recover the status for next test case
-        Test.socket.send(Test.logout_request_message.encode('utf-8'))
+        Test.socket.send(Test.logout_request_message.encode('utf-8')) # send a logout request
 
         logout_response_message = Test.socket.recv(1024)
         logout_response_message = logout_response_message.rstrip('\x00')
@@ -166,7 +186,17 @@ class TestRegisterUnregister(Test):
             print("Test case 3: Positive logout response: Fail: ", logout_response_message)
 
 
+        time.sleep(2)
 
+        Test.socket.send(Test.logout_request_message.encode('utf-8')) # send a logout request again
+
+        logout_response_message = Test.socket.recv(1024)
+        logout_response_message = logout_response_message.rstrip('\x00')
+
+        if logout_response_message == Test.logout_response_logout_repeat:
+            print("Integration Test Case 3 : Logout repeated : OK")
+        else:
+            print("Test case 3: Logout repeated: Fail: ", logout_response_message)
  
 
 if __name__ == '__main__':
@@ -178,5 +208,3 @@ if __name__ == '__main__':
     TestRegisterUnregister.test_case_2()
 
     TestRegisterUnregister.test_case_3()
-
-
