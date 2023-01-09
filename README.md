@@ -1,25 +1,45 @@
 # Design and Development
+
 This Hotel Management System simulates a real scenario that multiple clients book rooms of a hotel.
 
 Multiple clients shall use different sockets to communicate the server.
+
 The system shall be independent from a concret communication way like UDP, TCP etc.
+
 The server shall support multi-threading on Linux system.
+
 The server shall be implemented by C/C++ language and follow C++ guideline.
+
 The client shall be implemented by C/C++ or python.
+
 The data base shall be designed flexibel and reliable.
+
 The data base shall be embedded in Linux system.
+
 The data base shall be able to read from a local file.
+
 The data base shall be able to written to a local file.
+
 The communication protocals between the server and client shall be defined and cover all use cases.
+
 The communication protocals shall be designed as Plug-In to make the system flexible.
+
 The communication protocals shall be synchronized between the server and client when the system starts.
+
 The development shall follow TDD approach to ensure that the system is always working.
+
 The integration test shall be performed on the client side for testing the server behavior.
+
 The unit test shall be performed both on the server and client side.
+
 The error handling shall cover all use cases and possbile errors.
+
 The warning handling shall cover all use cases and possible warnings.
+
 The security shall be ensured during communication of server and client.
+
 The logging data shall be able to written to a log file for debugging/checking.
+
 The SW design shall follow OOP design principle.
 
 
