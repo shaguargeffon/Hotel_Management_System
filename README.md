@@ -1,91 +1,115 @@
-# Introduction
+# Design and Development
+This Hotel Management System simulates a real scenario that multiple clients book rooms of a hotel.
+
+Multiple clients shall use different sockets to communicate the server.
+The system shall be independent from a concret communication way like UDP, TCP etc.
+The server shall support multi-threading on Linux system.
+The server shall be implemented by C/C++ language and follow C++ guideline.
+The client shall be implemented by C/C++ or python.
+The data base shall be designed flexibel and reliable.
+The data base shall be embedded in Linux system.
+The data base shall be able to read from a local file.
+The data base shall be able to written to a local file.
+The communication protocals between the server and client shall be defined and cover all use cases.
+The communication protocals shall be designed as Plug-In to make the system flexible.
+The communication protocals shall be synchronized between the server and client when the system starts.
+The development shall follow TDD approach to ensure that the system is always working.
+The integration test shall be performed on the client side for testing the server behavior.
+The unit test shall be performed both on the server and client side.
+The error handling shall cover all use cases and possbile errors.
+The warning handling shall cover all use cases and possible warnings.
+The security shall be ensured during communication of server and client.
+The logging data shall be able to written to a log file for debugging/checking.
+The SW design shall follow OOP design principle.
 
 
+# Functionalities of the hotel management system
 
+Register account : Done
 
+Unregister account : Done
 
+Login : Done
 
-# Hotel Data Exchange Protocal / HDEP
+Logout : Done
 
-## Definition of Frame Bytes
+Booking a room : in process
 
-### Frame_ID : 2 bytes
-### Client_ID: 5 bytes
-### Date:8 bytes
-### Room_Number: 3 bytes
-### Payment: 4 bytes
-### Booking_Status: 1 byte
-### Booking_ID: 11 bytes
-### Cancel_Booking_Status: 1 byte
-### Password: 7 bytes
-### Name: 10 bytes
-### Register_Status: 1 byte
-### Modification_Status: 1 byte
-### Login_Status: 1 byte
-### Logout_Status: 1 byte
+Cancel a room : not started
 
+Modify Booking : not started
 
+Query booking information : not started
 
-##### Frame : Book a room as a registered customer
+Download booking information : not started
 
-Request frame: Frame_ID + Client_ID + Date + Room_Number + Payment(optional)
+Modify client information : not started
 
-Response frame: Frame_ID + Client_ID + Booking_Status + Booking_ID
+# How to run the system
 
+## conditions
 
-#### Frame: Cancel Booking as a registered customer
+Install python on Ubuntu : sudo apt install python3.9  (Python2 shall be also working)
 
-Request frame: Frame_ID + Client_ID + Booking_ID
+Install CMAKE on Ubuntu : sudo apt install cmake
 
-Response frame: Frame_ID + Client_ID + Cancel_Booking_Status
+Install g++ on Ubuntu : sudo apt install g++ 
 
+Install gcc on Ubuntu : sudo apt install gcc
 
-##### Frame : Book a room as an unregistered customer
+## Steps
 
-Request frame: Frame_ID + Date + Room_Number + Payment(mandatory)
+Reach the folder /hotel/Hotel_Management_System/build : cd hotel/Hotel_Management_System/build
 
-Response frame: Frame_ID + Booking_Status + Booking_ID
+run the command : cmake ..
+run the command : make
 
+After building the executable/binary file is located in build which is called myhotel
 
-#### Frame: Cancel Booking as an unregistered customer
+run the command from build folder to start the server : ./myhotel
 
-Request frame: Frame_ID + Booking_ID
+open a new terminal and reach the folder /hotel/Hotel_Management_System/client : cd hotel/Hotel_Management_System/client
 
-Response frame: Frame_ID + Cancel_Booking_Status
+run the command : python integration_test.py
 
+Then the implemented integration test cases will be running and report the result which is printed on the terminal
 
-##### Frame : Register an account as a new user
+# To Be Done
 
-Request frame: Frame_ID + Name + Password + Default_Payment
+Redesign the arrangement of software components.
 
-Response frame: Frame_ID + Client_ID + Register_Status
+The current data base is still in POC process, for instance later sqlite3 will be tried.
 
+The case that the Handler pointer is a nullptr shall be handled.
 
-#### Frame : Modify password
+The error handling will be extended.
 
-Request frame: Frame_ID + Old_Password + New_Password
+Clean code shall be followed.
 
-Response frame: Frame_ID + Modification_Status
+Refactor the code to remove bad coding smell shall be done during the development.
 
+Software Architecture may be optimized, for instance to use abstract class instead of a concret class.
 
-#### Frame: Delete account
+Unit test will be done on both side.
 
-Request frame: Frame_ID + Client_ID + Password
+Integration test will be extended according to use case.
 
-Response frame: Frame_ID + Client_ID + Modification_Status
+Synchronization of communication protocals between server and client will be implemented.
 
+File format and data structure for the synchronization shall be designed.
 
-#### Frame: Login
+Multi-threading for server will be implemented to support multiple clients requests.
 
-Request frame: Frame_ID + Name + Password
+Basic Types shall be redefined.
 
-Response frame: Frame_ID + Login_Status
+Algorithm optimization shall be done.
 
+Client Software Architecture shall be redefined.
 
-#### Frame: Logout
+Heap-Pointer shall be considered to be designed by using stack pointer.
 
-Request frame: Frame_ID
+More template generic design shall be considered.
 
-Response frame: Frame_ID + Logout_Status
+It shall be designed and implemented that after login the server shall deploy a token for the connected client for security.
 
-
+The documentation for software architecture, communication frame defination and unit design shall be done.

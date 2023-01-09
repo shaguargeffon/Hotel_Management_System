@@ -19,6 +19,7 @@ public:
     virtual bool delete_item(T& item)=0;
     virtual bool update_database(T& item)=0;
     virtual std::pair<T, bool> find_item(T& item)=0;
+    virtual std::set<T> get_items() const = 0;
     //virtual std::pair<T, bool> get_item(T& item)=0;
     virtual ~AbsDataBase()=default;
 
@@ -122,7 +123,13 @@ public:
     }
 
 
+    std::set<T> get_items() const final
+    {
+        return items;
+    }
+
 private:
     std::set<T> items;
+    std::set<Room> rooms;
 };
 

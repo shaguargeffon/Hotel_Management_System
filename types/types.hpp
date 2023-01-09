@@ -80,7 +80,14 @@
 
     struct Room
     {
-        uint16_t id;
+        Room() = default;
+
+        Room(char* room_id)
+        {
+            memcpy(id, room_id, 3);
+        }
+
+        char id[3];
 
         bool operator==(const Room& room) const
         {
@@ -96,6 +103,16 @@
 
     struct Date
     {
+
+        Date(){}
+
+        Date(char* day_p, char* month_p, char* year_p)
+        {
+            memcpy(day, day_p, 2);
+            memcpy(month, month_p, 2);
+            memcpy(year, year_p, 4);
+        }
+
         bool operator==(const Date& date) const
         {
             return (day==date.day && month==date.month && year==date.year);
@@ -135,9 +152,9 @@
             return res;
         }
 
-        uint8_t day;
-        uint8_t month;
-        uint16_t year;
+        char day[2];
+        char month[2];
+        char year[4];
     };
 
 

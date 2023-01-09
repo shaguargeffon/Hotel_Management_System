@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <fstream>
 #include <memory>
+#include <set>
 #include "types.hpp"
 #include "database.hpp"
 using namespace std;
@@ -427,7 +428,129 @@ using namespace std;
 
 
 
+    //Request frame: Frame_ID (30, 2bytes) + Client_ID (5bytes) + Room(3bytes) + DateGroupSize(2bytes) + DateGroup(day(2bytes) + month(2bytes) + year(4bytes))
+    //Positive Response frame: Frame_ID (70, 2bytes) + Client_ID (5bytes)
+    //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
+    class HandlerBookingRoom: public Handler
+    {
+        public:
+            explicit HandlerBookingRoom(AbsDataBase<ITEM>* database): Handler(database)
+            {
+                // initialize buffers
+                memset(frame_id_request, '\0', sizeof(frame_id_request));
+                memset(client_id, '\0', sizeof(client_id));
+                memset(error_code, '\0', sizeof(error_code));
+                memset(room_id, '\0', sizeof(room_id));
+                memset(date_group_size, '\0', sizeof(date_group_size));
+            }
 
+            bool segment_request_frame(const char* request_frame_p, uint16_t size) final
+            {
+                memory_copy(frame_id_request, 0, request_frame_p, 0, 2);
+
+                memory_copy(client_id, 0, request_frame_p, 2, 5);
+
+                memory_copy(room_id, 0, request_frame_p, 7, 3);
+
+                memory_copy(date_group_size, 0, request_frame_p, 10, 2);
+
+                data_group_integer_size = (date_group_size[0] - '0') * 10 + (date_group_size[1] - '0');
+
+                uint8_t start_byte = 12;
+
+                for(uint8_t i = 0; i<data_group_integer_size; i++)
+                {
+                    char day_temp[2];
+                    char month_temp[2];
+                    char year_temp[4];
+
+                    memory_copy(day_temp, 0, request_frame_p, start_byte, 2);
+                    start_byte += 2;
+                    memory_copy(month_temp, 0, request_frame_p, start_byte, 2);
+                    start_byte += 2;
+                    memory_copy(year_temp, 0, request_frame_p, start_byte, 4);
+                    start_byte += 4;
+
+                    Date date_temp(day_temp, month_temp, year_temp);
+                    date_group.insert(date_temp);
+                }
+
+                return true;
+            }
+
+            uint16_t build_response_frame(char* resonse_buff, bool is_response_positive) final
+            {
+                if(is_response_positive)
+                {
+                    char positive_frame_id_response[2] = {'6', '1'};
+                    //memory_copy(frame_id_response, 0, positive_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 2, client_id, 0, 5);
+                    resonse_buff[7] = '\0';
+                    return 8;
+                }
+                else
+                {
+                    char negative_frame_id_response[2] = {'F', 'F'};
+                    memory_copy(resonse_buff, 0, negative_frame_id_response, 0, 2);
+                    memory_copy(resonse_buff, 2, client_id, 0, 5);
+                    memory_copy(resonse_buff, 7, error_code, 0, 3);
+                    resonse_buff[10] = '\0';
+                    return 11;
+                }
+            }
+
+
+            bool parse_request_frame() final
+            {
+                Client client(client_id);
+                
+                ITEM item(client);
+
+                Room room(room_id);
+
+                //bool booking(Room room, std::set<Date> dates)
+                //item.booking(room, date_group);
+                
+                auto res = database_p->find_item(item);
+
+                if(!res.second) // client is not found
+                {
+                    memory_copy(error_code, 0, "CNF", 0, 3); // set error code to CNF -> client not found
+                    return false;
+                }
+
+                //TBD: check if there is any room already booked 
+                if(res.first.get_client().get_login_status()) // already logged
+                {
+                    //res.first.modify_login_status(false); // change login status to false
+                    //database_p->update_database(res.first);
+                    
+                    std::set<ITEM> items = database_p->get_items();
+
+                    //bool is_any_room_booked = 
+
+                    bool is_booking_successful = res.first.booking(room, date_group);
+                    
+                    
+                    return true;
+                }
+                else // not logged, then booking is not allowed.
+                {
+                    memory_copy(error_code, 0, "BNA", 0, 3); // set error code to BNA -> Booking not allowed
+                    return false;
+                }
+            }
+
+        private:
+            char frame_id_request[2];
+            char error_code[3];
+            char client_id[5];
+            char room_id[3];
+            char date_group_size[3];
+            uint8_t data_group_integer_size{0};
+            std::set<Date> date_group;
+    };
 
 
 
