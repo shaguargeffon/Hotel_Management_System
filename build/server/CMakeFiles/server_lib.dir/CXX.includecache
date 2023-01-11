@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -62,15 +62,15 @@ iostream
 string.h
 -
 
-/home/shaguar/project/hotel/Hotel_Management_System/server/server.cpp
+/home/di/project/Hotel_Management_System/server/server.cpp
 server.hpp
-/home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
+/home/di/project/Hotel_Management_System/server/server.hpp
 iostream
 -
 database.hpp
-/home/shaguar/project/hotel/Hotel_Management_System/server/database.hpp
+/home/di/project/Hotel_Management_System/server/database.hpp
 
-/home/shaguar/project/hotel/Hotel_Management_System/server/server.hpp
+/home/di/project/Hotel_Management_System/server/server.hpp
 stdio.h
 -
 ctype.h
@@ -86,5 +86,5 @@ sys/socket.h
 stdlib.h
 -
 handler.hpp
-/home/shaguar/project/hotel/Hotel_Management_System/server/handler.hpp
+/home/di/project/Hotel_Management_System/server/handler.hpp
 

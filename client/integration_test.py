@@ -70,9 +70,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.register_request_message.encode('utf-8'))
 
         register_response_message = Test.socket.recv(1024)
-        register_response_message = register_response_message.rstrip('\x00')
 
-        if register_response_message == Test.register_response_positive_message:
+        if register_response_message.decode('utf-8') == Test.register_response_positive_message:
             print("Integration Test Case 1 : one time Register : OK")
         else:
             print("Test case 1: register response message: ", register_response_message)
@@ -82,12 +81,11 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.unregister_request_message.encode('utf-8'))
 
         unregister_response_message = Test.socket.recv(1024)
-        unregister_response_message = unregister_response_message.rstrip('\x00')
 
-        if unregister_response_message == Test.unregister_response_positive_message:
+        if unregister_response_message.decode('utf-8') == Test.unregister_response_positive_message:
             print("Integration Test Case 1 : Unregister after register : OK")
         else:
-            print("Test case 1: unregister response message: ", unregister_response_message)
+            print("Test case 1: unregister response message: ", unregister_response_message.encode)
 
         time.sleep(2)
 
@@ -98,9 +96,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.register_request_message.encode('utf-8'))
 
         register_response_message = Test.socket.recv(1024)
-        register_response_message = register_response_message.rstrip('\x00')
 
-        if register_response_message == Test.register_response_positive_message:
+        if register_response_message.decode('utf-8') == Test.register_response_positive_message:
             print("Integration Test Case 2 : one time Register : OK")
         else:
             print("Test case 2: first register response message: ", register_response_message)
@@ -110,9 +107,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.register_request_message.encode('utf-8')) # send a register request again
 
         register_response_message = Test.socket.recv(1024)
-        register_response_message = register_response_message.rstrip('\x00')
 
-        if register_response_message == Test.register_response_negative_message:
+        if register_response_message.decode('utf-8') == Test.register_response_negative_message:
             print("Integration Test Case 2 : Repeate Register request : OK")
         else:
             print("Test case 2: second register response message: ", register_response_message)
@@ -124,9 +120,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.unregister_request_message.encode('utf-8'))
 
         unregister_response_message = Test.socket.recv(1024)
-        unregister_response_message = unregister_response_message.rstrip('\x00')
 
-        if unregister_response_message == Test.unregister_response_positive_message:
+        if unregister_response_message.decode('utf-8') == Test.unregister_response_positive_message:
             print("Integration Test Case 2 : Unregister after register : OK")
         else:
             print("Test case 2: unregister response message: ", unregister_response_message)
@@ -140,9 +135,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.register_request_message.encode('utf-8'))
 
         register_response_message = Test.socket.recv(1024)
-        register_response_message = register_response_message.rstrip('\x00')
-
-        if register_response_message == Test.register_response_positive_message:
+        
+        if register_response_message.decode('utf-8') == Test.register_response_positive_message:
             print("Integration Test Case 3 : one time Register : OK")
         else:
             print("Integration Test case 3 Error: register response message: Fail: ", register_response_message)
@@ -152,9 +146,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.login_request_message.encode('utf-8')) # send a login request
 
         login_response_message = Test.socket.recv(1024)
-        login_response_message = login_response_message.rstrip('\x00')
 
-        if login_response_message == Test.login_response_positive_message:
+        if login_response_message.decode('utf-8') == Test.login_response_positive_message:
             print("Integration Test Case 3 : Positive login response : OK")
         else:
             print("Integration Test case 3: Positive login response: Fail: ", login_response_message)
@@ -164,9 +157,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.login_request_message.encode('utf-8')) # send a login request again
 
         login_response_message = Test.socket.recv(1024)
-        login_response_message = login_response_message.rstrip('\x00')
 
-        if login_response_message == Test.login_response_login_repeat:
+        if login_response_message.decode('utf-8') == Test.login_response_login_repeat:
             print("Integration Test Case 3 : Login repeated : OK")
         else:
             print("Integration Test case 3: Login repeated: Fail: ", login_response_message)
@@ -178,9 +170,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.logout_request_message.encode('utf-8')) # send a logout request
 
         logout_response_message = Test.socket.recv(1024)
-        logout_response_message = logout_response_message.rstrip('\x00')
 
-        if logout_response_message == Test.logout_response_positive_message:
+        if logout_response_message .decode('utf-8')== Test.logout_response_positive_message:
             print("Integration Test Case 3 : Positive logout response : OK")
         else:
             print("Test case 3: Positive logout response: Fail: ", logout_response_message)
@@ -191,9 +182,8 @@ class TestRegisterUnregister(Test):
         Test.socket.send(Test.logout_request_message.encode('utf-8')) # send a logout request again
 
         logout_response_message = Test.socket.recv(1024)
-        logout_response_message = logout_response_message.rstrip('\x00')
-
-        if logout_response_message == Test.logout_response_logout_repeat:
+ 
+        if logout_response_message.decode('utf-8') == Test.logout_response_logout_repeat:
             print("Integration Test Case 3 : Logout repeated : OK")
         else:
             print("Test case 3: Logout repeated: Fail: ", logout_response_message)

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/handler_lib.dir/handler.cpp.o"
-  "libhandler.pdb"
   "libhandler.a"
+  "libhandler.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

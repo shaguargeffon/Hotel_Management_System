@@ -88,7 +88,7 @@ using namespace std;
                     memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     resonse_buff[7] = '\0';
-                    return 8;
+                    return 7;
                 }
                 else
                 {
@@ -97,7 +97,7 @@ using namespace std;
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     memory_copy(resonse_buff, 7, error_code, 0, 3);
                     resonse_buff[10] = '\0';
-                    return 11;
+                    return 10;
                 }
             }
 
@@ -172,7 +172,7 @@ using namespace std;
                     memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     resonse_buff[7] = '\0';
-                    return 8;
+                    return 7;
                 }
                 else
                 {
@@ -181,7 +181,7 @@ using namespace std;
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     memory_copy(resonse_buff, 7, error_code, 0, 3);
                     resonse_buff[10] = '\0';
-                    return 11;
+                    return 10;
                 }
             }
 
@@ -267,7 +267,7 @@ using namespace std;
                     memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     resonse_buff[7] = '\0';
-                    return 8;
+                    return 7;
                 }
                 else
                 {
@@ -276,7 +276,7 @@ using namespace std;
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     memory_copy(resonse_buff, 7, error_code, 0, 3);
                     resonse_buff[10] = '\0';
-                    return 11;
+                    return 10;
                 }
             }
 
@@ -369,7 +369,7 @@ using namespace std;
                     memory_copy(resonse_buff, 0, positive_frame_id_response, 0, 2);
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     resonse_buff[7] = '\0';
-                    return 8;
+                    return 7;
                 }
                 else
                 {
@@ -378,7 +378,7 @@ using namespace std;
                     memory_copy(resonse_buff, 2, client_id, 0, 5);
                     memory_copy(resonse_buff, 7, error_code, 0, 3);
                     resonse_buff[10] = '\0';
-                    return 11;
+                    return 10;
                 }
             }
 
@@ -427,7 +427,7 @@ using namespace std;
     };
 
 
-
+/*
     //Request frame: Frame_ID (30, 2bytes) + Client_ID (5bytes) + Room(3bytes) + DateGroupSize(2bytes) + DateGroup(day(2bytes) + month(2bytes) + year(4bytes))
     //Positive Response frame: Frame_ID (70, 2bytes) + Client_ID (5bytes)
     //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
@@ -552,7 +552,7 @@ using namespace std;
             std::set<Date> date_group;
     };
 
-
+*/
 
 
 

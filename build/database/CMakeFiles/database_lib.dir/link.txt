@@ -1,2 +1,2 @@
-/usr/bin/ar qc libdatabase.a  CMakeFiles/database_lib.dir/database.cpp.o
+/usr/bin/ar qc libdatabase.a CMakeFiles/database_lib.dir/database.cpp.o
 /usr/bin/ranlib libdatabase.a

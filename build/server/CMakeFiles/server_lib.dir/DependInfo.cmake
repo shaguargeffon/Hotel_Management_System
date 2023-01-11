@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shaguar/project/hotel/Hotel_Management_System/server/server.cpp" "/home/shaguar/project/hotel/Hotel_Management_System/build/server/CMakeFiles/server_lib.dir/server.cpp.o"
+  "/home/di/project/Hotel_Management_System/server/server.cpp" "/home/di/project/Hotel_Management_System/build/server/CMakeFiles/server_lib.dir/server.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,9 +14,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../server"
   "../handler"
   "../database"
-  "/home/shaguar/project/hotel/Hotel_Management_Systemserver/types"
-  "/home/shaguar/project/hotel/Hotel_Management_Systemserver/handler"
-  "/home/shaguar/project/hotel/Hotel_Management_Systemserver/database"
+  "/home/di/project/Hotel_Management_Systemserver/types"
+  "/home/di/project/Hotel_Management_Systemserver/handler"
+  "/home/di/project/Hotel_Management_Systemserver/database"
   )
 
 # Targets to which this target links.

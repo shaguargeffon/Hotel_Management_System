@@ -1,2 +1,2 @@
-/usr/bin/ar qc libserver_lib.a  CMakeFiles/server_lib.dir/server.cpp.o
+/usr/bin/ar qc libserver_lib.a CMakeFiles/server_lib.dir/server.cpp.o
 /usr/bin/ranlib libserver_lib.a
