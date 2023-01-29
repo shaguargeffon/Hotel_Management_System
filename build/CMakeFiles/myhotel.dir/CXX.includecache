@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+../com/com.hpp
+stdio.h
+-
+ctype.h
+-
+unistd.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+sys/socket.h
+-
+stdlib.h
+-
+handler.hpp
+../com/handler.hpp
+
 ../database/database.hpp
 iostream
 -
@@ -56,33 +74,15 @@ types.hpp
 database.hpp
 ../handler/database.hpp
 
-../server/server.hpp
-stdio.h
--
-ctype.h
--
-unistd.h
--
-sys/types.h
--
-arpa/inet.h
--
-sys/socket.h
--
-stdlib.h
--
-handler.hpp
-../server/handler.hpp
-
 ../types/types.hpp
 iostream
 -
 string.h
 -
 
-/home/di/project/Hotel_Management_System/main.cpp
-server.hpp
-/home/di/project/Hotel_Management_System/server.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/main.cpp
+com.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/com.hpp
 handler.hpp
-/home/di/project/Hotel_Management_System/handler.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/handler.hpp
 

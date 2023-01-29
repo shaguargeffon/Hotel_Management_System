@@ -15,13 +15,13 @@ set(CMAKE_CXX_STANDARD 14 CACHE STRING "the C++ standard to use for this project
 #include_directories(${PROJECT_SOURCE_DIR}/hotel)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/types)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/server)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/com)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/handler)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
 
 add_subdirectory(database)
 add_subdirectory(handler)
-add_subdirectory(server)
+add_subdirectory(com)
 
 
 
@@ -36,7 +36,7 @@ add_executable(myhotel main.cpp)
 #target_link_libraries(${PROJECT_NAME} PRIVATE server_lib protocal_lib service_lib hotel_lib)
 
 
-target_link_libraries(myhotel PRIVATE database_lib server_lib handler_lib)
+target_link_libraries(myhotel PRIVATE database_lib com_lib handler_lib)
 
 
 

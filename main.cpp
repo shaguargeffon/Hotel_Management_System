@@ -6,7 +6,7 @@
 //#include <arpa/inet.h>
 //#include <sys/socket.h>
 //#include <stdlib.h>
-#include "server.hpp"
+#include "com.hpp"
 #include "handler.hpp"
 
 
@@ -36,19 +36,19 @@ void* thread_2(void *arg)
 int main()
 {
     
-    TcpServer tcp_server(9527, 32);
+    COM com(9527, 32);
 
 
-    tcp_server.initialize_server();
+    com.initialize_server();
 
 
-    tcp_server.start();
+    com.start();
 
 
-    tcp_server.stop_server();
+    com.stop_server();
 
 
-    tcp_server.stop_client();
+    com.stop_client();
 
 
 
