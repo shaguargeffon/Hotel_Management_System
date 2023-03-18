@@ -61,7 +61,7 @@ void COM::start_server()
 {
     DataBase<ITEM> data_base;
 
-    HandlerFactory handler_factory(rec_buf);
+    ServiceFactory service_factory(rec_buf);
 
     while(1)
     {
@@ -73,13 +73,13 @@ void COM::start_server()
             continue;
         }
 
-        auto handler = handler_factory.create_handler(&data_base);
+        auto service = service_factory.create_service(&data_base);
 
-        handler->segment_request_frame(rec_buf, receive_size);
+        service->segment_request_frame(rec_buf, receive_size);
 
-        bool is_request_frame_positive = handler->parse_request_frame();
+        bool is_request_frame_positive = service->parse_request_frame();
 
-        unsigned int send_buf_size = handler->build_response_frame(send_buf, is_request_frame_positive);
+        unsigned int send_buf_size = service->build_response_frame(send_buf, is_request_frame_positive);
 
         write(cfd, send_buf, send_buf_size);
     }

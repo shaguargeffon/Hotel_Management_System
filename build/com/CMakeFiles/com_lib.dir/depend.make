@@ -3,7 +3,7 @@
 
 com/CMakeFiles/com_lib.dir/com.cpp.o: ../database/database.hpp
 com/CMakeFiles/com_lib.dir/com.cpp.o: ../database/item.hpp
-com/CMakeFiles/com_lib.dir/com.cpp.o: ../handler/handler.hpp
+com/CMakeFiles/com_lib.dir/com.cpp.o: ../service/service.hpp
 com/CMakeFiles/com_lib.dir/com.cpp.o: ../types/types.hpp
 com/CMakeFiles/com_lib.dir/com.cpp.o: ../com/com.cpp
 com/CMakeFiles/com_lib.dir/com.cpp.o: ../com/com.hpp

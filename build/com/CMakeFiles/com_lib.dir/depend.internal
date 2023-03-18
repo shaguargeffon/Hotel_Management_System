@@ -4,7 +4,7 @@
 com/CMakeFiles/com_lib.dir/com.cpp.o
  ../database/database.hpp
  ../database/item.hpp
- ../handler/handler.hpp
+ ../service/service.hpp
  ../types/types.hpp
  /home/shaguar/project/hotel/Hotel_Management_System/com/com.cpp
  /home/shaguar/project/hotel/Hotel_Management_System/com/com.hpp

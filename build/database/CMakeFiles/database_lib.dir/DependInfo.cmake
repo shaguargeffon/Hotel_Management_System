@@ -12,7 +12,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../types"
   "../com"
-  "../handler"
+  "../service"
   "../database"
   "/home/shaguar/project/hotel/Hotel_Management_Systemdatabase/sqlite"
   )

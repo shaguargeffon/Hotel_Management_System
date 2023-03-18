@@ -5,6 +5,6 @@ CMakeFiles/myhotel.dir/main.cpp.o
  ../com/com.hpp
  ../database/database.hpp
  ../database/item.hpp
- ../handler/handler.hpp
+ ../service/service.hpp
  ../types/types.hpp
  /home/shaguar/project/hotel/Hotel_Management_System/main.cpp

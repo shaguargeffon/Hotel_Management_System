@@ -196,6 +196,9 @@ database_lib_LIB_DEPENDS:STATIC=
 //Dependencies for target
 handler_lib_LIB_DEPENDS:STATIC=
 
+//Dependencies for target
+service_lib_LIB_DEPENDS:STATIC=
+
 
 ########################
 # INTERNAL cache entries

@@ -11,11 +11,11 @@
 using namespace std;
 
 
-    class Handler
+    class Service
     {
         public:
 
-            explicit Handler(AbsDataBase<ITEM>* database): database_p(database)
+            explicit Service(AbsDataBase<ITEM>* database): database_p(database)
             {
 
             }
@@ -35,7 +35,7 @@ using namespace std;
                 return true;
             }
 
-            virtual ~Handler()
+            virtual ~Service()
             {
 
             }
@@ -49,10 +49,10 @@ using namespace std;
     //Request frame: Frame_ID (10, 2bytes) + Client_ID (5bytes) + Password(8bytes)
     //Positive Response frame: Frame_ID (50, 2bytes) + Client_ID (5bytes)
     //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
-    class HandlerRegister: public Handler
+    class ServiceRegister: public Service
     {
         public:
-            explicit HandlerRegister(AbsDataBase<ITEM>* database): Handler(database)
+            explicit ServiceRegister(AbsDataBase<ITEM>* database): Service(database)
             {
                 // initialize buffers
                 memset(frame_id_request, '\0', sizeof(frame_id_request));
@@ -133,10 +133,10 @@ using namespace std;
     //Positive Response frame: Frame_ID (51, 2bytes) + Client_ID (5bytes)
     //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
     //Error code : Client not found -> CNF, Password is wrong -> PAW
-    class HandlerUnregister: public Handler
+    class ServiceUnregister: public Service
     {
         public:
-            explicit HandlerUnregister(AbsDataBase<ITEM>* database): Handler(database)
+            explicit ServiceUnregister(AbsDataBase<ITEM>* database): Service(database)
             {
                 // initialize buffers
                 memset(frame_id_request, '\0', sizeof(frame_id_request));
@@ -229,10 +229,10 @@ using namespace std;
     //Request frame: Frame_ID (20, 2bytes) + Client_ID (5bytes) + password(8bytes)
     //Positive Response frame: Frame_ID (60, 2bytes) + Client_ID (5bytes)
     //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
-    class HandlerLogin: public Handler
+    class ServiceLogin: public Service
     {
         public:
-            explicit HandlerLogin(AbsDataBase<ITEM>* database): Handler(database)
+            explicit ServiceLogin(AbsDataBase<ITEM>* database): Service(database)
             {
                 // initialize buffers
                 memset(frame_id_request, '\0', sizeof(frame_id_request));
@@ -331,10 +331,10 @@ using namespace std;
     //Request frame: Frame_ID (21, 2bytes) + Client_ID (5bytes) + password(8bytes)
     //Positive Response frame: Frame_ID (61, 2bytes) + Client_ID (5bytes)
     //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
-    class HandlerLogout: public Handler
+    class ServiceLogout: public Service
     {
         public:
-            explicit HandlerLogout(AbsDataBase<ITEM>* database): Handler(database)
+            explicit ServiceLogout(AbsDataBase<ITEM>* database): Service(database)
             {
                 // initialize buffers
                 memset(frame_id_request, '\0', sizeof(frame_id_request));
@@ -431,10 +431,10 @@ using namespace std;
     //Request frame: Frame_ID (30, 2bytes) + Client_ID (5bytes) + Room(3bytes) + DateGroupSize(2bytes) + DateGroup(day(2bytes) + month(2bytes) + year(4bytes))
     //Positive Response frame: Frame_ID (70, 2bytes) + Client_ID (5bytes)
     //Negative Response frame: Frame_ID (FF, 2bytes) + Client_ID (5bytes) + ErrorCode (3bytes)
-    class HandlerBookingRoom: public Handler
+    class ServiceBookingRoom: public Service
     {
         public:
-            explicit HandlerBookingRoom(AbsDataBase<ITEM>* database): Handler(database)
+            explicit ServiceBookingRoom(AbsDataBase<ITEM>* database): Service(database)
             {
                 // initialize buffers
                 memset(frame_id_request, '\0', sizeof(frame_id_request));
@@ -573,41 +573,41 @@ using namespace std;
 
 
 
-    class HandlerFactory
+    class ServiceFactory
     {
         public:
-            explicit HandlerFactory(char* buff): buff(buff)
+            explicit ServiceFactory(char* buff): buff(buff)
             {
 
             }
 
-            //Create handler instance due to Frame_ID
-            std::shared_ptr<Handler> create_handler(AbsDataBase<ITEM>* database)
+            //Create Service instance due to Frame_ID
+            std::shared_ptr<Service> create_service(AbsDataBase<ITEM>* database)
             {
                 //Handle kinds of command from client
-                if(buff[0] == '1' && buff[1] == '0') // register handler
+                if(buff[0] == '1' && buff[1] == '0') // register service
                 {
                     std::cout<<"Register Request!"<<std::endl;
-                    handler_p = std::make_shared<HandlerRegister>(database);
-                    return handler_p;
+                    service_p = std::make_shared<ServiceRegister>(database);
+                    return service_p;
                 }
-                else if(buff[0] == '1' && buff[1] == '1') // unregister handler
+                else if(buff[0] == '1' && buff[1] == '1') // unregister service
                 {
                     std::cout<<"Unregister Request!"<<std::endl;
-                    handler_p = std::make_shared<HandlerUnregister>(database);
-                    return handler_p;
+                    service_p = std::make_shared<ServiceUnregister>(database);
+                    return service_p;
                 }
-                else if(buff[0] == '2' && buff[1] == '0') // login handler
+                else if(buff[0] == '2' && buff[1] == '0') // login service
                 {
                     std::cout<<"Login Request!"<<std::endl;
-                    handler_p = std::make_shared<HandlerLogin>(database);
-                    return handler_p;
+                    service_p = std::make_shared<ServiceLogin>(database);
+                    return service_p;
                 }
-                else if(buff[0] == '2' && buff[1] == '1') // logout handler
+                else if(buff[0] == '2' && buff[1] == '1') // logout service
                 {
                     std::cout<<"Logout Request!"<<std::endl;
-                    handler_p = std::make_shared<HandlerLogout>(database);
-                    return handler_p;
+                    service_p = std::make_shared<ServiceLogout>(database);
+                    return service_p;
                 }
                 else
                 {
@@ -615,14 +615,14 @@ using namespace std;
                 }
             }
 
-            ~HandlerFactory()
+            ~ServiceFactory()
             {
-                //delete register_handler_p;
+                //delete register_Service_p;
             }
 
         private:
             char* buff;
-            std::shared_ptr<Handler> handler_p{nullptr};
+            std::shared_ptr<Service> service_p{nullptr};
 
     };
 

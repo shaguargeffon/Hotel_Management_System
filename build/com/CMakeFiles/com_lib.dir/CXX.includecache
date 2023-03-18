@@ -38,11 +38,11 @@ algorithm
 types.hpp
 ../database/types.hpp
 
-../handler/handler.hpp
+../service/service.hpp
 iostream
 -
 database.hpp
-../handler/database.hpp
+../service/database.hpp
 unistd.h
 -
 fstream
@@ -52,9 +52,9 @@ memory
 set
 -
 types.hpp
-../handler/types.hpp
+../service/types.hpp
 database.hpp
-../handler/database.hpp
+../service/database.hpp
 
 ../types/types.hpp
 iostream
@@ -85,6 +85,6 @@ sys/socket.h
 -
 stdlib.h
 -
-handler.hpp
-/home/shaguar/project/hotel/Hotel_Management_System/com/handler.hpp
+service.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/com/service.hpp
 

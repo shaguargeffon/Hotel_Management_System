@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles /home/shaguar/project/hotel/Hotel_Management_System/build/service/CMakeFiles/progress.marks
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f CMakeFiles/Makefile2 service/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f CMakeFiles/Makefile2 service/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,97 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f CMakeFiles/Makefile2 service/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f CMakeFiles/Makefile2 service/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named myhotel
+# Convenience name for target.
+service/CMakeFiles/service_lib.dir/rule:
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f CMakeFiles/Makefile2 service/CMakeFiles/service_lib.dir/rule
+.PHONY : service/CMakeFiles/service_lib.dir/rule
 
-# Build rule for target.
-myhotel: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 myhotel
-.PHONY : myhotel
+# Convenience name for target.
+service_lib: service/CMakeFiles/service_lib.dir/rule
 
-# fast build rule for target.
-myhotel/fast:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/build
-.PHONY : myhotel/fast
-
-#=============================================================================
-# Target rules for targets named database_lib
-
-# Build rule for target.
-database_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 database_lib
-.PHONY : database_lib
-
-# fast build rule for target.
-database_lib/fast:
-	$(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/build
-.PHONY : database_lib/fast
-
-#=============================================================================
-# Target rules for targets named service_lib
-
-# Build rule for target.
-service_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service_lib
 .PHONY : service_lib
 
 # fast build rule for target.
 service_lib/fast:
-	$(MAKE) -f service/CMakeFiles/service_lib.dir/build.make service/CMakeFiles/service_lib.dir/build
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f service/CMakeFiles/service_lib.dir/build.make service/CMakeFiles/service_lib.dir/build
 .PHONY : service_lib/fast
 
-#=============================================================================
-# Target rules for targets named com_lib
+service.o: service.cpp.o
 
-# Build rule for target.
-com_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 com_lib
-.PHONY : com_lib
-
-# fast build rule for target.
-com_lib/fast:
-	$(MAKE) -f com/CMakeFiles/com_lib.dir/build.make com/CMakeFiles/com_lib.dir/build
-.PHONY : com_lib/fast
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : service.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.o
-.PHONY : main.cpp.o
+service.cpp.o:
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f service/CMakeFiles/service_lib.dir/build.make service/CMakeFiles/service_lib.dir/service.cpp.o
+.PHONY : service.cpp.o
 
-main.i: main.cpp.i
+service.i: service.cpp.i
 
-.PHONY : main.i
+.PHONY : service.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.i
-.PHONY : main.cpp.i
+service.cpp.i:
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f service/CMakeFiles/service_lib.dir/build.make service/CMakeFiles/service_lib.dir/service.cpp.i
+.PHONY : service.cpp.i
 
-main.s: main.cpp.s
+service.s: service.cpp.s
 
-.PHONY : main.s
+.PHONY : service.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.s
-.PHONY : main.cpp.s
+service.cpp.s:
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(MAKE) -f service/CMakeFiles/service_lib.dir/build.make service/CMakeFiles/service_lib.dir/service.cpp.s
+.PHONY : service.cpp.s
 
 # Help Target
 help:
@@ -197,13 +160,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... myhotel"
-	@echo "... database_lib"
 	@echo "... service_lib"
-	@echo "... com_lib"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... service.o"
+	@echo "... service.i"
+	@echo "... service.s"
 .PHONY : help
 
 
@@ -215,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/shaguar/project/hotel/Hotel_Management_System/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
