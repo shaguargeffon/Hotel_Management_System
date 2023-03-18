@@ -2,8 +2,13 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
-#target_compile_features(myhotel PUBLIC cxx_std_11)
-set(CMAKE_CXX_STANDARD 14 CACHE STRING "the C++ standard to use for this project")
+#target_compile_features(myhotel PUBLIC cxx_std_17)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+#set(CMAKE_CXX_STANDARD 17 CACHE STRING "the C++ standard to use for this project")
 
 #string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -31,7 +36,7 @@ add_subdirectory(com)
 #add_library(hotel_lib hotel/hotel.cpp)
 
 add_executable(myhotel main.cpp)
-#target_compile_features(myhotel PUBLIC cxx_std_11)
+#target_compile_features(myhotel PUBLIC cxx_std_17)
 
 #target_link_libraries(${PROJECT_NAME} PRIVATE server_lib protocal_lib service_lib hotel_lib)
 
