@@ -191,13 +191,16 @@ HOTEL_SOURCE_DIR:STATIC=/home/shaguar/project/hotel/Hotel_Management_System
 com_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
-database_lib_LIB_DEPENDS:STATIC=
+event_handler_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
-handler_lib_LIB_DEPENDS:STATIC=
+frame_handler_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
-service_lib_LIB_DEPENDS:STATIC=
+frame_lib_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+protocol_lib_LIB_DEPENDS:STATIC=
 
 
 ########################
@@ -298,7 +301,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

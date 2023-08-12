@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named event_handler_lib
+
+# Build rule for target.
+event_handler_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 event_handler_lib
+.PHONY : event_handler_lib
+
+# fast build rule for target.
+event_handler_lib/fast:
+	$(MAKE) -f CMakeFiles/event_handler_lib.dir/build.make CMakeFiles/event_handler_lib.dir/build
+.PHONY : event_handler_lib/fast
+
+#=============================================================================
 # Target rules for targets named myhotel
 
 # Build rule for target.
@@ -124,30 +137,17 @@ myhotel/fast:
 .PHONY : myhotel/fast
 
 #=============================================================================
-# Target rules for targets named database_lib
+# Target rules for targets named protocol_lib
 
 # Build rule for target.
-database_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 database_lib
-.PHONY : database_lib
+protocol_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 protocol_lib
+.PHONY : protocol_lib
 
 # fast build rule for target.
-database_lib/fast:
-	$(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/build
-.PHONY : database_lib/fast
-
-#=============================================================================
-# Target rules for targets named service_lib
-
-# Build rule for target.
-service_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 service_lib
-.PHONY : service_lib
-
-# fast build rule for target.
-service_lib/fast:
-	$(MAKE) -f service/CMakeFiles/service_lib.dir/build.make service/CMakeFiles/service_lib.dir/build
-.PHONY : service_lib/fast
+protocol_lib/fast:
+	$(MAKE) -f CMakeFiles/protocol_lib.dir/build.make CMakeFiles/protocol_lib.dir/build
+.PHONY : protocol_lib/fast
 
 #=============================================================================
 # Target rules for targets named com_lib
@@ -159,8 +159,142 @@ com_lib: cmake_check_build_system
 
 # fast build rule for target.
 com_lib/fast:
-	$(MAKE) -f com/CMakeFiles/com_lib.dir/build.make com/CMakeFiles/com_lib.dir/build
+	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/build
 .PHONY : com_lib/fast
+
+#=============================================================================
+# Target rules for targets named frame_lib
+
+# Build rule for target.
+frame_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 frame_lib
+.PHONY : frame_lib
+
+# fast build rule for target.
+frame_lib/fast:
+	$(MAKE) -f CMakeFiles/frame_lib.dir/build.make CMakeFiles/frame_lib.dir/build
+.PHONY : frame_lib/fast
+
+#=============================================================================
+# Target rules for targets named frame_handler_lib
+
+# Build rule for target.
+frame_handler_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 frame_handler_lib
+.PHONY : frame_handler_lib
+
+# fast build rule for target.
+frame_handler_lib/fast:
+	$(MAKE) -f CMakeFiles/frame_handler_lib.dir/build.make CMakeFiles/frame_handler_lib.dir/build
+.PHONY : frame_handler_lib/fast
+
+EventHandler/event_handler.o: EventHandler/event_handler.cpp.o
+
+.PHONY : EventHandler/event_handler.o
+
+# target to build an object file
+EventHandler/event_handler.cpp.o:
+	$(MAKE) -f CMakeFiles/event_handler_lib.dir/build.make CMakeFiles/event_handler_lib.dir/EventHandler/event_handler.cpp.o
+.PHONY : EventHandler/event_handler.cpp.o
+
+EventHandler/event_handler.i: EventHandler/event_handler.cpp.i
+
+.PHONY : EventHandler/event_handler.i
+
+# target to preprocess a source file
+EventHandler/event_handler.cpp.i:
+	$(MAKE) -f CMakeFiles/event_handler_lib.dir/build.make CMakeFiles/event_handler_lib.dir/EventHandler/event_handler.cpp.i
+.PHONY : EventHandler/event_handler.cpp.i
+
+EventHandler/event_handler.s: EventHandler/event_handler.cpp.s
+
+.PHONY : EventHandler/event_handler.s
+
+# target to generate assembly for a file
+EventHandler/event_handler.cpp.s:
+	$(MAKE) -f CMakeFiles/event_handler_lib.dir/build.make CMakeFiles/event_handler_lib.dir/EventHandler/event_handler.cpp.s
+.PHONY : EventHandler/event_handler.cpp.s
+
+FrameHandler/frame_handler.o: FrameHandler/frame_handler.cpp.o
+
+.PHONY : FrameHandler/frame_handler.o
+
+# target to build an object file
+FrameHandler/frame_handler.cpp.o:
+	$(MAKE) -f CMakeFiles/frame_handler_lib.dir/build.make CMakeFiles/frame_handler_lib.dir/FrameHandler/frame_handler.cpp.o
+.PHONY : FrameHandler/frame_handler.cpp.o
+
+FrameHandler/frame_handler.i: FrameHandler/frame_handler.cpp.i
+
+.PHONY : FrameHandler/frame_handler.i
+
+# target to preprocess a source file
+FrameHandler/frame_handler.cpp.i:
+	$(MAKE) -f CMakeFiles/frame_handler_lib.dir/build.make CMakeFiles/frame_handler_lib.dir/FrameHandler/frame_handler.cpp.i
+.PHONY : FrameHandler/frame_handler.cpp.i
+
+FrameHandler/frame_handler.s: FrameHandler/frame_handler.cpp.s
+
+.PHONY : FrameHandler/frame_handler.s
+
+# target to generate assembly for a file
+FrameHandler/frame_handler.cpp.s:
+	$(MAKE) -f CMakeFiles/frame_handler_lib.dir/build.make CMakeFiles/frame_handler_lib.dir/FrameHandler/frame_handler.cpp.s
+.PHONY : FrameHandler/frame_handler.cpp.s
+
+com/com.o: com/com.cpp.o
+
+.PHONY : com/com.o
+
+# target to build an object file
+com/com.cpp.o:
+	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/com/com.cpp.o
+.PHONY : com/com.cpp.o
+
+com/com.i: com/com.cpp.i
+
+.PHONY : com/com.i
+
+# target to preprocess a source file
+com/com.cpp.i:
+	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/com/com.cpp.i
+.PHONY : com/com.cpp.i
+
+com/com.s: com/com.cpp.s
+
+.PHONY : com/com.s
+
+# target to generate assembly for a file
+com/com.cpp.s:
+	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/com/com.cpp.s
+.PHONY : com/com.cpp.s
+
+frame/frame.o: frame/frame.cpp.o
+
+.PHONY : frame/frame.o
+
+# target to build an object file
+frame/frame.cpp.o:
+	$(MAKE) -f CMakeFiles/frame_lib.dir/build.make CMakeFiles/frame_lib.dir/frame/frame.cpp.o
+.PHONY : frame/frame.cpp.o
+
+frame/frame.i: frame/frame.cpp.i
+
+.PHONY : frame/frame.i
+
+# target to preprocess a source file
+frame/frame.cpp.i:
+	$(MAKE) -f CMakeFiles/frame_lib.dir/build.make CMakeFiles/frame_lib.dir/frame/frame.cpp.i
+.PHONY : frame/frame.cpp.i
+
+frame/frame.s: frame/frame.cpp.s
+
+.PHONY : frame/frame.s
+
+# target to generate assembly for a file
+frame/frame.cpp.s:
+	$(MAKE) -f CMakeFiles/frame_lib.dir/build.make CMakeFiles/frame_lib.dir/frame/frame.cpp.s
+.PHONY : frame/frame.cpp.s
 
 main.o: main.cpp.o
 
@@ -189,6 +323,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/myhotel.dir/build.make CMakeFiles/myhotel.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+protocol/protocol.o: protocol/protocol.cpp.o
+
+.PHONY : protocol/protocol.o
+
+# target to build an object file
+protocol/protocol.cpp.o:
+	$(MAKE) -f CMakeFiles/protocol_lib.dir/build.make CMakeFiles/protocol_lib.dir/protocol/protocol.cpp.o
+.PHONY : protocol/protocol.cpp.o
+
+protocol/protocol.i: protocol/protocol.cpp.i
+
+.PHONY : protocol/protocol.i
+
+# target to preprocess a source file
+protocol/protocol.cpp.i:
+	$(MAKE) -f CMakeFiles/protocol_lib.dir/build.make CMakeFiles/protocol_lib.dir/protocol/protocol.cpp.i
+.PHONY : protocol/protocol.cpp.i
+
+protocol/protocol.s: protocol/protocol.cpp.s
+
+.PHONY : protocol/protocol.s
+
+# target to generate assembly for a file
+protocol/protocol.cpp.s:
+	$(MAKE) -f CMakeFiles/protocol_lib.dir/build.make CMakeFiles/protocol_lib.dir/protocol/protocol.cpp.s
+.PHONY : protocol/protocol.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -197,13 +358,30 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... event_handler_lib"
 	@echo "... myhotel"
-	@echo "... database_lib"
-	@echo "... service_lib"
+	@echo "... protocol_lib"
 	@echo "... com_lib"
+	@echo "... frame_lib"
+	@echo "... frame_handler_lib"
+	@echo "... EventHandler/event_handler.o"
+	@echo "... EventHandler/event_handler.i"
+	@echo "... EventHandler/event_handler.s"
+	@echo "... FrameHandler/frame_handler.o"
+	@echo "... FrameHandler/frame_handler.i"
+	@echo "... FrameHandler/frame_handler.s"
+	@echo "... com/com.o"
+	@echo "... com/com.i"
+	@echo "... com/com.s"
+	@echo "... frame/frame.o"
+	@echo "... frame/frame.i"
+	@echo "... frame/frame.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... protocol/protocol.o"
+	@echo "... protocol/protocol.i"
+	@echo "... protocol/protocol.s"
 .PHONY : help
 
 

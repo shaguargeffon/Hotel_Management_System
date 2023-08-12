@@ -2,11 +2,11 @@ import socket
 import time
 
 class Test:
-
     @classmethod
     def configure(cls):
         cls.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        cls.socket.connect(("127.0.0.1", 9527))
+        cls.socket.connect(("127.0.0.1", 8080))
+        #cls.socket.connect(("192.168.122.1", 1111))
 
         # Client Info
         cls.client_id = "12345"
@@ -59,6 +59,14 @@ class Test:
         cls.logout_response_password_not_identical = cls.negative_response_id + cls.client_id + cls.error_password_not_identical
         cls.logout_response_logout_repeat = cls.negative_response_id + cls.client_id + cls.error_logout_repeat
 
+
+class TestSocket(Test):
+    @classmethod
+    def test_socket_receive(cls):
+        #Test.configure()
+        message = Test.socket.recv(1024)
+        #print("received data: ", message)
+        return message
 
 
 class TestRegisterUnregister(Test):
@@ -190,11 +198,14 @@ class TestRegisterUnregister(Test):
  
 
 if __name__ == '__main__':
-
     Test.configure()
 
-    TestRegisterUnregister.test_case_1()
+    while True:
 
-    TestRegisterUnregister.test_case_2()
+        data = TestSocket.test_socket_receive()
+        print(f"Received {data!r}")
+        time.sleep(1)
+        Test.socket.send(data)
+        time.sleep(1)
 
-    TestRegisterUnregister.test_case_3()
+

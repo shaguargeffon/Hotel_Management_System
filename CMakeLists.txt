@@ -2,52 +2,40 @@ cmake_minimum_required(VERSION 3.0)
 
 project(HOTEL)
 
-#target_compile_features(myhotel PUBLIC cxx_std_17)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-#set(CMAKE_CXX_STANDARD 17 CACHE STRING "the C++ standard to use for this project")
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/types)
 
-#string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/execution_manager)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/MessageHandler)
 
-#message("The directory is: " ${CMAKE_CURRENT_SOURCE_DIR})
-
-#include_directories(${PROJECT_PATH}/server)
-
-
-#include_directories(${PROJECT_SOURCE_DIR}/hotel)
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/types)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/EventHandler)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/com)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
-
-add_subdirectory(database)
-add_subdirectory(service)
-add_subdirectory(com)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/protocol)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/frame)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/FrameHandler)
 
 
+### add_library needs to be added in each file which uses the library.
+add_library(frame_handler_lib FrameHandler/frame_handler.cpp)
+add_library(frame_lib frame/frame.cpp)
+add_library(com_lib com/com.cpp)
+add_library(protocol_lib protocol/protocol.cpp)
+add_library(event_handler_lib EventHandler/event_handler.cpp)
 
-#add_library(protocal_lib protocal/protocal.cpp)
-#add_library(server_lib server/server.cpp)
-#add_library(service_lib service/service.cpp)
-#add_library(hotel_lib hotel/hotel.cpp)
 
 add_executable(myhotel main.cpp)
+
+
 #target_compile_features(myhotel PUBLIC cxx_std_17)
 
-#target_link_libraries(${PROJECT_NAME} PRIVATE server_lib protocal_lib service_lib hotel_lib)
+#target_link_libraries(myhotel PRIVATE execution_manager database_lib com_lib service_lib)
 
+#target_link_libraries(myhotel PRIVATE com_lib frame_handler_lib frame_lib)
 
-target_link_libraries(myhotel PRIVATE database_lib com_lib service_lib)
-
-
-
-
-
-
-
+target_link_libraries(myhotel PRIVATE protocol_lib com_lib frame_handler_lib frame_lib event_handler_lib)
 
 

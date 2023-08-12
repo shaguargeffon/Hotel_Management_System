@@ -8,9 +8,40 @@
 #include <set>
 #include "types.hpp"
 #include "database.hpp"
+#include <tuple>
+#include <string>
 using namespace std;
 
+template<typename Service_KIND>
+class Service
+{
+public:
+    Service() = default;
 
+    ~Service() = default;
+
+private:
+//    std::tuple<std::string, std::unique_ptr<Service_KIND>> service_set; 
+    std::string service_name;
+
+};
+
+
+template<typename Service_T, typename ...Services_T>
+void save_services_to_tuple(Service_T service, Services_T...)
+{
+
+
+
+
+}
+
+
+
+
+
+
+/*
     class Service
     {
         public:
@@ -43,7 +74,7 @@ using namespace std;
         protected:
             AbsDataBase<ITEM>* database_p;  //stack pointer
     };
-
+*/
 
 
     //Request frame: Frame_ID (10, 2bytes) + Client_ID (5bytes) + Password(8bytes)

@@ -10,17 +10,20 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../types"
+  "../EventHandler"
   "../com"
-  "../service"
-  "../database"
+  "../protocol"
+  "../frame"
+  "../FrameHandler"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/shaguar/project/hotel/Hotel_Management_System/build/database/CMakeFiles/database_lib.dir/DependInfo.cmake"
-  "/home/shaguar/project/hotel/Hotel_Management_System/build/com/CMakeFiles/com_lib.dir/DependInfo.cmake"
-  "/home/shaguar/project/hotel/Hotel_Management_System/build/service/CMakeFiles/service_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/protocol_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/com_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/frame_handler_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/frame_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/event_handler_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

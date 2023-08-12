@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcom_lib.a  CMakeFiles/com_lib.dir/com/com.cpp.o
+/usr/bin/ranlib libcom_lib.a
