@@ -91,6 +91,8 @@ cstdint
 -
 cstring
 -
+tuple
+-
 config.hpp
 ../frame/config.hpp
 event.hpp
@@ -115,4 +117,6 @@ frame.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/frame.hpp
 event_handler.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/event_handler.hpp
+sqlite3.h
+/home/shaguar/project/hotel/Hotel_Management_System/sqlite3.h
 

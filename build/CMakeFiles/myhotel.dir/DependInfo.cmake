@@ -15,6 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../protocol"
   "../frame"
   "../FrameHandler"
+  "../database"
   )
 
 # Targets to which this target links.
@@ -24,6 +25,7 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/frame_handler_lib.dir/DependInfo.cmake"
   "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/frame_lib.dir/DependInfo.cmake"
   "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/event_handler_lib.dir/DependInfo.cmake"
+  "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/database_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -163,6 +163,19 @@ com_lib/fast:
 .PHONY : com_lib/fast
 
 #=============================================================================
+# Target rules for targets named database_lib
+
+# Build rule for target.
+database_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 database_lib
+.PHONY : database_lib
+
+# fast build rule for target.
+database_lib/fast:
+	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/build
+.PHONY : database_lib/fast
+
+#=============================================================================
 # Target rules for targets named frame_lib
 
 # Build rule for target.
@@ -269,6 +282,33 @@ com/com.cpp.s:
 	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/com/com.cpp.s
 .PHONY : com/com.cpp.s
 
+database/database.o: database/database.cpp.o
+
+.PHONY : database/database.o
+
+# target to build an object file
+database/database.cpp.o:
+	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/database/database.cpp.o
+.PHONY : database/database.cpp.o
+
+database/database.i: database/database.cpp.i
+
+.PHONY : database/database.i
+
+# target to preprocess a source file
+database/database.cpp.i:
+	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/database/database.cpp.i
+.PHONY : database/database.cpp.i
+
+database/database.s: database/database.cpp.s
+
+.PHONY : database/database.s
+
+# target to generate assembly for a file
+database/database.cpp.s:
+	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/database/database.cpp.s
+.PHONY : database/database.cpp.s
+
 frame/frame.o: frame/frame.cpp.o
 
 .PHONY : frame/frame.o
@@ -362,6 +402,7 @@ help:
 	@echo "... myhotel"
 	@echo "... protocol_lib"
 	@echo "... com_lib"
+	@echo "... database_lib"
 	@echo "... frame_lib"
 	@echo "... frame_handler_lib"
 	@echo "... EventHandler/event_handler.o"
@@ -373,6 +414,9 @@ help:
 	@echo "... com/com.o"
 	@echo "... com/com.i"
 	@echo "... com/com.s"
+	@echo "... database/database.o"
+	@echo "... database/database.i"
+	@echo "... database/database.s"
 	@echo "... frame/frame.o"
 	@echo "... frame/frame.i"
 	@echo "... frame/frame.s"

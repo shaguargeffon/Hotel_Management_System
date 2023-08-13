@@ -95,6 +95,7 @@ myhotel: libcom_lib.a
 myhotel: libframe_handler_lib.a
 myhotel: libframe_lib.a
 myhotel: libevent_handler_lib.a
+myhotel: libdatabase_lib.a
 myhotel: CMakeFiles/myhotel.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable myhotel"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/myhotel.dir/link.txt --verbose=$(VERBOSE)

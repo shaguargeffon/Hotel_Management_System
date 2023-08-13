@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/shaguar/project/hotel/Hotel_Management_System/EventHandler -I/home/shaguar/project/hotel/Hotel_Management_System/com -I/home/shaguar/project/hotel/Hotel_Management_System/protocol -I/home/shaguar/project/hotel/Hotel_Management_System/frame -I/home/shaguar/project/hotel/Hotel_Management_System/FrameHandler 
+CXX_INCLUDES = -I/home/shaguar/project/hotel/Hotel_Management_System/EventHandler -I/home/shaguar/project/hotel/Hotel_Management_System/com -I/home/shaguar/project/hotel/Hotel_Management_System/protocol -I/home/shaguar/project/hotel/Hotel_Management_System/frame -I/home/shaguar/project/hotel/Hotel_Management_System/FrameHandler -I/home/shaguar/project/hotel/Hotel_Management_System/database 
 

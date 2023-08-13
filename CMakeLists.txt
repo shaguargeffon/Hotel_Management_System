@@ -17,6 +17,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/com)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/protocol)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/frame)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/FrameHandler)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
 
 
 ### add_library needs to be added in each file which uses the library.
@@ -25,9 +26,12 @@ add_library(frame_lib frame/frame.cpp)
 add_library(com_lib com/com.cpp)
 add_library(protocol_lib protocol/protocol.cpp)
 add_library(event_handler_lib EventHandler/event_handler.cpp)
+add_library(database_lib database/database.cpp)
 
 
 add_executable(myhotel main.cpp)
+
+#find_package(sqlite3)
 
 
 #target_compile_features(myhotel PUBLIC cxx_std_17)
@@ -36,6 +40,6 @@ add_executable(myhotel main.cpp)
 
 #target_link_libraries(myhotel PRIVATE com_lib frame_handler_lib frame_lib)
 
-target_link_libraries(myhotel PRIVATE protocol_lib com_lib frame_handler_lib frame_lib event_handler_lib)
+target_link_libraries(myhotel PRIVATE protocol_lib com_lib frame_handler_lib frame_lib event_handler_lib database_lib -lsqlite3)
 
 

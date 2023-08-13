@@ -43,6 +43,8 @@ cstdint
 -
 cstring
 -
+tuple
+-
 config.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/frame/config.hpp
 event.hpp

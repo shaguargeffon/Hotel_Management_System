@@ -4,5 +4,6 @@
 /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/myhotel.dir
 /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/protocol_lib.dir
 /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/com_lib.dir
+/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/database_lib.dir
 /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/frame_lib.dir
 /home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/frame_handler_lib.dir

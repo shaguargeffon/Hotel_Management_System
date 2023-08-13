@@ -191,6 +191,9 @@ HOTEL_SOURCE_DIR:STATIC=/home/shaguar/project/hotel/Hotel_Management_System
 com_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
+database_lib_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
 event_handler_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
@@ -201,6 +204,12 @@ frame_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
 protocol_lib_LIB_DEPENDS:STATIC=
+
+//The directory containing a CMake configuration file for sqlite3.
+sqlite3_DIR:PATH=sqlite3_DIR-NOTFOUND
+
+//Dependencies for target
+sqlite_lib_LIB_DEPENDS:STATIC=
 
 
 ########################

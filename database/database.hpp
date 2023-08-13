@@ -1,135 +1,137 @@
 #pragma once
 
 #include <iostream>
-#include <string.h>
-#include <set>
-#include <utility>
-#include <algorithm>
-#include "types.hpp"
-#include "item.hpp"
+#include "sqlite3.h"
+using namespace std;
 
 
-template<typename T>
-class AbsDataBase
+class DataBase
 {
 public:
 
-    virtual bool clear_database()=0;
-    virtual bool insert_item(T& item)=0;
-    virtual bool delete_item(T& item)=0;
-    virtual bool update_database(T& item)=0;
-    virtual std::pair<T, bool> find_item(T& item)=0;
-    virtual std::set<T> get_items() const = 0;
-    //virtual std::pair<T, bool> get_item(T& item)=0;
-    virtual ~AbsDataBase()=default;
+    static constexpr const char* database_name_{"hotel_databse.db"};
 
-
-};
-
-
-
-
-template<typename T>
-class DataBase: public AbsDataBase<T>
-{
-public:
-
-    bool clear_database() final
-    {
-        items.clear();
-
-        return true;
-    }
-    
-    bool insert_item(T& item) noexcept final 
-    {
-        auto res = items.insert(item);
-        if(res.second)
-        {
-            return true;
-        }
-
-        return false;
+    static DataBase& get_instance() {
+        static DataBase instance;
+        return instance;
     }
 
-    bool delete_item(T& item) final
+    static int callback(void *NotUsed, int argc, char **argv, char **azColName)
     {
-        if(items.empty())
-        {
-            return false;
-        }
-        else
-        {
-            auto iter = find(items.begin(), items.end(), item);
-
-            if(iter == items.end())
-            {
-                return false;
-            }
-
-            items.erase(iter);
-
-            return true;
-        }
-    }
-
-    bool update_database(T& item) final
-    {
-        auto iter = find(items.begin(), items.end(), item);
-
-        if(iter == items.end())
-        {
-            return false;
-        }
-
-        items.erase(iter); // remove the old item
-
-        items.insert(item); //insert the new item
-
-        return true;
-    }
-
-    /*
-    bool find_item(T& item) final
-    {
-        auto iter = find(items.begin(), items.end(), item);
-
-        if(iter == items.end())
-        {
-            return false;
-        }
-
-        return true;
-    }
-    */
-
-    std::pair<T, bool> find_item(T& item) final
-    {
-        bool res;
+        int i = 0;
         
-        auto iter = find(items.begin(), items.end(), item);
+        for(i = 0; i < argc; i++)
+        {
+            printf("%s = %s\n",azColName[i], argv[i]?argv[i]:"NULL");
+        }
 
-        if(iter == items.end())
-        {
-            T temp;
-            auto res = std::make_pair(temp, false);
-            return res;            
+        printf("\n");
+        return 0;
+    }
+
+    bool createdb() {
+        sqlite3* database_p{nullptr};
+        
+        char *zErrMsg = 0;
+        
+        int rc;
+        
+        const char *sql;
+
+        rc = sqlite3_open(database_name_, &database_p);  // 打开数据库
+    
+        if(rc) {
+            std::cerr<<"Can't open database: "<<sqlite3_errmsg(database_p)<<std::endl;
+            return false;
         }
-        else
-        {
-            auto res = std::make_pair(*iter, true);  
-            return res;   
+        else {
+            std::cout<<"open database succeddfully"<<std::endl;
         }
+
+        sql = "create table company(ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, AGE TEXT NOT NULL, ADDRESS CHAR(50))";
+
+        rc = sqlite3_exec(database_p, sql, callback, 0, &zErrMsg); // 执行上面sql中的命令
+    
+        if(SQLITE_OK != rc) {
+            std::cerr<<"SQL error: "<<zErrMsg<<std::endl;
+        }
+        else {
+            std::cout<<"create table successfully"<<std::endl;
+        }
+
+        sqlite3_close(database_p);
+
+        return true;
     }
 
 
-    std::set<T> get_items() const final
-    {
-        return items;
+
+    bool insert_data_to_db() {
+        sqlite3* database_p;
+        
+        char *zErrMsg = 0;
+        
+        int rc;
+        
+        const char *sql = "insert into company(ID, NAME, AGE, ADDRESS) values(1, 'Paul', 25, 'USA');\
+            insert into company(ID, NAME, AGE, ADDRESS) values(2, 'James', 28, 'JAP');\
+            insert into company(ID, NAME, AGE, ADDRESS) values(3, 'Yao', 30, 'CHA');\
+            insert into company(ID, NAME, AGE, ADDRESS) values(4, 'kobe', 38, 'USA');";
+
+        rc = sqlite3_open("./hotel_databse.db", &database_p);
+        
+        if(rc) {
+            fprintf(stderr, "Can't open database:%s\n", sqlite3_errmsg(database_p));
+            return false;
+        }
+        else {
+            fprintf(stderr,"open database succeddfully\n");
+        }
+
+        rc = sqlite3_exec(database_p, sql, callback, 0, &zErrMsg);
+    
+        if(SQLITE_OK != rc) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        else {
+            fprintf(stdout, "insert table successfully\n");
+        }
+
+        sqlite3_close(database_p);
+
+        return true;
     }
 
-private:
-    std::set<T> items;
-    std::set<Room> rooms;
+
+    bool query_data() {
+        sqlite3* database_p;
+        char *zErrMsg = 0;
+        int rc;
+        const char *sql =  "select * from  company;";
+
+        rc = sqlite3_open("./hotel_databse.db", &database_p);
+        if(rc) {
+            fprintf(stderr, "Can't open database:%s\n", sqlite3_errmsg(database_p));
+            return false;
+        }
+        else {
+            fprintf(stderr,"open database succeddfully\n");
+        }
+
+        rc = sqlite3_exec(database_p, sql, callback, 0, &zErrMsg);
+
+        if(SQLITE_OK != rc) {
+            fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        }
+        else {
+            fprintf(stdout, "select table successfully\n");
+        }
+
+        sqlite3_close(database_p);
+
+        return true;
+    }
+
+
 };
 

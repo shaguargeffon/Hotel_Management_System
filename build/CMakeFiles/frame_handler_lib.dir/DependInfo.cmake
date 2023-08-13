@@ -15,6 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../protocol"
   "../frame"
   "../FrameHandler"
+  "../database"
   )
 
 # Targets to which this target links.
