@@ -74,6 +74,24 @@ string
 cstring
 -
 
+../database/database.hpp
+iostream
+-
+sqlite3.h
+../database/sqlite3.h
+database_config.hpp
+../database/database_config.hpp
+
+../database/database_config.hpp
+iostream
+-
+string
+-
+map
+-
+functional
+-
+
 ../frame/config.hpp
 map
 -
@@ -119,4 +137,20 @@ event_handler.hpp
 /home/shaguar/project/hotel/Hotel_Management_System/event_handler.hpp
 sqlite3.h
 /home/shaguar/project/hotel/Hotel_Management_System/sqlite3.h
+database.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/database.hpp
+array
+-
+cstdlib
+-
+iostream
+-
+memory
+-
+type_traits
+-
+utility
+-
+boost/container/vector.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/boost/container/vector.hpp
 

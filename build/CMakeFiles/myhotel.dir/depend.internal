@@ -6,6 +6,8 @@ CMakeFiles/myhotel.dir/main.cpp.o
  ../EventHandler/event_handler.hpp
  ../FrameHandler/frame_handler.hpp
  ../com/com.hpp
+ ../database/database.hpp
+ ../database/database_config.hpp
  ../frame/config.hpp
  ../frame/frame.hpp
  /home/shaguar/project/hotel/Hotel_Management_System/main.cpp

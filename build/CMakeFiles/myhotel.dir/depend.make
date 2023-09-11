@@ -5,6 +5,8 @@ CMakeFiles/myhotel.dir/main.cpp.o: ../EventHandler/event.hpp
 CMakeFiles/myhotel.dir/main.cpp.o: ../EventHandler/event_handler.hpp
 CMakeFiles/myhotel.dir/main.cpp.o: ../FrameHandler/frame_handler.hpp
 CMakeFiles/myhotel.dir/main.cpp.o: ../com/com.hpp
+CMakeFiles/myhotel.dir/main.cpp.o: ../database/database.hpp
+CMakeFiles/myhotel.dir/main.cpp.o: ../database/database_config.hpp
 CMakeFiles/myhotel.dir/main.cpp.o: ../frame/config.hpp
 CMakeFiles/myhotel.dir/main.cpp.o: ../frame/frame.hpp
 CMakeFiles/myhotel.dir/main.cpp.o: ../main.cpp

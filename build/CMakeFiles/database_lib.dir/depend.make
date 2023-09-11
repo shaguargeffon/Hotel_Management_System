@@ -3,4 +3,5 @@
 
 CMakeFiles/database_lib.dir/database/database.cpp.o: ../database/database.cpp
 CMakeFiles/database_lib.dir/database/database.cpp.o: ../database/database.hpp
+CMakeFiles/database_lib.dir/database/database.cpp.o: ../database/database_config.hpp
 

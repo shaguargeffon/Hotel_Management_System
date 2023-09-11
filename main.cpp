@@ -20,7 +20,19 @@
 #include "frame.hpp"
 #include "event_handler.hpp"
 #include "sqlite3.h"
+#include "database.hpp"
 
+//#include "boost/atomic.hpp"
+#include <array>
+#include <cstdlib>
+#include <iostream>
+#include <memory>
+#include <type_traits>
+#include <utility>
+#include "boost/container/vector.hpp"
+
+
+/*
 static int callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i = 0;
@@ -140,7 +152,7 @@ int query_data() {
 
     sqlite3_close(db);
 }
-
+*/
 
 
 
@@ -215,8 +227,17 @@ int main()
 
     //测试数据库
     //createdb();
-//insert_data_to_db();
-//query_data();
+    //insert_data_to_db();
+    //query_data();
+
+    auto data_base = DataBase<CallBackConfig>::get_instance();
+
+
+    boost::container::vector<int> test_boost_vector= {1, 2, 3, 4, 5};
+
+    for(auto i : test_boost_vector) {
+        std::cout<< i << std::endl;
+    } 
 
 
     return 0;

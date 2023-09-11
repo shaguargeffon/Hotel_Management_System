@@ -15,4 +15,16 @@ iostream
 -
 sqlite3.h
 /home/shaguar/project/hotel/Hotel_Management_System/database/sqlite3.h
+database_config.hpp
+/home/shaguar/project/hotel/Hotel_Management_System/database/database_config.hpp
+
+/home/shaguar/project/hotel/Hotel_Management_System/database/database_config.hpp
+iostream
+-
+string
+-
+map
+-
+functional
+-
 
