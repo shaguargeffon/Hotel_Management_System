@@ -4,18 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shaguar/project/hotel/Hotel_Management_System/com/com.cpp" "/home/shaguar/project/hotel/Hotel_Management_System/build/CMakeFiles/com_lib.dir/com/com.cpp.o"
+  "/home/han/project/course/Hotel/hotel/Hotel_Management_System/com/com.cpp" "/home/han/project/course/Hotel/hotel/Hotel_Management_System/build/CMakeFiles/com_lib.dir/com/com.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../EventHandler"
   "../com"
-  "../protocol"
-  "../frame"
-  "../FrameHandler"
+  "../sqlite"
   "../database"
+  "../service"
+  "../service_manager"
   )
 
 # Targets to which this target links.

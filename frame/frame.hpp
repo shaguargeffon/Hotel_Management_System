@@ -12,14 +12,15 @@
 
 template<typename Frame, typename Event>
 static bool copy_from_event_to_frame(Frame& frame_container, Event& event_container, size_t start_index, size_t end_index) {
-    frame_container = event_container.substr(start_index, end_index - start_index);   
+    frame_container = event_container.substr(start_index, end_index - start_index);
+    return true;   
 }
 
 
 // Protocol : event/frame ID (1byte), user name (10 bytes), password (10 bytes), email(20 bytes) 
 class FrameRequestRegisterNewAccount {
 public:
-    static FrameRequestRegisterNewAccount& create_instance() {
+    static FrameRequestRegisterNewAccount& get_instance() {
         static FrameRequestRegisterNewAccount instance;
         return instance;
     }
@@ -65,7 +66,7 @@ private:
 //            year_end_(4bytes), month_end_(2bytes), day_end_(2bytes) 
 class FrameRequestBookHotel {
 public:
-    static FrameRequestBookHotel& create_instance() {
+    static FrameRequestBookHotel& get_instance() {
         static FrameRequestBookHotel instance;
         return instance;
     }
@@ -125,7 +126,7 @@ private:
 //            year_end_(4bytes), month_end_(2bytes), day_end_(2bytes)            
 class FrameRequestCancelBooking {
 public:
-    static FrameRequestCancelBooking& create_instance() {
+    static FrameRequestCancelBooking& get_instance() {
         static FrameRequestCancelBooking instance;
         return instance;
     }

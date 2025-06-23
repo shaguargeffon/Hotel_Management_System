@@ -2,8 +2,10 @@
 
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <map>
 #include <functional>
+#include <stdio.h>
 
 
 typedef int (*CB_T)(void*, int, char**, char**);
@@ -19,15 +21,22 @@ public:
 
     // Create callback functions
     static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-        int i = 0;
+        std::cout<<"Count of columen: "<<argc<<std::endl;
         
-        for(i = 0; i < argc; i++)
-        {
-            printf("%s = %s\n",azColName[i], argv[i]?argv[i]:"NULL");
-        }
 
-        printf("\n");
-        return 0;
+
+        if(NotUsed != NULL) 
+        { 
+            printf("%s\n", (char*)NotUsed); 
+        } 
+
+        for(int x=0 ; x<argc; x++) 
+        { 
+            if(strcmp(azColName[x],"tbl_name")==0) 
+                printf("%s : %s\n", azColName[x], argv[x]); 
+        }        
+        
+        return 0; 
     }
 
 

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libframe_handler_lib.a  CMakeFiles/frame_handler_lib.dir/FrameHandler/frame_handler.cpp.o
-/usr/bin/ranlib libframe_handler_lib.a

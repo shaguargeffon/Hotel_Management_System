@@ -1,7 +1,7 @@
 
 string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
-//include_directories(${PROJECT_PATH}/frame)
+
 include_directories(${PROJECT_PATH}/sqlite)
 
 add_library(sqlite_lib sqlite3.c)

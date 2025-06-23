@@ -6,7 +6,6 @@ message("The directory is: " ${PROJECT_PATH})
 #include_directories(${PROJECT_PATH}/types)
 
 
-include_directories(${PROJECT_PATH}/FrameHandler)
 include_directories(${PROJECT_PATH}/protocal)
 include_directories(${PROJECT_PATH}/com)
 

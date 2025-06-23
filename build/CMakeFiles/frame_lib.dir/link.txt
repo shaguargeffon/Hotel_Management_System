@@ -1,2 +1,0 @@
-/usr/bin/ar qc libframe_lib.a  CMakeFiles/frame_lib.dir/frame/frame.cpp.o
-/usr/bin/ranlib libframe_lib.a

@@ -8,28 +8,19 @@
 #include <stdlib.h>
 #include <string>
 #include <cstring>
-//#include "com.hpp"
-//#include "service.hpp"
-//#include "execution_manager"
-
-
-//compiling command: gcc -pthread -g -o main main.c
-
-#include "com.hpp"
-#include "frame_handler.hpp"
-#include "frame.hpp"
-#include "event_handler.hpp"
-#include "sqlite3.h"
-#include "database.hpp"
-
-//#include "boost/atomic.hpp"
+#include <thread>
 #include <array>
 #include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <type_traits>
 #include <utility>
-#include "boost/container/vector.hpp"
+//#include "boost/container/vector.hpp"
+//#include <asio.hpp>
+#include "com.hpp"
+#include "service_manager.hpp"
+
+
 
 
 /*
@@ -154,7 +145,13 @@ int query_data() {
 }
 */
 
+void foo() {
+std::cout<<"foo completed"<<std::endl;
+}
 
+void bar(int x) {
+std::cout<<" bar completed"<<std::endl;
+}
 
 
 int main()
@@ -190,15 +187,20 @@ int main()
     //using FH = RequestFrameSet<FrameRequestRegisterNewAccount, FrameRequestBookHotel, FrameRequestCancelBooking>;
 
     // 测试frame
-     
+
+    /* 
     std::tuple<FrameRequestRegisterNewAccount, FrameRequestBookHotel, FrameRequestCancelBooking> request_frames{
-        FrameRequestRegisterNewAccount::create_instance(),
-        FrameRequestBookHotel::create_instance(),
-        FrameRequestCancelBooking::create_instance()
+        FrameRequestRegisterNewAccount::get_instance(),
+        FrameRequestBookHotel::get_instance(),
+        FrameRequestCancelBooking::get_instance()
     };
+    */
+
 
 // Protocol : event/frame ID (1byte), user_name_(10 bytes), room_id_(3bytes), year_start_(4bytes), month_start_(2bytes), day_start_(2bytes)
 //            year_end_(4bytes), month_end_(2bytes), day_end_(2bytes) 
+    
+    /*
     char test_dataset[31] = {'3', 'H', 'a', 'n', 'D', 'i', '\0', '\0', '\0', '\0', '\0', '1', '2', '3', '2', '0', '2', '3', '1', '2', '0', '1', '2', '0', '2', '3', '1', '2', '0', '5'};
     
     std::string event_id{"2"};
@@ -222,7 +224,7 @@ int main()
         },
         request_frames
     );
-    
+    */
 
 
     //测试数据库
@@ -230,16 +232,63 @@ int main()
     //insert_data_to_db();
     //query_data();
 
-    auto data_base = DataBase<CallBackConfig>::get_instance();
+    //auto data_base = DataBase<CallBackConfig>::get_instance();
 
 
-    boost::container::vector<int> test_boost_vector= {1, 2, 3, 4, 5};
+    //boost::container::vector<int> test_boost_vector= {1, 2, 3, 4, 5};
 
-    for(auto i : test_boost_vector) {
-        std::cout<< i << std::endl;
-    } 
+    //for(auto i : test_boost_vector) {
+    //    std::cout<< i << std::endl;
+    //} 
 
 
+
+    COM com{8888};
+
+    com.create_socket();
+    com.attach_port_to_socket();
+    com.configure_address();
+    com.bind_address();
+    com.listen_clients();
+    com.accept_clients();
+
+    char mydata[5] = {'a', 'b', 'c', 'd', 'e'};
+
+    while(1) {
+        com.fill_send_buffer(mydata, 5);
+        com.send_data(5);
+        usleep(1000000);
+    }
+    
+
+   /* Test database */
+    //DataBase<DataBaseConfig> data_base = DataBase<DataBaseConfig>::get_instance();
+    /*
+    DataBase data_base = DataBase::get_instance();
+
+    auto res = data_base.createdb();
+    data_base.insert_data_to_db();
+
+    data_base.query_data();
+
+    data_base.update_item();
+
+    data_base.query_data();
+    */
+    
+
+
+
+    //multithread test
+    //std::thread first(foo);
+    //std::thread second(bar, 0);
+
+    //first.join();
+    //second.join();
+
+    //std::cout<<"foo and bar completed"<<std::endl;
+    
+    
     return 0;
 }
 

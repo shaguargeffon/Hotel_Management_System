@@ -1,0 +1,2 @@
+/usr/bin/ar qc libservice_manager_lib.a  CMakeFiles/service_manager_lib.dir/service_manager/service_manager.cpp.o
+/usr/bin/ranlib libservice_manager_lib.a

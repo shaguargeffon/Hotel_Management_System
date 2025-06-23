@@ -6,29 +6,3 @@
 
 #IncludeRegexTransform: 
 
-/home/shaguar/project/hotel/Hotel_Management_System/com/com.cpp
-com.hpp
-/home/shaguar/project/hotel/Hotel_Management_System/com/com.hpp
-
-/home/shaguar/project/hotel/Hotel_Management_System/com/com.hpp
-stdio.h
--
-ctype.h
--
-unistd.h
--
-sys/types.h
--
-arpa/inet.h
--
-sys/socket.h
--
-stdlib.h
--
-iostream
--
-string
--
-cstring
--
-

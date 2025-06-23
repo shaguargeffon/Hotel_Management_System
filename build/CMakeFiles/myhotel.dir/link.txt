@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel libprotocol_lib.a libcom_lib.a libframe_handler_lib.a libframe_lib.a libevent_handler_lib.a libdatabase_lib.a -lsqlite3 
+/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel  libcom_lib.a libservice_manager_lib.a libservice_lib.a libdatabase_lib.a -pthread 
