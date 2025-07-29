@@ -16,7 +16,7 @@ find_package(Threads REQUIRED)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/com)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/frame)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/sqlite)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/database)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/service_manager)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/request_handler)
@@ -29,7 +29,7 @@ add_library(com_lib com/com.cpp)
 add_library(service_manager_lib service_manager/service_manager.cpp)
 add_library(service_lib service/service.cpp)
 #add_library(sqlite_lib sqlite/sqlite3.c)
-add_library(database_lib database/database.cpp)
+#add_library(database_lib database/database.cpp)
 #include_directories(${PROJECT_PATH}/database/thirdparty/SQLiteCpp)
 #add_library(request_handler_lib request_handler/request_handler.cpp)
 
@@ -45,9 +45,9 @@ add_executable(myhotel main.cpp)
 
 #target_link_libraries(myhotel PRIVATE com_lib frame_handler_lib frame_lib)
 
-target_link_libraries(myhotel PRIVATE com_lib service_manager_lib service_lib database_lib  ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(myhotel PRIVATE com_lib service_manager_lib service_lib   ${CMAKE_THREAD_LIBS_INIT})
 
 #add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/thirdparty/SQLiteCpp)
 
-
+add_subdirectory(database)
 

@@ -6,6 +6,6 @@ include_directories(${PROJECT_PATH}/types)
 include_directories(${PROJECT_PATH}/database)
 #include_directories(${PROJECT_PATH}/database/thirdparty/SQLiteCpp)
 
-add_library(service_lib service.cpp database_lib)
+add_library(service_lib service.cpp)
 
 set_target_properties(service_lib PROPERTIES OUTPUT_NAME "service")

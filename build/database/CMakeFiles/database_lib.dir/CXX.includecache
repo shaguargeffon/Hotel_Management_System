@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../database/include/database.hpp
+iostream
+-
+string
+-
+sqlite3.h
+../database/include/sqlite3.h
+
+../sqlite/sqlite3.h
+stdarg.h
+-
+
+/home/han/project/course/Hotel/hotel/Hotel_Management_System/database/src/database.cpp
+database.hpp
+/home/han/project/course/Hotel/hotel/Hotel_Management_System/database/src/database.hpp
+

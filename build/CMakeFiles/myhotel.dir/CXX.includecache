@@ -28,33 +28,9 @@ string
 cstring
 -
 
-../database/database.hpp
-iostream
--
-string
--
-sqlite3.h
-../database/sqlite3.h
-database_config.hpp
-../database/database_config.hpp
-
-../database/database_config.hpp
-iostream
--
-string
--
-string.h
--
-map
--
-functional
--
-stdio.h
--
-
 ../service/service.hpp
-database.hpp
-../service/database.hpp
+string
+-
 
 ../service_manager/service_manager.hpp
 tuple
@@ -73,10 +49,6 @@ cxxabi.h
 -
 service.hpp
 ../service_manager/service.hpp
-
-../sqlite/sqlite3.h
-stdarg.h
--
 
 /home/han/project/course/Hotel/hotel/Hotel_Management_System/main.cpp
 stdio.h

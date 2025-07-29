@@ -3,9 +3,6 @@
 
 CMakeFiles/myhotel.dir/main.cpp.o
  ../com/com.hpp
- ../database/database.hpp
- ../database/database_config.hpp
  ../service/service.hpp
  ../service_manager/service_manager.hpp
- ../sqlite/sqlite3.h
  /home/han/project/course/Hotel/hotel/Hotel_Management_System/main.cpp

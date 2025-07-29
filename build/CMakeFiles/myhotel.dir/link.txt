@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel  libcom_lib.a libservice_manager_lib.a libservice_lib.a libdatabase_lib.a -pthread 
+/usr/bin/c++    -rdynamic CMakeFiles/myhotel.dir/main.cpp.o  -o myhotel  libcom_lib.a libservice_manager_lib.a libservice_lib.a -pthread 

@@ -6,39 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../database/database.hpp
-iostream
--
-string
--
-sqlite3.h
-../database/sqlite3.h
-database_config.hpp
-../database/database_config.hpp
-
-../database/database_config.hpp
-iostream
--
-string
--
-string.h
--
-map
--
-functional
--
-stdio.h
--
-
-../sqlite/sqlite3.h
-stdarg.h
--
-
 /home/han/project/course/Hotel/hotel/Hotel_Management_System/service/service.cpp
 service.hpp
 /home/han/project/course/Hotel/hotel/Hotel_Management_System/service/service.hpp
 
 /home/han/project/course/Hotel/hotel/Hotel_Management_System/service/service.hpp
-database.hpp
-/home/han/project/course/Hotel/hotel/Hotel_Management_System/service/database.hpp
+string
+-
 

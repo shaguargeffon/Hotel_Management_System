@@ -12,7 +12,6 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../com"
   "../sqlite"
-  "../database"
   "../service"
   "../service_manager"
   )
@@ -22,7 +21,6 @@ set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/han/project/course/Hotel/hotel/Hotel_Management_System/build/CMakeFiles/com_lib.dir/DependInfo.cmake"
   "/home/han/project/course/Hotel/hotel/Hotel_Management_System/build/CMakeFiles/service_manager_lib.dir/DependInfo.cmake"
   "/home/han/project/course/Hotel/hotel/Hotel_Management_System/build/CMakeFiles/service_lib.dir/DependInfo.cmake"
-  "/home/han/project/course/Hotel/hotel/Hotel_Management_System/build/CMakeFiles/database_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

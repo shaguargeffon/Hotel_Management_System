@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/database_spec.dir/__/src/database.cpp.o CMakeFiles/database_spec.dir/database.spec.cpp.o  -o database_spec  /usr/lib/x86_64-linux-gnu/libgtest.a /usr/lib/x86_64-linux-gnu/libgmock.a /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a -pthread 

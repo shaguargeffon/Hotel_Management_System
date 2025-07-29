@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/com -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/sqlite -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/database -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/service -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/service_manager 
+CXX_INCLUDES = -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/com -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/sqlite -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/service -I/home/han/project/course/Hotel/hotel/Hotel_Management_System/service_manager 
 

@@ -1,13 +1,11 @@
-
-string(REGEX REPLACE "(.*)/" "\\1" PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
 include_directories(${PROJECT_PATH}/sqlite)
-include_directories(${PROJECT_PATH}/database)
 
+include_directories(include )
 
-add_library(database_lib database.cpp  libsqlite3.so  -lsqlite3)
+add_library(database_lib ./src/database.cpp )
+
+target_link_libraries(database_lib ../sqlite/libsqlite3.so)
 
 set_target_properties(database_lib PROPERTIES OUTPUT_NAME "database_lib")
 
-
-
+add_subdirectory(test)

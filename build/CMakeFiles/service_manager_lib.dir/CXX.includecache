@@ -6,36 +6,8 @@
 
 #IncludeRegexTransform: 
 
-../database/database.hpp
-iostream
--
-string
--
-sqlite3.h
-../database/sqlite3.h
-database_config.hpp
-../database/database_config.hpp
-
-../database/database_config.hpp
-iostream
--
-string
--
-string.h
--
-map
--
-functional
--
-stdio.h
--
-
 ../service/service.hpp
-database.hpp
-../service/database.hpp
-
-../sqlite/sqlite3.h
-stdarg.h
+string
 -
 
 /home/han/project/course/Hotel/hotel/Hotel_Management_System/service_manager/service_manager.cpp

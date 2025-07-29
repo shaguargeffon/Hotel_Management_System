@@ -23,6 +23,7 @@
 
 
 
+
 /*
 static int callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
@@ -240,6 +241,10 @@ int main()
     //for(auto i : test_boost_vector) {
     //    std::cout<< i << std::endl;
     //} 
+
+
+    //DataBase database;
+
 
 
 

@@ -56,6 +56,52 @@ CMAKE_BINARY_DIR = /home/han/project/course/Hotel/hotel/Hotel_Management_System/
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -124,19 +170,6 @@ myhotel/fast:
 .PHONY : myhotel/fast
 
 #=============================================================================
-# Target rules for targets named database_lib
-
-# Build rule for target.
-database_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 database_lib
-.PHONY : database_lib
-
-# fast build rule for target.
-database_lib/fast:
-	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/build
-.PHONY : database_lib/fast
-
-#=============================================================================
 # Target rules for targets named service_lib
 
 # Build rule for target.
@@ -175,6 +208,32 @@ com_lib/fast:
 	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/build
 .PHONY : com_lib/fast
 
+#=============================================================================
+# Target rules for targets named database_lib
+
+# Build rule for target.
+database_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 database_lib
+.PHONY : database_lib
+
+# fast build rule for target.
+database_lib/fast:
+	$(MAKE) -f database/CMakeFiles/database_lib.dir/build.make database/CMakeFiles/database_lib.dir/build
+.PHONY : database_lib/fast
+
+#=============================================================================
+# Target rules for targets named database_spec
+
+# Build rule for target.
+database_spec: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 database_spec
+.PHONY : database_spec
+
+# fast build rule for target.
+database_spec/fast:
+	$(MAKE) -f database/test/CMakeFiles/database_spec.dir/build.make database/test/CMakeFiles/database_spec.dir/build
+.PHONY : database_spec/fast
+
 com/com.o: com/com.cpp.o
 
 .PHONY : com/com.o
@@ -201,33 +260,6 @@ com/com.s: com/com.cpp.s
 com/com.cpp.s:
 	$(MAKE) -f CMakeFiles/com_lib.dir/build.make CMakeFiles/com_lib.dir/com/com.cpp.s
 .PHONY : com/com.cpp.s
-
-database/database.o: database/database.cpp.o
-
-.PHONY : database/database.o
-
-# target to build an object file
-database/database.cpp.o:
-	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/database/database.cpp.o
-.PHONY : database/database.cpp.o
-
-database/database.i: database/database.cpp.i
-
-.PHONY : database/database.i
-
-# target to preprocess a source file
-database/database.cpp.i:
-	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/database/database.cpp.i
-.PHONY : database/database.cpp.i
-
-database/database.s: database/database.cpp.s
-
-.PHONY : database/database.s
-
-# target to generate assembly for a file
-database/database.cpp.s:
-	$(MAKE) -f CMakeFiles/database_lib.dir/build.make CMakeFiles/database_lib.dir/database/database.cpp.s
-.PHONY : database/database.cpp.s
 
 main.o: main.cpp.o
 
@@ -316,19 +348,21 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
+	@echo "... install/local"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... myhotel"
-	@echo "... database_lib"
 	@echo "... service_lib"
 	@echo "... service_manager_lib"
 	@echo "... com_lib"
+	@echo "... database_lib"
+	@echo "... database_spec"
 	@echo "... com/com.o"
 	@echo "... com/com.i"
 	@echo "... com/com.s"
-	@echo "... database/database.o"
-	@echo "... database/database.i"
-	@echo "... database/database.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
